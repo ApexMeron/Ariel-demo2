@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OverSky — Professional Drone Services | North West UK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--sky:#0a1628;--horizon:#102a4c;--gold:#e8a020;--gold-l:#f5c060;--steel:#c8d8e8;--mist:#8faabf;--white:#f0f4f8;--card:rgba(14,34,64,0.85);--border:rgba(232,160,32,0.25);}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--sky);color:var(--white);font-family:'Barlow',sans-serif;font-weight:300;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:72px;background:rgba(10,22,40,0.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.12em;color:var(--white);cursor:pointer;text-decoration:none;}
+.logo em{color:var(--gold);font-style:normal;}
+.nav-links{display:flex;gap:30px;list-style:none;align-items:center;}
+.nav-links a{color:var(--mist);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:.83rem;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:color .2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.nav-cta{background:var(--gold)!important;color:var(--sky)!important;padding:9px 22px;font-weight:600!important;}
+.nav-cta:hover{background:var(--gold-l)!important;}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.ham span{width:26px;height:2px;background:var(--white);display:block;}
+.mob{display:none;position:fixed;top:72px;left:0;right:0;background:rgba(10,22,40,.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);z-index:999;padding:16px 24px;flex-direction:column;}
+.mob.open{display:flex;}
+.mob a{color:var(--mist);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:1rem;letter-spacing:.18em;text-transform:uppercase;padding:13px 0;border-bottom:1px solid var(--border);cursor:pointer;transition:color .2s;}
+.mob a:hover,.mob a.active{color:var(--gold);}
+
+/* PAGES */
+.page{display:none;min-height:100vh;padding-top:72px;}
+.page.active{display:block;}
+
+/* SHARED UTILITIES */
+.sec{padding:80px;}
+.lbl{font-family:'Barlow Condensed',sans-serif;font-size:.74rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:13px;display:flex;align-items:center;gap:11px;}
+.lbl::before{content:'';width:30px;height:1px;background:var(--gold);}
+.sec-h{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.4rem,4.5vw,3.8rem);letter-spacing:.04em;line-height:1;margin-bottom:18px;}
+.muted{color:var(--mist);line-height:1.8;font-size:.93rem;}
+.btn-g{background:var(--gold);color:var(--sky);padding:14px 34px;font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:background .2s,transform .2s;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));}
+.btn-g:hover{background:var(--gold-l);transform:translateY(-2px);}
+.btn-w{border:1px solid var(--border);color:var(--steel);padding:14px 34px;font-family:'Barlow Condensed',sans-serif;font-size:.88rem;letter-spacing:.2em;text-transform:uppercase;background:transparent;cursor:pointer;text-decoration:none;display:inline-block;transition:border-color .2s,color .2s;}
+.btn-w:hover{border-color:var(--gold);color:var(--gold);}
+.cta-band{background:var(--gold);padding:52px 80px;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;}
+.cta-band h3{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:.04em;color:var(--sky);}
+.cta-band p{font-family:'Barlow Condensed',sans-serif;font-size:.83rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(10,22,40,.6);margin-top:4px;}
+.cta-btn{background:var(--sky);color:var(--gold);padding:16px 38px;font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;border:none;cursor:pointer;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));transition:background .2s;}
+.cta-btn:hover{background:#0e2240;}
+
+/* PAGE HERO */
+.ph{position:relative;height:50vh;overflow:hidden;display:flex;align-items:flex-end;}
+.ph-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.38);}
+.ph-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,1) 0%,rgba(10,22,40,.1) 60%,transparent 100%);}
+.ph-txt{position:relative;z-index:2;padding:0 80px 50px;}
+
+/* FOOTER */
+footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80px 26px;}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:40px;}
+.fb p{color:var(--mist);font-size:.87rem;line-height:1.7;margin-top:10px;max-width:270px;}
+.fc h4{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.fc ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.fc a{color:var(--mist);text-decoration:none;font-size:.87rem;cursor:pointer;transition:color .2s;}
+.fc a:hover{color:var(--white);}
+.fb-bot{border-top:1px solid var(--border);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.fb-bot p{font-size:.76rem;color:var(--mist);font-family:'Barlow Condensed',sans-serif;letter-spacing:.1em;}
+.caa{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--border);padding:6px 13px;}
+.caa span{font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mist);}
+.caa strong{color:var(--gold);}
+
+/* HOME HERO */
+.hero{position:relative;height:calc(100vh - 72px);display:flex;align-items:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,22,40,.88) 0%,rgba(16,42,76,.7) 100%),url('https://oversky.co.uk/wp-content/uploads/2025/12/Manchester-night-scaled.jpg') center/cover no-repeat;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(232,160,32,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(232,160,32,.05) 1px,transparent 1px);background-size:60px 60px;animation:gd 20s linear infinite;}
+@keyframes gd{to{background-position:60px 60px}}
+.hero-c{position:relative;z-index:2;padding:0 80px;max-width:700px;}
+.hero-tag{font-family:'Barlow Condensed',sans-serif;font-size:.74rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+.hero-tag::before{content:'';width:34px;height:1px;background:var(--gold);}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,8vw,7.5rem);line-height:.92;letter-spacing:.02em;margin-bottom:22px;}
+.hero h1 em{color:var(--gold);font-style:normal;}
+.hero-sub{font-size:1.03rem;line-height:1.75;color:var(--mist);margin-bottom:38px;max-width:450px;}
+.hero-acts{display:flex;gap:13px;flex-wrap:wrap;}
+.hero-stats{position:absolute;bottom:42px;right:80px;display:flex;gap:42px;z-index:2;}
+.sn{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--gold);line-height:1;}
+.sl{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mist);}
+
+/* TICKER */
+.ticker{background:var(--gold);padding:17px 80px;display:flex;gap:42px;align-items:center;overflow:hidden;flex-wrap:nowrap;}
+.ti{font-family:'Barlow Condensed',sans-serif;font-size:.79rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sky);white-space:nowrap;display:flex;align-items:center;gap:10px;}
+.ti::before{content:'◆';font-size:.44rem;}
+
+/* SERVICE CARDS */
+.sc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:44px;}
+.sc{background:var(--card);border:1px solid var(--border);padding:42px 34px;position:relative;overflow:hidden;transition:border-color .3s,transform .3s;}
+.sc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);transform:scaleX(0);transition:transform .3s;transform-origin:left;}
+.sc:hover::before{transform:scaleX(1);}
+.sc:hover{border-color:rgba(232,160,32,.5);transform:translateY(-4px);}
+.sc-n{position:absolute;top:18px;right:26px;font-family:'Bebas Neue',sans-serif;font-size:3.2rem;color:rgba(232,160,32,.06);line-height:1;}
+.sc-ico{font-size:2rem;margin-bottom:18px;display:block;}
+.sc h3{font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:11px;}
+.sc p{color:var(--mist);font-size:.88rem;line-height:1.7;}
+.sc-lnk{display:inline-block;margin-top:14px;font-family:'Barlow Condensed',sans-serif;font-size:.73rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);cursor:pointer;}
+.sc-lnk:hover{text-decoration:underline;}
+
+/* SLIDESHOW */
+.ss{position:relative;width:100%;height:68vh;overflow:hidden;background:#000;}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .9s ease;}
+.slide.active{opacity:1;}
+.slide img{width:100%;height:100%;object-fit:cover;display:block;}
+.ss-gb{position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,var(--sky) 0%,transparent 100%);pointer-events:none;z-index:2;}
+.ss-gt{position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(to bottom,rgba(10,22,40,.6) 0%,transparent 100%);pointer-events:none;z-index:2;}
+.ss-cap{position:absolute;bottom:30px;left:80px;z-index:4;}
+.ss-cl{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
+.ss-cn{font-family:'Bebas Neue',sans-serif;font-size:.95rem;letter-spacing:.08em;color:rgba(255,255,255,.38);}
+.ss-ab{position:absolute;top:50%;transform:translateY(-50%);z-index:5;background:rgba(10,22,40,.72);border:1px solid rgba(232,160,32,.3);color:var(--gold);width:50px;height:50px;font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+.ss-ab:hover{background:rgba(232,160,32,.2);}
+.ss-prog{position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(255,255,255,.1);z-index:5;}
+.ss-pb{height:100%;background:var(--gold);width:0%;}
+.ss-pp{position:absolute;bottom:26px;right:80px;z-index:5;background:rgba(10,22,40,.72);border:1px solid rgba(232,160,32,.3);color:var(--gold);padding:6px 14px;font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;}
+.tb{padding:10px 80px 44px;overflow-x:auto;scrollbar-width:none;background:var(--sky);}
+.tb::-webkit-scrollbar{display:none;}
+.tr{display:flex;gap:5px;width:max-content;}
+.th{width:108px;height:64px;border:2px solid transparent;cursor:pointer;overflow:hidden;flex-shrink:0;opacity:.42;transition:border-color .2s,opacity .2s;}
+.th.active{border-color:var(--gold);opacity:1;}
+.th img{width:100%;height:100%;object-fit:cover;display:block;}
+
+/* WHY SECTION */
+.why-g{display:grid;grid-template-columns:1fr 1fr;gap:68px;align-items:center;}
+.why-feats{margin-top:36px;display:flex;flex-direction:column;gap:26px;}
+.wf{display:flex;gap:16px;align-items:flex-start;padding-bottom:26px;border-bottom:1px solid var(--border);}
+.wf:last-child{border-bottom:none;padding-bottom:0;}
+.wf-ico{width:44px;height:44px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;color:var(--gold);}
+.wf-txt h4{font-family:'Barlow Condensed',sans-serif;font-size:.93rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px;}
+.wf-txt p{color:var(--mist);font-size:.87rem;line-height:1.6;}
+.why-img{position:relative;height:470px;overflow:hidden;border:1px solid var(--border);}
+.why-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.72);}
+.why-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,.85) 0%,transparent 55%);}
+.why-lbl{position:absolute;bottom:22px;left:22px;}
+.why-sub{font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:5px;}
+.why-ttl{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.04em;}
+.why-tag{position:absolute;top:16px;right:16px;border:1px solid rgba(232,160,32,.4);padding:6px 12px;font-family:'Barlow Condensed',sans-serif;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);background:rgba(10,22,40,.6);}
+
+/* CONTACT */
+.cg{display:grid;grid-template-columns:1fr 1.4fr;gap:60px;margin-top:44px;}
+.ci-list{display:flex;flex-direction:column;gap:18px;}
+.ci{display:flex;gap:14px;align-items:flex-start;padding:20px;border:1px solid var(--border);background:var(--card);}
+.ci-ico{font-size:1.3rem;color:var(--gold);margin-top:2px;}
+.ci-t h4{font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--mist);margin-bottom:4px;}
+.ci-t a,.ci-t p{color:var(--white);text-decoration:none;font-size:.93rem;font-weight:500;}
+.ci-t a:hover{color:var(--gold);}
+.cf{display:flex;flex-direction:column;gap:13px;}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
+.fg2{display:flex;flex-direction:column;gap:6px;}
+.fg2 label{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mist);}
+.fg2 input,.fg2 textarea,.fg2 select{background:var(--card);border:1px solid var(--border);color:var(--white);padding:12px 14px;font-family:'Barlow',sans-serif;font-size:.88rem;outline:none;transition:border-color .2s;resize:vertical;}
+.fg2 input:focus,.fg2 textarea:focus,.fg2 select:focus{border-color:var(--gold);}
+.fg2 select option{background:var(--sky);}
+
+/* SCROLL STRIP */
+.strip-wrap{overflow:hidden;position:relative;background:var(--horizon);}
+.strip-inner{display:flex;gap:4px;animation:scrollL 28s linear infinite;width:max-content;}
+.strip-inner img{height:152px;width:auto;object-fit:cover;filter:brightness(.72);flex-shrink:0;}
+.strip-fl{position:absolute;top:0;left:0;width:70px;height:100%;background:linear-gradient(to right,var(--horizon),transparent);pointer-events:none;}
+.strip-fr{position:absolute;top:0;right:0;width:70px;height:100%;background:linear-gradient(to left,var(--horizon),transparent);pointer-events:none;}
+@keyframes scrollL{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* SERVICES PAGE */
+.sd{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border);}
+.sd-img{position:relative;overflow:hidden;min-height:500px;}
+.sd-img img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.82);}
+.sd-ov{position:absolute;inset:0;pointer-events:none;}
+.sd-badge{position:absolute;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.12em;padding:6px 18px;background:var(--gold);color:var(--sky);}
+.sd-info{padding:54px 62px;display:flex;flex-direction:column;justify-content:center;}
+.sd-info h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,3vw,2.7rem);letter-spacing:.04em;line-height:1;margin-bottom:16px;}
+.sd-bullets{display:flex;flex-direction:column;gap:10px;margin:22px 0 30px;}
+.sd-b{display:flex;align-items:center;gap:11px;font-family:'Barlow Condensed',sans-serif;font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:var(--steel);}
+.sd-dot{width:6px;height:6px;background:var(--gold);flex-shrink:0;}
+.svc-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;height:175px;}
+.svc-si{overflow:hidden;cursor:pointer;}
+.svc-si img{width:100%;height:100%;object-fit:cover;filter:brightness(.7);transition:transform .4s,filter .3s;}
+.svc-si:hover img{transform:scale(1.07);filter:brightness(1);}
+
+/* CREDENTIALS */
+.cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px;}
+.cert{background:var(--card);border:1px solid var(--border);padding:34px 30px;transition:border-color .3s,transform .3s;}
+.cert:hover{border-color:rgba(232,160,32,.5);transform:translateY(-4px);}
+.cert-badge{width:62px;height:62px;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.7rem;margin-bottom:18px;position:relative;}
+.cert-badge::after{content:'✓';position:absolute;bottom:-5px;right:-5px;width:18px;height:18px;background:var(--gold);color:var(--sky);font-size:.58rem;font-weight:900;display:flex;align-items:center;justify-content:center;}
+.cert h3{font-family:'Barlow Condensed',sans-serif;font-size:.97rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;}
+.cert-iss{font-size:.74rem;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;margin-bottom:11px;}
+.cert p{color:var(--mist);font-size:.86rem;line-height:1.6;}
+.cert-st{display:inline-block;margin-top:12px;padding:3px 9px;background:rgba(232,160,32,.1);border:1px solid rgba(232,160,32,.3);font-family:'Barlow Condensed',sans-serif;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);}
+
+/* PILOT */
+.pilot-wrap{background:var(--horizon);padding:78px 80px;display:grid;grid-template-columns:290px 1fr;gap:52px;align-items:start;}
+.pilot-ph{aspect-ratio:3/4;background:var(--sky);border:1px solid var(--border);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:9px;color:var(--mist);}
+.pilot-ph span{font-size:3.2rem;opacity:.22;}
+.pilot-ph p{font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;opacity:.42;}
+.pilot-bar{position:absolute;bottom:0;left:0;right:0;background:var(--gold);padding:9px 14px;font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--sky);text-align:center;}
+.p-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0;}
+.ps{background:var(--sky);border:1px solid var(--border);padding:16px 10px;text-align:center;}
+.ps-n{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;color:var(--gold);line-height:1;}
+.ps-l{font-family:'Barlow Condensed',sans-serif;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mist);margin-top:3px;}
+.skill-bars{margin-top:22px;display:flex;flex-direction:column;gap:13px;}
+.sk-hd{display:flex;justify-content:space-between;font-family:'Barlow Condensed',sans-serif;font-size:.74rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mist);margin-bottom:6px;}
+.sk-tr{height:3px;background:rgba(255,255,255,.07);}
+.sk-fi{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-l));}
+
+/* COMPLIANCE */
+.comp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:36px;}
+.comp{background:var(--card);border:1px solid var(--border);padding:24px 18px;text-align:center;}
+.comp h4{font-family:'Barlow Condensed',sans-serif;font-size:.76rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin:9px 0 4px;}
+.comp p{font-size:.8rem;color:var(--mist);}
+
+/* 3D MODELS */
+.model-list{display:flex;flex-direction:column;gap:18px;margin-top:44px;}
+.ms{border:1px solid var(--border);background:var(--card);display:grid;grid-template-columns:1fr 1fr;overflow:hidden;transition:border-color .3s;}
+.ms:hover{border-color:rgba(232,160,32,.4);}
+.mv{background:var(--sky);border-right:1px solid var(--border);position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;min-height:320px;cursor:pointer;}
+.mv-lbl{position:absolute;top:12px;left:12px;font-family:'Barlow Condensed',sans-serif;font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);background:rgba(10,22,40,.82);padding:3px 9px;border:1px solid var(--border);}
+.scan-ln{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:sc 2.2s linear infinite;}
+@keyframes sc{0%{top:0}100%{top:100%}}
+.up-txt{font-family:'Barlow Condensed',sans-serif;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mist);opacity:.62;text-align:center;line-height:1.6;}
+.up-btn{border:1px solid var(--border);padding:7px 16px;font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);background:transparent;cursor:pointer;margin-top:4px;transition:background .2s;}
+.up-btn:hover{background:rgba(232,160,32,.1);}
+.mi{padding:34px 42px;display:flex;flex-direction:column;justify-content:center;}
+.m-tag{font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:9px;}
+.mi h3{font-family:'Bebas Neue',sans-serif;font-size:1.75rem;letter-spacing:.04em;margin-bottom:11px;}
+.mi p{color:var(--mist);font-size:.87rem;line-height:1.7;margin-bottom:18px;}
+.m-meta{display:flex;gap:18px;padding-top:18px;border-top:1px solid var(--border);}
+.mm-i{font-family:'Barlow Condensed',sans-serif;font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mist);}
+.mm-i span{display:block;color:var(--white);font-size:.86rem;font-family:'Barlow',sans-serif;font-weight:500;margin-top:2px;text-transform:none;letter-spacing:0;}
+.add-slot{border:2px dashed rgba(232,160,32,.2);padding:42px;text-align:center;cursor:pointer;transition:border-color .3s,background .3s;}
+.add-slot:hover{border-color:rgba(232,160,32,.5);background:rgba(232,160,32,.03);}
+.add-slot h3{font-family:'Barlow Condensed',sans-serif;font-size:.93rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--mist);margin-top:10px;}
+.add-slot p{color:var(--mist);opacity:.5;font-size:.82rem;margin-top:5px;}
+
+/* LIGHTBOX */
+#lb{display:none;position:fixed;inset:0;background:rgba(5,12,24,.97);z-index:9999;align-items:center;justify-content:center;flex-direction:column;}
+#lb.open{display:flex;}
+#lb img{max-width:88vw;max-height:80vh;object-fit:contain;box-shadow:0 0 80px rgba(0,0,0,.8);}
+#lb-cap{font-family:'Barlow Condensed',sans-serif;font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-top:15px;}
+#lb-n{font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.2em;color:var(--mist);margin-top:5px;}
+.lb-b{position:absolute;background:rgba(10,22,40,.82);border:1px solid rgba(232,160,32,.3);color:var(--gold);width:50px;height:50px;font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+.lb-b:hover{background:rgba(232,160,32,.2);}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  nav{padding:0 18px;}
+  .nav-links{display:none;}
+  .ham{display:flex;}
+  .sec,.pilot-wrap,footer,.cta-band,.ph-txt{padding-left:22px;padding-right:22px;}
+  .hero-c{padding:0 22px;}
+  .hero-stats{right:22px;gap:20px;}
+  .sc-grid,.cert-grid{grid-template-columns:1fr 1fr;}
+  .why-g,.cg,.pilot-wrap,.sd{grid-template-columns:1fr;}
+  .p-stats,.comp-grid{grid-template-columns:repeat(2,1fr);}
+  .fg{grid-template-columns:1fr 1fr;}
+  .tb,.ss-cap{left:22px;right:22px;}
+  .ss-pp{right:22px;}
+  .svc-strip{grid-template-columns:repeat(2,1fr);height:220px;}
+  .ms{grid-template-columns:1fr;}
+  .mv{min-height:240px;}
+  .ticker{padding:15px 22px;gap:20px;}
+}
+@media(max-width:600px){
+  .sc-grid,.cert-grid,.comp-grid,.svc-strip,.fr,.fg{grid-template-columns:1fr;}
+  .hero h1{font-size:3.5rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="logo" onclick="go('home')">OVER<em>SKY</em></span>
+  <ul class="nav-links">
+    <li><a id="n-home" class="active" onclick="go('home')">Home</a></li>
+    <li><a id="n-services" onclick="go('services')">Services</a></li>
+    <li><a id="n-gallery" onclick="go('home');delay(()=>jump('gallery'))">Gallery</a></li>
+    <li><a id="n-creds" onclick="go('credentials')">Credentials</a></li>
+    <li><a id="n-models" onclick="go('models')">3D Models</a></li>
+    <li><a class="nav-cta" onclick="go('home');delay(()=>jump('contact'))">Get a Quote</a></li>
+  </ul>
+  <button class="ham" onclick="toggleMob()"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob" id="mob">
+  <a onclick="go('home');closeMob()">Home</a>
+  <a onclick="go('services');closeMob()">Services</a>
+  <a onclick="go('home');delay(()=>jump('gallery'));closeMob()">Gallery</a>
+  <a onclick="go('credentials');closeMob()">Credentials</a>
+  <a onclick="go('models');closeMob()">3D Models</a>
+  <a onclick="go('home');delay(()=>jump('contact'));closeMob()">Get a Quote</a>
+</div>
+
+<!-- ══════════════ HOME ══════════════ -->
+<div class="page active" id="page-home">
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-c">
+      <div class="hero-tag">CAA Certified · North West UK</div>
+      <h1>ABOVE<br><em>EVERY</em><br>ANGLE</h1>
+      <p class="hero-sub">Professional drone services delivering stunning aerial photography, videography, and 3D scanning across Greater Manchester and the North West.</p>
+      <div class="hero-acts">
+        <span class="btn-g" onclick="go('home');delay(()=>jump('contact'))">Request a Quote</span>
+        <span class="btn-w" onclick="go('credentials')">View Credentials</span>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div><div class="sn">500+</div><div class="sl">Flights</div></div>
+      <div><div class="sn">5★</div><div class="sl">Rated</div></div>
+      <div><div class="sn">CAA</div><div class="sl">Licensed</div></div>
+    </div>
+  </section>
+
+  <div class="ticker">
+    <div class="ti">Aerial Photography &amp; Videography</div>
+    <div class="ti">Inspection Services</div>
+    <div class="ti">Drone Filming</div>
+    <div class="ti">3D Scanning &amp; Mapping</div>
+    <div class="ti">Land &amp; Site Surveys</div>
+    <div class="ti">Programmed Flights</div>
+  </div>
+
+  <section class="sec" id="services" style="background:var(--sky)">
+    <div class="lbl">What We Offer</div>
+    <h2 class="sec-h">PROFESSIONAL<br>DRONE SERVICES</h2>
+    <p class="muted" style="max-width:500px">Every flight executed with technical excellence and full CAA compliance.</p>
+    <div class="sc-grid">
+      <div class="sc"><span class="sc-n">01</span><span class="sc-ico">📷</span><h3>Aerial Photography &amp; Videography</h3><p>Perfect for real estate projects. Make the listing stand out with breathtaking aerial imagery that gives buyers a perspective no ground shoot can match.</p><span class="sc-lnk" onclick="go('services');delay(()=>jump('s1'))">View Service →</span></div>
+      <div class="sc"><span class="sc-n">02</span><span class="sc-ico">🔍</span><h3>Inspection Services</h3><p>Safely inspect buildings, solar panels, roofs, bridges, and infrastructure — without the risk or cost of scaffolding.</p><span class="sc-lnk" onclick="go('services');delay(()=>jump('s2'))">View Service →</span></div>
+      <div class="sc"><span class="sc-n">03</span><span class="sc-ico">🎬</span><h3>Drone Filming</h3><p>Elevate your special event with professional drone filming. We capture unrepeatable moments from angles that leave a lasting impression.</p><span class="sc-lnk" onclick="go('services');delay(()=>jump('s3'))">View Service →</span></div>
+      <div class="sc"><span class="sc-n">04</span><span class="sc-ico">🏗️</span><h3>3D Scanning &amp; Mapping</h3><p>Photogrammetric 3D models of buildings, land, and structures for planning, architecture, and asset management.</p><span class="sc-lnk" onclick="go('models')">View Models →</span></div>
+      <div class="sc"><span class="sc-n">05</span><span class="sc-ico">🗺️</span><h3>Land &amp; Site Surveys</h3><p>Precise topographic mapping and volumetric measurement for construction sites, agricultural land, and development planning.</p><span class="sc-lnk" onclick="go('services')">View Service →</span></div>
+      <div class="sc"><span class="sc-n">06</span><span class="sc-ico">✈️</span><h3>Programmed Flights</h3><p>Autonomous waypoint missions for consistent, repeatable aerial data capture — ideal for monitoring and time-lapse projects.</p><span class="sc-lnk" onclick="go('services')">View Service →</span></div>
+    </div>
+  </section>
+
+  <section id="gallery" style="background:var(--sky);padding:0">
+    <div style="padding:62px 80px 28px">
+      <div class="lbl">Portfolio</div>
+      <h2 class="sec-h">CAPTURED<br>FROM ABOVE</h2>
+    </div>
+    <div class="ss" id="ss">
+      <div id="ss-slides"></div>
+      <div class="ss-gb"></div><div class="ss-gt"></div>
+      <div class="ss-cap"><div class="ss-cl" id="ss-lbl">Aerial Shot</div><div class="ss-cn" id="ss-num">01 / 22</div></div>
+      <button class="ss-ab" style="left:18px" onclick="ssPrev()">&#8592;</button>
+      <button class="ss-ab" style="right:18px" onclick="ssNext()">&#8594;</button>
+      <div class="ss-prog"><div class="ss-pb" id="ss-bar"></div></div>
+      <button class="ss-pp" id="ss-pp" onclick="ssPause()">&#9646;&#9646; PAUSE</button>
+    </div>
+    <div class="tb"><div class="tr" id="ss-th"></div></div>
+  </section>
+
+  <div class="strip-wrap">
+    <div class="strip-inner">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251102_153850_0670_1762099464147_photo-1-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251108_161240_0695_1762621285242_photo-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/02/dji_fly_20250110_091844_651_1736503038207_photo_optimized-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/02/dji_fly_20241229_083816_490_1735461512179_photo_optimized-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251108_162408_0710_1762621244971_photo-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251102_154336_0679_1762099490566_photo-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251101_151526_0643_1762011097081_photo-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251025_141234_0583_1761412603031_photo-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/05/Bolton-Abbey-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251019_173300_0526_1760892048541_photo-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251024_170204_0567_1761325498756_photo-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/03/dji_fly_20250227_150516_480_1740668774824_photo_optimized-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251102_153850_0670_1762099464147_photo-1-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251108_161240_0695_1762621285242_photo-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/02/dji_fly_20250110_091844_651_1736503038207_photo_optimized-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/02/dji_fly_20241229_083816_490_1735461512179_photo_optimized-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251108_162408_0710_1762621244971_photo-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251102_154336_0679_1762099490566_photo-scaled.jpg" alt="">
+    </div>
+    <div class="strip-fl"></div><div class="strip-fr"></div>
+  </div>
+
+  <section class="sec" style="background:var(--horizon)">
+    <div class="why-g">
+      <div>
+        <div class="lbl">Why Choose OverSky</div>
+        <h2 class="sec-h">PRECISION.<br>COMPLIANCE.<br>RESULTS.</h2>
+        <div class="why-feats">
+          <div class="wf"><div class="wf-ico">🛡️</div><div class="wf-txt"><h4>Fully CAA Licensed</h4><p>Full CAA Operational Authorisation. Every flight is legal, documented, and safe.</p></div></div>
+          <div class="wf"><div class="wf-ico">📡</div><div class="wf-txt"><h4>Professional Equipment</h4><p>DJI Enterprise platforms with 4K+ sensors, stabilised gimbals, and redundant safety systems.</p></div></div>
+          <div class="wf"><div class="wf-ico">🗓️</div><div class="wf-txt"><h4>Fast Turnaround</h4><p>Photos within 48 hours. Video within 5 working days. Rush delivery available.</p></div></div>
+        </div>
+        <div style="margin-top:32px;display:flex;gap:11px;flex-wrap:wrap">
+          <span class="btn-g" onclick="go('credentials')">Our Credentials</span>
+          <span class="btn-w" onclick="go('home');delay(()=>jump('contact'))">Get a Quote</span>
+        </div>
+      </div>
+      <div class="why-img">
+        <img src="https://oversky.co.uk/wp-content/uploads/2025/12/Above-Etihad-scaled.jpg" alt="Above Etihad">
+        <div class="why-ov"></div>
+        <div class="why-lbl"><div class="why-sub">North West Operations</div><div class="why-ttl">Every Angle Covered</div></div>
+        <div class="why-tag">▶ CAA Authorised</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="contact" style="background:var(--sky)">
+    <div class="lbl">Get In Touch</div>
+    <h2 class="sec-h">REQUEST A<br>QUOTE</h2>
+    <div class="cg">
+      <div class="ci-list">
+        <div class="ci"><div class="ci-ico">📞</div><div class="ci-t"><h4>Call Us</h4><a href="tel:07770045807">07770 045 807</a></div></div>
+        <div class="ci"><div class="ci-ico">✉️</div><div class="ci-t"><h4>Email Us</h4><a href="mailto:info@oversky.co.uk">info@oversky.co.uk</a></div></div>
+        <div class="ci"><div class="ci-ico">📍</div><div class="ci-t"><h4>Operating Area</h4><p>North West England — Greater Manchester &amp; surrounding regions</p></div></div>
+        <div class="ci"><div class="ci-ico">🕐</div><div class="ci-t"><h4>Response Time</h4><p>Within 24 hours, Mon–Sat</p></div></div>
+      </div>
+      <form class="cf" onsubmit="handleForm(event)">
+        <div class="fr"><div class="fg2"><label>First Name</label><input type="text" placeholder="John" required></div><div class="fg2"><label>Last Name</label><input type="text" placeholder="Smith" required></div></div>
+        <div class="fg2"><label>Email Address</label><input type="email" placeholder="john@example.com" required></div>
+        <div class="fg2"><label>Phone Number</label><input type="tel" placeholder="+44 7700 000000"></div>
+        <div class="fg2"><label>Service Required</label><select><option value="">Select a service...</option><option>Aerial Photography &amp; Videography</option><option>Inspection Services</option><option>Drone Filming</option><option>3D Scanning &amp; Mapping</option><option>Land &amp; Site Survey</option><option>Programmed Flights</option><option>Other</option></select></div>
+        <div class="fg2"><label>Project Details</label><textarea rows="4" placeholder="Tell us about your project, location, and requirements..."></textarea></div>
+        <button type="submit" class="btn-g" style="align-self:flex-start">Submit Request</button>
+      </form>
+    </div>
+  </section>
+
+  <footer><div class="fg"><div class="fb"><span class="logo" onclick="go('home')" style="font-size:1.7rem">OVER<em>SKY</em></span><p>Professional drone services across Greater Manchester and the North West.</p><div class="caa" style="margin-top:16px"><span>CAA</span><strong>Authorised Operator</strong></div></div><div class="fc"><h4>Services</h4><ul><li><a onclick="go('services');delay(()=>jump('s1'))">Aerial Photography</a></li><li><a onclick="go('services');delay(()=>jump('s2'))">Inspection Services</a></li><li><a onclick="go('services');delay(()=>jump('s3'))">Drone Filming</a></li><li><a onclick="go('models')">3D Scanning</a></li></ul></div><div class="fc"><h4>Company</h4><ul><li><a onclick="go('credentials')">Credentials</a></li><li><a onclick="go('models')">3D Models</a></li><li><a onclick="go('home');delay(()=>jump('gallery'))">Gallery</a></li><li><a onclick="jump('contact')">Contact</a></li></ul></div><div class="fc"><h4>Contact</h4><ul><li><a href="tel:07770045807">07770 045 807</a></li><li><a href="mailto:info@oversky.co.uk">info@oversky.co.uk</a></li><li><a>North West England</a></li></ul></div></div><div class="fb-bot"><p>© 2025 OverSky Drone Services · All Rights Reserved</p><p>CAA Registered · GDPR Compliant</p></div></footer>
+</div>
+
+<!-- ══════════════ SERVICES ══════════════ -->
+<div class="page" id="page-services">
+  <div class="ph"><div class="ph-bg" style="background-image:url('https://oversky.co.uk/wp-content/uploads/2025/12/Above-Etihad-scaled.jpg')"></div><div class="ph-grad"></div><div class="ph-txt"><div class="lbl">What We Do</div><h1 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,6rem);letter-spacing:.03em;line-height:.95">OUR<br><span style="color:var(--gold)">SERVICES</span></h1></div></div>
+
+  <!-- Service 01 -->
+  <div id="s1">
+    <div class="sd">
+      <div class="sd-img"><img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251102_153850_0670_1762099464147_photo-1-scaled.jpg" alt="Aerial Photography"><div class="sd-ov" style="background:linear-gradient(to right,transparent 55%,rgba(10,22,40,.4) 100%)"></div><div class="sd-badge" style="top:22px;left:22px">01</div></div>
+      <div class="sd-info" style="background:var(--horizon)">
+        <div class="lbl">Service 01</div>
+        <h2>AERIAL PHOTOGRAPHY<br>&amp; VIDEOGRAPHY</h2>
+        <p class="muted">Perfect for real estate projects. Make the listing stand out with breathtaking aerial imagery and smooth 4K video that gives buyers a perspective no ground-level shoot can ever match.</p>
+        <p class="muted" style="margin-top:10px">From sweeping estate overviews to tight architectural detail shots, we deliver fully edited photo packages and cinematic video reels ready for property portals, social media, and brochures.</p>
+        <div class="sd-bullets"><div class="sd-b"><div class="sd-dot"></div>High-resolution stills &amp; 4K video</div><div class="sd-b"><div class="sd-dot"></div>Real estate, construction &amp; editorial</div><div class="sd-b"><div class="sd-dot"></div>Photos delivered within 48 hours</div><div class="sd-b"><div class="sd-dot"></div>Portal-ready &amp; social media formats</div></div>
+        <span class="btn-g" onclick="go('home');delay(()=>jump('contact'))">Book This Service</span>
+      </div>
+    </div>
+    <div class="svc-strip">
+      <div class="svc-si" onclick="openLB(0)"><img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251102_153850_0670_1762099464147_photo-1-scaled.jpg" alt=""></div>
+      <div class="svc-si" onclick="openLB(2)"><img src="https://oversky.co.uk/wp-content/uploads/2025/12/Above-Etihad-scaled.jpg" alt=""></div>
+      <div class="svc-si" onclick="openLB(10)"><img src="https://oversky.co.uk/wp-content/uploads/2025/11/Kirkstall-Abbey--scaled.jpg" alt=""></div>
+      <div class="svc-si" onclick="openLB(14)"><img src="https://oversky.co.uk/wp-content/uploads/2025/05/Bolton-Abbey-scaled.jpg" alt=""></div>
+    </div>
+  </div>
+
+  <!-- Service 02 -->
+  <div id="s2">
+    <div class="sd">
+      <div class="sd-info" style="background:var(--sky)">
+        <div class="lbl">Service 02</div>
+        <h2>INSPECTION<br>SERVICES</h2>
+        <p class="muted">Safely inspect buildings, solar panels, roofs, bridges, and infrastructure — without the expense or risk of scaffolding. Our drones get close-up, high-resolution footage of hard-to-reach areas quickly and efficiently.</p>
+        <p class="muted" style="margin-top:10px">Every inspection includes annotated imagery, condition notes, and a full edited fly-around video — giving engineers and surveyors exactly what they need to make confident decisions.</p>
+        <div class="sd-bullets"><div class="sd-b"><div class="sd-dot"></div>Roofs, solar panels &amp; facades</div><div class="sd-b"><div class="sd-dot"></div>Bridges, pylons &amp; infrastructure</div><div class="sd-b"><div class="sd-dot"></div>Annotated imagery &amp; condition reports</div><div class="sd-b"><div class="sd-dot"></div>No scaffolding — faster &amp; safer</div></div>
+        <span class="btn-g" onclick="go('home');delay(()=>jump('contact'))">Book This Service</span>
+      </div>
+      <div class="sd-img"><img src="https://oversky.co.uk/wp-content/uploads/2025/12/Stanlow-Refinery-2-scaled.jpg" alt="Inspection"><div class="sd-ov" style="background:linear-gradient(to left,transparent 55%,rgba(10,22,40,.4) 100%)"></div><div class="sd-badge" style="top:22px;right:22px">02</div></div>
+    </div>
+    <div class="svc-strip">
+      <div class="svc-si" onclick="openLB(12)"><img src="https://oversky.co.uk/wp-content/uploads/2025/12/Stanlow-Refinery-2-scaled.jpg" alt=""></div>
+      <div class="svc-si" onclick="openLB(3)"><img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251108_161240_0695_1762621285242_photo-scaled.jpg" alt=""></div>
+      <div class="svc-si" onclick="openLB(7)"><img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251108_162408_0710_1762621244971_photo-scaled.jpg" alt=""></div>
+      <div class="svc-si" onclick="openLB(13)"><img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251025_141234_0583_1761412603031_photo-scaled.jpg" alt=""></div>
+    </div>
+  </div>
+
+  <!-- Service 03 -->
+  <div id="s3">
+    <div class="sd">
+      <div class="sd-img"><img src="https://oversky.co.uk/wp-content/uploads/2025/12/dji_fly_20251128_211400_0944_1764364705992_photo-scaled.jpg" alt="Drone Filming"><div class="sd-ov" style="background:linear-gradient(to right,transparent 55%,rgba(10,22,40,.4) 100%)"></div><div class="sd-badge" style="top:22px;left:22px">03</div></div>
+      <div class="sd-info" style="background:var(--horizon)">
+        <div class="lbl">Service 03</div>
+        <h2>DRONE<br>FILMING</h2>
+        <p class="muted">Elevate your special event with professional drone filming. From weddings and festivals to corporate days and sporting occasions, we capture those unrepeatable moments from angles that leave a lasting impression.</p>
+        <p class="muted" style="margin-top:10px">Our packages include pre-event planning, on-the-day flying, and a fully edited highlight reel in broadcast-ready 4K — optimised for cinema, social media, and everything in between.</p>
+        <div class="sd-bullets"><div class="sd-b"><div class="sd-dot"></div>Weddings, festivals &amp; corporate events</div><div class="sd-b"><div class="sd-dot"></div>Smooth 4K cinematic footage</div><div class="sd-b"><div class="sd-dot"></div>Pre-event flight planning included</div><div class="sd-b"><div class="sd-dot"></div>Fully edited highlight reel delivered</div></div>
+        <span class="btn-g" onclick="go('home');delay(()=>jump('contact'))">Book This Service</span>
+      </div>
+    </div>
+    <div class="svc-strip">
+      <div class="svc-si" onclick="openLB(16)"><img src="https://oversky.co.uk/wp-content/uploads/2025/12/Manchester-Night-Panorama-scaled.jpg" alt=""></div>
+      <div class="svc-si" onclick="openLB(1)"><img src="https://oversky.co.uk/wp-content/uploads/2025/12/dji_fly_20251128_211400_0944_1764364705992_photo-scaled.jpg" alt=""></div>
+      <div class="svc-si" onclick="openLB(9)"><img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251101_151526_0643_1762011097081_photo-scaled.jpg" alt=""></div>
+      <div class="svc-si" onclick="openLB(5)"><img src="https://oversky.co.uk/wp-content/uploads/2025/12/Manchester-night-scaled.jpg" alt=""></div>
+    </div>
+  </div>
+
+  <div class="cta-band"><div><h3>READY TO GET STARTED?</h3><p>Contact us for a free no-obligation quote</p></div><button class="cta-btn" onclick="go('home');delay(()=>jump('contact'))">Request a Quote</button></div>
+  <footer><div class="fg"><div class="fb"><span class="logo" onclick="go('home')" style="font-size:1.7rem">OVER<em>SKY</em></span><p>Professional drone services across the North West.</p><div class="caa" style="margin-top:16px"><span>CAA</span><strong>Authorised</strong></div></div><div class="fc"><h4>Services</h4><ul><li><a onclick="go('services');delay(()=>jump('s1'))">Aerial Photography</a></li><li><a onclick="go('services');delay(()=>jump('s2'))">Inspection Services</a></li><li><a onclick="go('services');delay(()=>jump('s3'))">Drone Filming</a></li><li><a onclick="go('models')">3D Scanning</a></li></ul></div><div class="fc"><h4>Company</h4><ul><li><a onclick="go('home')">Home</a></li><li><a onclick="go('credentials')">Credentials</a></li><li><a onclick="go('models')">3D Models</a></li><li><a onclick="go('home');delay(()=>jump('contact'))">Contact</a></li></ul></div><div class="fc"><h4>Contact</h4><ul><li><a href="tel:07770045807">07770 045 807</a></li><li><a href="mailto:info@oversky.co.uk">info@oversky.co.uk</a></li></ul></div></div><div class="fb-bot"><p>© 2025 OverSky Drone Services</p><p>CAA Registered · Fully Licensed</p></div></footer>
+</div>
+
+<!-- ══════════════ CREDENTIALS ══════════════ -->
+<div class="page" id="page-credentials">
+  <div class="ph"><div class="ph-bg" style="background-image:url('https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251101_151526_0643_1762011097081_photo-scaled.jpg')"></div><div class="ph-grad"></div><div class="ph-txt"><div class="lbl">Proof of Competence</div><h1 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,5.5rem);letter-spacing:.03em;line-height:.95">CREDENTIALS &amp;<br><span style="color:var(--gold)">CERTIFICATIONS</span></h1></div></div>
+
+  <section class="sec" style="background:var(--sky)">
+    <div class="lbl">Regulatory Qualifications</div>
+    <h2 class="sec-h">OFFICIAL<br>CERTIFICATIONS</h2>
+    <div class="cert-grid">
+      <div class="cert"><div class="cert-badge">🇬🇧</div><h3>GVC — General Visual Line of Sight Certificate</h3><div class="cert-iss">CAA / SORA Framework · UK</div><p>The primary drone pilot qualification in the UK for operating in the Specific category. Covers operational risk assessment, airspace, emergency procedures, and flight planning.</p><span class="cert-st">✔ Active &amp; Valid</span></div>
+      <div class="cert"><div class="cert-badge">🏛️</div><h3>CAA Operational Authorisation</h3><div class="cert-iss">Civil Aviation Authority · UK</div><p>Permits operations beyond standard Open category limitations, including flights over people and congested areas with appropriate mitigations in place.</p><span class="cert-st">✔ Active &amp; Valid</span></div>
+      <div class="cert"><div class="cert-badge">🎓</div><h3>A2 Certificate of Competency</h3><div class="cert-iss">CAA · Open Category A2</div><p>Allows operation of Class C2 drones closer to uninvolved persons — demonstrating advanced knowledge of airspace, meteorology, and safe flight practices.</p><span class="cert-st">✔ Active &amp; Valid</span></div>
+      <div class="cert"><div class="cert-badge">🛡️</div><h3>Flyer ID Registration</h3><div class="cert-iss">Civil Aviation Authority · UK</div><p>CAA-registered drone operator and flyer. All aircraft are properly registered and identifiable under current UK drone regulations.</p><span class="cert-st">✔ Registered</span></div>
+      <div class="cert"><div class="cert-badge">🔧</div><h3>Equipment Warranty &amp; Maintenance</h3><div class="cert-iss">DJI Care Refresh · Active Coverage</div><p>All aircraft operate under active DJI Care Refresh warranty covering hardware faults, sensor calibration, and fly-away incidents. Equipment is inspected before every deployment.</p><span class="cert-st">✔ Under Active Warranty</span></div>
+      <div class="cert"><div class="cert-badge">📋</div><h3>GDPR &amp; Data Compliance</h3><div class="cert-iss">Information Commissioner's Office</div><p>Fully compliant with UK GDPR when capturing aerial imagery. Proper procedures in place for data handling, retention, and privacy impact assessments.</p><span class="cert-st">✔ Compliant</span></div>
+    </div>
+  </section>
+
+  <div class="pilot-wrap">
+    <div class="pilot-ph"><span>👤</span><p>Pilot Photo</p><div class="pilot-bar">CAA Licensed Pilot</div></div>
+    <div>
+      <div class="lbl" style="margin-bottom:7px">Lead Pilot</div>
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:2.7rem;letter-spacing:.04em;margin-bottom:5px">OverSky Pilot</h2>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:18px">CAA GVC Certified · North West Specialist</div>
+      <p class="muted">With years of commercial experience across Greater Manchester and the North West, our lead pilot brings a meticulous approach to every engagement — from pre-flight assessments and airspace coordination, to post-production delivery.</p>
+      <div class="p-stats"><div class="ps"><div class="ps-n">500+</div><div class="ps-l">Flights</div></div><div class="ps"><div class="ps-n">3+</div><div class="ps-l">Years Commercial</div></div><div class="ps"><div class="ps-n">0</div><div class="ps-l">Incidents</div></div><div class="ps"><div class="ps-n">100%</div><div class="ps-l">Compliant</div></div></div>
+      <div class="skill-bars">
+        <div><div class="sk-hd"><span>Flight Precision &amp; Control</span><span>98%</span></div><div class="sk-tr"><div class="sk-fi" style="width:98%"></div></div></div>
+        <div><div class="sk-hd"><span>Regulatory Knowledge</span><span>100%</span></div><div class="sk-tr"><div class="sk-fi" style="width:100%"></div></div></div>
+        <div><div class="sk-hd"><span>Photogrammetry &amp; 3D Scanning</span><span>90%</span></div><div class="sk-tr"><div class="sk-fi" style="width:90%"></div></div></div>
+        <div><div class="sk-hd"><span>Post-Production &amp; Editing</span><span>92%</span></div><div class="sk-tr"><div class="sk-fi" style="width:92%"></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="sec" style="background:var(--sky)">
+    <div class="lbl">Safety &amp; Compliance</div>
+    <h2 class="sec-h">OPERATING<br>STANDARDS</h2>
+    <div class="comp-grid">
+      <div class="comp"><div style="font-size:1.6rem">📋</div><h4>Pre-Flight Risk Assessment</h4><p>Formal SORA/risk assessment before every commercial operation.</p></div>
+      <div class="comp"><div style="font-size:1.6rem">🌦️</div><h4>Weather Monitoring</h4><p>Aviation-grade met checks prior to every flight dispatch.</p></div>
+      <div class="comp"><div style="font-size:1.6rem">📡</div><h4>NOTAM Coordination</h4><p>All flights cross-referenced with live NOTAMs and airspace restrictions.</p></div>
+      <div class="comp"><div style="font-size:1.6rem">📞</div><h4>ATC Liaison</h4><p>Coordination with ATC when operating near controlled airspace.</p></div>
+    </div>
+  </section>
+
+  <div class="cta-band"><div><h3>READY TO WORK TOGETHER?</h3><p>Get in touch to discuss your project</p></div><button class="cta-btn" onclick="go('home');delay(()=>jump('contact'))">Request a Quote</button></div>
+  <footer><div class="fg"><div class="fb"><span class="logo" onclick="go('home')" style="font-size:1.7rem">OVER<em>SKY</em></span><p>Professional drone services across the North West.</p><div class="caa" style="margin-top:16px"><span>CAA</span><strong>Authorised</strong></div></div><div class="fc"><h4>Services</h4><ul><li><a onclick="go('services');delay(()=>jump('s1'))">Aerial Photography</a></li><li><a onclick="go('services');delay(()=>jump('s2'))">Inspection Services</a></li><li><a onclick="go('services');delay(()=>jump('s3'))">Drone Filming</a></li><li><a onclick="go('models')">3D Scanning</a></li></ul></div><div class="fc"><h4>Company</h4><ul><li><a onclick="go('home')">Home</a></li><li><a onclick="go('services')">Services</a></li><li><a onclick="go('models')">3D Models</a></li><li><a onclick="go('home');delay(()=>jump('contact'))">Contact</a></li></ul></div><div class="fc"><h4>Contact</h4><ul><li><a href="tel:07770045807">07770 045 807</a></li><li><a href="mailto:info@oversky.co.uk">info@oversky.co.uk</a></li></ul></div></div><div class="fb-bot"><p>© 2025 OverSky Drone Services</p><p>CAA Registered · Fully Licensed</p></div></footer>
+</div>
+
+<!-- ══════════════ 3D MODELS ══════════════ -->
+<div class="page" id="page-models">
+  <div class="ph"><div class="ph-bg" style="background-image:url('https://oversky.co.uk/wp-content/uploads/2025/02/dji_fly_20250129_130914_40_1738156240259_photo-scaled.jpg')"></div><div class="ph-grad"></div><div class="ph-txt"><div class="lbl">Spatial Data &amp; Visualisation</div><h1 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,6rem);letter-spacing:.03em;line-height:.95">3D DRONE<br><span style="color:var(--gold)">SCANNING</span></h1></div></div>
+
+  <section class="sec" style="background:var(--sky)">
+    <div class="lbl">Why 3D Scanning Changes Everything</div>
+    <h2 class="sec-h">SEE YOUR ASSET<br>IN FULL DIMENSION</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:10px">
+      <div>
+        <p class="muted" style="font-size:1rem;line-height:1.85;margin-bottom:22px">Imagine handing a client, architect, engineer, or planning officer a fully interactive, measurable 3D model of your building, site, or asset — captured in a single day, from the air, with centimetre-level accuracy. That is exactly what OverSky delivers.</p>
+        <p class="muted" style="font-size:1rem;line-height:1.85;margin-bottom:28px">Our drone photogrammetry service turns hundreds of overlapping aerial images into rich, textured 3D models you can rotate, measure, annotate, and share. No scaffolding, no shutdowns, no guesswork. Whether you are a property developer, heritage trust, engineering firm, or insurance assessor, a 3D scan from OverSky gives you an asset record that lasts forever and pays for itself immediately.</p>
+        <div style="display:flex;gap:11px;flex-wrap:wrap">
+          <span class="btn-g" onclick="go('home');delay(()=>jump('contact'))">Get a 3D Scan Quote</span>
+          <span class="btn-w" onclick="go('credentials')">View Our Credentials</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="wf"><div class="wf-ico">🏗️</div><div class="wf-txt"><h4>Property &amp; Construction</h4><p>Sell off-plan with confidence. Give buyers an immersive walkthrough before a brick is laid, or document site progress week by week with photogrammetric accuracy.</p></div></div>
+        <div class="wf"><div class="wf-ico">🏛️</div><div class="wf-txt"><h4>Heritage &amp; Conservation</h4><p>Preserve history in extraordinary detail. A 3D scan creates a permanent digital twin of any listed building, monument, or archaeological site — a record that outlasts the structure itself.</p></div></div>
+        <div class="wf"><div class="wf-ico">⚙️</div><div class="wf-txt"><h4>Engineering &amp; Insurance</h4><p>Inspect, measure, and document without risk. Calculate volumes, identify defects, and produce photographic evidence — all without setting foot on the asset.</p></div></div>
+        <div class="wf"><div class="wf-ico">📐</div><div class="wf-txt"><h4>Architecture &amp; Planning</h4><p>Feed accurate as-built data directly into your BIM pipeline. Get precise measurements of existing structures in hours, not weeks.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="background:var(--horizon);padding-bottom:20px">
+    <div class="lbl">Live Interactive Examples</div>
+    <h2 class="sec-h">ROTATE. EXPLORE.<br><span style="color:var(--gold)">EXPERIENCE IT.</span></h2>
+    <p class="muted" style="max-width:620px;margin-bottom:44px">These are real captures from OverSky missions — fully interactive 3D models. Click and drag to rotate, scroll to zoom. This is exactly what your clients receive.</p>
+
+    <div class="ms" style="margin-bottom:18px">
+      <div style="position:relative;min-height:420px;background:var(--sky);overflow:hidden">
+        <div class="mv-lbl">Scan 01 · Aerial Photogrammetry</div>
+        <div class="scan-ln"></div>
+        <iframe src="https://poly.cam/capture/b98df5c2-6649-42f4-ae13-c579c838f727/embed" style="width:100%;height:420px;border:none;display:block;" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="mi">
+        <div class="m-tag">Architectural Survey · Full Structure</div>
+        <h3>AERIAL STRUCTURE SCAN</h3>
+        <p>Every surface, every angle — captured in one flight. This scan demonstrates the level of photogrammetric detail OverSky delivers: a fully textured 3D mesh that engineers can measure, planners can present, and clients can explore on any device.</p>
+        <p style="color:var(--mist);font-size:.87rem;line-height:1.7;margin-top:10px">Use cases include planning applications, pre-purchase surveys, marketing visualisations, insurance documentation, and as-built records for BIM integration.</p>
+        <div class="m-meta" style="margin-top:18px"><div class="mm-i">Method<span>Aerial Photogrammetry</span></div><div class="mm-i">Resolution<span>Up to 2cm/px</span></div><div class="mm-i">Deliverable<span>Interactive 3D + Files</span></div></div>
+      </div>
+    </div>
+
+    <div class="ms" style="margin-bottom:18px">
+      <div class="mi" style="border-right:1px solid var(--border)">
+        <div class="m-tag">Land &amp; Site Survey · Topographic</div>
+        <h3>SITE &amp; TERRAIN SCAN</h3>
+        <p>From a single construction plot to hundreds of hectares, our drone surveys produce digital elevation models with sub-5cm accuracy — letting you calculate earthwork volumes, model drainage, and track ground conditions over time.</p>
+        <p style="color:var(--mist);font-size:.87rem;line-height:1.7;margin-top:10px">The result is a shareable, measurable 3D terrain model that replaces weeks of ground survey work with a single morning's flight. Developers, landowners, and civil engineers save thousands compared to traditional survey methods.</p>
+        <div class="m-meta" style="margin-top:18px"><div class="mm-i">Accuracy<span>±2–5cm GSD</span></div><div class="mm-i">Output<span>DEM + Orthomosaic</span></div><div class="mm-i">Coverage<span>100+ hectares/day</span></div></div>
+      </div>
+      <div style="position:relative;min-height:420px;background:var(--sky);overflow:hidden">
+        <div class="mv-lbl">Scan 02 · Terrain &amp; Site Survey</div>
+        <div class="scan-ln"></div>
+        <iframe src="https://poly.cam/capture/7a944288-e626-4a65-997a-6012623c4088/embed" style="width:100%;height:420px;border:none;display:block;" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+
+    <div class="ms" style="margin-bottom:18px">
+      <div style="position:relative;min-height:420px;background:var(--sky);overflow:hidden">
+        <div class="mv-lbl">Scan 03 · Heritage &amp; Infrastructure</div>
+        <div class="scan-ln"></div>
+        <iframe src="https://poly.cam/capture/ac0d0b9f-c20c-456e-a908-b3de4f445d3a/embed" style="width:100%;height:420px;border:none;display:block;" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="mi">
+        <div class="m-tag">Heritage · Industrial · Infrastructure</div>
+        <h3>HERITAGE &amp; COMPLEX ASSETS</h3>
+        <p>Listed buildings, bridges, industrial facilities, memorials — assets that are too valuable, too dangerous, or too complex to survey conventionally are exactly where drone 3D scanning delivers the greatest return.</p>
+        <p style="color:var(--mist);font-size:.87rem;line-height:1.7;margin-top:10px">We have captured everything from medieval church towers to petrochemical refineries. The scan becomes a living digital record — shareable with contractors, insurers, local authorities, and conservation officers, forever accessible and endlessly measurable.</p>
+        <div class="m-meta" style="margin-top:18px"><div class="mm-i">Use Cases<span>BIM · Heritage · Inspection</span></div><div class="mm-i">Delivery<span>5–10 Working Days</span></div><div class="mm-i">Format<span>On Request</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--sky);padding:60px 80px">
+    <div class="lbl">The Business Case</div>
+    <h2 class="sec-h" style="margin-bottom:36px">THE NUMBERS<br><span style="color:var(--gold)">SPEAK FOR THEMSELVES</span></h2>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:13px">
+      <div class="comp"><div style="font-size:1.8rem">📉</div><h4>Up to 80% Cost Saving</h4><p>vs traditional ground survey and scaffolding-based inspection methods.</p></div>
+      <div class="comp"><div style="font-size:1.8rem">⚡</div><h4>Same-Day Capture</h4><p>Complete site captured in hours, not weeks. Models delivered in 5–10 working days.</p></div>
+      <div class="comp"><div style="font-size:1.8rem">📐</div><h4>Centimetre Accuracy</h4><p>Sub-5cm ground sampling distance — precise enough for planning, BIM, and legal documentation.</p></div>
+      <div class="comp"><div style="font-size:1.8rem">♾️</div><h4>A Permanent Record</h4><p>Your 3D scan never degrades. Share it, measure it, and return to it years later.</p></div>
+    </div>
+  </section>
+
+  <section class="sec" style="background:var(--horizon)">
+    <div class="lbl">The Process</div>
+    <h2 class="sec-h">HOW IT<br>WORKS</h2>
+    <div class="sc-grid" style="margin-top:34px">
+      <div class="sc"><span class="sc-n">01</span><span class="sc-ico">🗺️</span><h3>Site Assessment &amp; Planning</h3><p>We assess your site remotely and on the ground, plan the optimal flight grid, and handle all airspace authorisation before we arrive.</p></div>
+      <div class="sc"><span class="sc-n">02</span><span class="sc-ico">📸</span><h3>Aerial Capture</h3><p>Hundreds of precisely timed, geo-tagged images captured at calibrated altitudes — overlapping to within millimetre tolerances for maximum mesh quality.</p></div>
+      <div class="sc"><span class="sc-n">03</span><span class="sc-ico">⚙️</span><h3>Photogrammetry Processing</h3><p>Images are processed through professional software to produce a fully textured, measurable 3D model in your chosen format.</p></div>
+      <div class="sc"><span class="sc-n">04</span><span class="sc-ico">📦</span><h3>Delivery &amp; Sharing</h3><p>You receive an interactive online model plus downloadable files in GLB, OBJ, or LAS — ready for BIM, planning software, or client presentations.</p></div>
+    </div>
+  </section>
+
+  <div class="cta-band"><div><h3>READY TO SCAN YOUR ASSET?</h3><p>Get in touch — no-obligation quote within 24 hours</p></div><button class="cta-btn" onclick="go('home');delay(()=>jump('contact'))">Request a Quote</button></div>
+  <footer><div class="fg"><div class="fb"><span class="logo" onclick="go('home')" style="font-size:1.7rem">OVER<em>SKY</em></span><p>Professional drone services across the North West.</p><div class="caa" style="margin-top:16px"><span>CAA</span><strong>Authorised</strong></div></div><div class="fc"><h4>Services</h4><ul><li><a onclick="go('services');delay(()=>jump('s1'))">Aerial Photography</a></li><li><a onclick="go('services');delay(()=>jump('s2'))">Inspection Services</a></li><li><a onclick="go('services');delay(()=>jump('s3'))">Drone Filming</a></li><li><a onclick="go('models')">3D Scanning</a></li></ul></div><div class="fc"><h4>Company</h4><ul><li><a onclick="go('home')">Home</a></li><li><a onclick="go('services')">Services</a></li><li><a onclick="go('credentials')">Credentials</a></li><li><a onclick="go('home');delay(()=>jump('contact'))">Contact</a></li></ul></div><div class="fc"><h4>Contact</h4><ul><li><a href="tel:07770045807">07770 045 807</a></li><li><a href="mailto:info@oversky.co.uk">info@oversky.co.uk</a></li></ul></div></div><div class="fb-bot"><p>© 2025 OverSky Drone Services</p><p>CAA Registered · Fully Licensed</p></div></footer>
+</div>
+
+<!-- ══════════════ LIGHTBOX ══════════════ -->
+<div id="lb" onclick="if(event.target===this)closeLB()">
+  <button class="lb-b" style="top:20px;right:26px" onclick="closeLB()">&#10005;</button>
+  <button class="lb-b" style="left:18px;top:50%;transform:translateY(-50%)" onclick="lbPrev()">&#8592;</button>
+  <button class="lb-b" style="right:18px;top:50%;transform:translateY(-50%)" onclick="lbNext()">&#8594;</button>
+  <img id="lb-img" src="" alt="">
+  <div id="lb-cap"></div>
+  <div id="lb-n"></div>
+</div>
+
+<!-- ══════════════ JS ══════════════ -->
+<script>
+const IMGS=[
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251102_153850_0670_1762099464147_photo-1-scaled.jpg",label:"Aerial Shot"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/12/dji_fly_20251128_211400_0944_1764364705992_photo-scaled.jpg",label:"Night Aerial"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/12/Above-Etihad-scaled.jpg",label:"Above Etihad Stadium"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251108_161240_0695_1762621285242_photo-scaled.jpg",label:"Aerial Survey"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/02/dji_fly_20250110_091844_651_1736503038207_photo_optimized-scaled.jpg",label:"Winter Aerial"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/12/Manchester-night-scaled.jpg",label:"Manchester Night"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/02/dji_fly_20241229_083816_490_1735461512179_photo_optimized-scaled.jpg",label:"Countryside Aerial"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251108_162408_0710_1762621244971_photo-scaled.jpg",label:"Urban Survey"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251102_154336_0679_1762099490566_photo-scaled.jpg",label:"Landscape Aerial"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251101_151526_0643_1762011097081_photo-scaled.jpg",label:"North West Aerial"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/11/Kirkstall-Abbey--scaled.jpg",label:"Kirkstall Abbey"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/11/St-Josephs-Seminary-1-scaled.jpg",label:"St Joseph's Seminary"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/12/Stanlow-Refinery-2-scaled.jpg",label:"Stanlow Refinery"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251025_141234_0583_1761412603031_photo-scaled.jpg",label:"Aerial Photography"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/05/Bolton-Abbey-scaled.jpg",label:"Bolton Abbey"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251019_173300_0526_1760892048541_photo-scaled.jpg",label:"Countryside"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/12/Manchester-Night-Panorama-scaled.jpg",label:"Manchester Night Panorama"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251024_170204_0567_1761325498756_photo-scaled.jpg",label:"Aerial View"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/03/dji_fly_20250227_150516_480_1740668774824_photo_optimized-scaled.jpg",label:"Spring Aerial"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/11/Screenshot_20251104_161813_Gallery-scaled.jpg",label:"Gallery Shot"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/02/dji_fly_20250115_140914_789_1736950185173_photo_optimized-scaled.jpg",label:"Winter Flight"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/02/dji_fly_20250129_130914_40_1738156240259_photo-scaled.jpg",label:"Morning Flight"}
+];
+
+/* PAGE ROUTING */
+const NM={home:'n-home',services:'n-services',credentials:'n-creds',models:'n-models'};
+function go(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const pg=document.getElementById('page-'+name);
+  if(!pg)return;
+  pg.classList.add('active');
+  document.querySelectorAll('.nav-links a,.mob a').forEach(a=>a.classList.remove('active'));
+  const nid=NM[name];
+  if(nid){const el=document.getElementById(nid);if(el)el.classList.add('active');}
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function jump(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
+function delay(fn){setTimeout(fn,160);}
+function toggleMob(){document.getElementById('mob').classList.toggle('open');}
+function closeMob(){document.getElementById('mob').classList.remove('open');}
+
+/* SLIDESHOW */
+let ssI=0,ssPaused=false,ssProg=0;
+const SS_DUR=4000,SS_TICK=60;
+function buildSS(){
+  const sl=document.getElementById('ss-slides');
+  const th=document.getElementById('ss-th');
+  if(!sl||!th)return;
+  IMGS.forEach((img,i)=>{
+    const s=document.createElement('div');
+    s.className='slide'+(i===0?' active':'');
+    s.id='ss-'+i;
+    const im=document.createElement('img');
+    im.src=img.url;im.alt=img.label;im.loading=i<3?'eager':'lazy';
+    s.appendChild(im);sl.appendChild(s);
+    const t=document.createElement('div');
+    t.className='th'+(i===0?' active':'');
+    t.id='th-'+i;
+    t.onclick=()=>ssGo(i);
+    const ti=document.createElement('img');
+    ti.src=img.url;ti.alt=img.label;ti.loading='lazy';
+    t.appendChild(ti);th.appendChild(t);
+  });
+  setInterval(()=>{
+    if(ssPaused)return;
+    ssProg+=(SS_TICK/SS_DUR)*100;
+    const b=document.getElementById('ss-bar');
+    if(b)b.style.width=ssProg+'%';
+    if(ssProg>=100){ssProg=0;ssGo(ssI+1);}
+  },SS_TICK);
+}
+function ssGo(n){
+  [document.getElementById('ss-'+ssI),document.getElementById('th-'+ssI)].forEach(e=>{if(e)e.classList.remove('active');});
+  ssI=(n+IMGS.length)%IMGS.length;
+  const cur=document.getElementById('ss-'+ssI);
+  const curT=document.getElementById('th-'+ssI);
+  if(cur)cur.classList.add('active');
+  if(curT){curT.classList.add('active');curT.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}
+  const lbl=document.getElementById('ss-lbl');
+  const num=document.getElementById('ss-num');
+  const bar=document.getElementById('ss-bar');
+  if(lbl)lbl.textContent=IMGS[ssI].label;
+  if(num)num.textContent=String(ssI+1).padStart(2,'0')+' / '+String(IMGS.length).padStart(2,'0');
+  if(bar)bar.style.width='0%';
+  ssProg=0;
+}
+function ssNext(){ssGo(ssI+1);}
+function ssPrev(){ssGo(ssI-1);}
+function ssPause(){
+  ssPaused=!ssPaused;
+  const btn=document.getElementById('ss-pp');
+  if(btn)btn.innerHTML=ssPaused?'&#9654; PLAY':'&#9646;&#9646; PAUSE';
+}
+
+/* LIGHTBOX */
+let lbI=0;
+function openLB(i){lbI=i;document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden';updateLB();}
+function closeLB(){document.getElementById('lb').classList.remove('open');document.body.style.overflow='';}
+function updateLB(){
+  document.getElementById('lb-img').src=IMGS[lbI].url;
+  document.getElementById('lb-cap').textContent=IMGS[lbI].label;
+  document.getElementById('lb-n').textContent=(lbI+1)+' / '+IMGS.length;
+}
+function lbNext(){lbI=(lbI+1)%IMGS.length;updateLB();}
+function lbPrev(){lbI=(lbI-1+IMGS.length)%IMGS.length;updateLB();}
+
+/* FORM */
+function handleForm(e){
+  e.preventDefault();
+  const btn=e.target.querySelector('button[type=submit]');
+  btn.textContent='✓ Sent!';btn.style.background='#2a7a4b';
+  setTimeout(()=>{btn.textContent='Submit Request';btn.style.background='';e.target.reset();},3500);
+}
+
+/* FORM */
+function handleForm(e){
+  e.preventDefault();
+  const btn=e.target.querySelector('button[type=submit]');
+  btn.textContent='✓ Sent!';btn.style.background='#2a7a4b';
+  setTimeout(()=>{btn.textContent='Submit Request';btn.style.background='';e.target.reset();},3500);
+}
+
+window.addEventListener('DOMContentLoaded',()=>{
+  buildSS();
+  go('home');
+});
+</script>
+</body>
+</html>

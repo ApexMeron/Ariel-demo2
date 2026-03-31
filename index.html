@@ -106,7 +106,8 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
 .ss{position:relative;width:100%;height:68vh;overflow:hidden;background:#000;}
 .slide{position:absolute;inset:0;opacity:0;transition:opacity .9s ease;}
 .slide.active{opacity:1;}
-.slide img{width:100%;height:100%;object-fit:cover;display:block;}
+/* FIX: images fill the entire slide, centred, no letterboxing */
+.slide img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
 .ss-gb{position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,var(--sky) 0%,transparent 100%);pointer-events:none;z-index:2;}
 .ss-gt{position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(to bottom,rgba(10,22,40,.6) 0%,transparent 100%);pointer-events:none;z-index:2;}
 .ss-cap{position:absolute;bottom:30px;left:80px;z-index:4;}
@@ -117,12 +118,14 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
 .ss-prog{position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(255,255,255,.1);z-index:5;}
 .ss-pb{height:100%;background:var(--gold);width:0%;}
 .ss-pp{position:absolute;bottom:26px;right:80px;z-index:5;background:rgba(10,22,40,.72);border:1px solid rgba(232,160,32,.3);color:var(--gold);padding:6px 14px;font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;}
-.tb{padding:10px 80px 44px;overflow-x:auto;scrollbar-width:none;background:var(--sky);}
+/* FIX: thumbnail bar scrolls itself, not the whole page */
+.tb{padding:10px 80px 44px;overflow-x:auto;scrollbar-width:none;background:var(--sky);scroll-behavior:smooth;}
 .tb::-webkit-scrollbar{display:none;}
 .tr{display:flex;gap:5px;width:max-content;}
 .th{width:108px;height:64px;border:2px solid transparent;cursor:pointer;overflow:hidden;flex-shrink:0;opacity:.42;transition:border-color .2s,opacity .2s;}
 .th.active{border-color:var(--gold);opacity:1;}
-.th img{width:100%;height:100%;object-fit:cover;display:block;}
+/* FIX: thumbnails also fill their slot fully */
+.th img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
 
 /* WHY SECTION */
 .why-g{display:grid;grid-template-columns:1fr 1fr;gap:68px;align-items:center;}
@@ -433,7 +436,6 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
 <div class="page" id="page-services">
   <div class="ph"><div class="ph-bg" style="background-image:url('https://oversky.co.uk/wp-content/uploads/2025/12/Above-Etihad-scaled.jpg')"></div><div class="ph-grad"></div><div class="ph-txt"><div class="lbl">What We Do</div><h1 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,6rem);letter-spacing:.03em;line-height:.95">OUR<br><span style="color:var(--gold)">SERVICES</span></h1></div></div>
 
-  <!-- Service 01 -->
   <div id="s1">
     <div class="sd">
       <div class="sd-img"><img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251102_153850_0670_1762099464147_photo-1-scaled.jpg" alt="Aerial Photography"><div class="sd-ov" style="background:linear-gradient(to right,transparent 55%,rgba(10,22,40,.4) 100%)"></div><div class="sd-badge" style="top:22px;left:22px">01</div></div>
@@ -454,7 +456,6 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
     </div>
   </div>
 
-  <!-- Service 02 -->
   <div id="s2">
     <div class="sd">
       <div class="sd-info" style="background:var(--sky)">
@@ -475,7 +476,6 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
     </div>
   </div>
 
-  <!-- Service 03 -->
   <div id="s3">
     <div class="sd">
       <div class="sd-img"><img src="https://oversky.co.uk/wp-content/uploads/2025/12/dji_fly_20251128_211400_0944_1764364705992_photo-scaled.jpg" alt="Drone Filming"><div class="sd-ov" style="background:linear-gradient(to right,transparent 55%,rgba(10,22,40,.4) 100%)"></div><div class="sd-badge" style="top:22px;left:22px">03</div></div>
@@ -708,6 +708,7 @@ function closeMob(){document.getElementById('mob').classList.remove('open');}
 /* SLIDESHOW */
 let ssI=0,ssPaused=false,ssProg=0;
 const SS_DUR=4000,SS_TICK=60;
+
 function buildSS(){
   const sl=document.getElementById('ss-slides');
   const th=document.getElementById('ss-th');
@@ -735,13 +736,22 @@ function buildSS(){
     if(ssProg>=100){ssProg=0;ssGo(ssI+1);}
   },SS_TICK);
 }
+
 function ssGo(n){
   [document.getElementById('ss-'+ssI),document.getElementById('th-'+ssI)].forEach(e=>{if(e)e.classList.remove('active');});
   ssI=(n+IMGS.length)%IMGS.length;
   const cur=document.getElementById('ss-'+ssI);
   const curT=document.getElementById('th-'+ssI);
   if(cur)cur.classList.add('active');
-  if(curT){curT.classList.add('active');curT.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}
+  if(curT){
+    curT.classList.add('active');
+    // FIX: scroll only the thumbnail bar, not the whole page
+    const bar=document.getElementById('ss-th').parentElement;
+    if(bar){
+      const center=curT.offsetLeft-(bar.offsetWidth/2)+(curT.offsetWidth/2);
+      bar.scrollTo({left:center,behavior:'smooth'});
+    }
+  }
   const lbl=document.getElementById('ss-lbl');
   const num=document.getElementById('ss-num');
   const bar=document.getElementById('ss-bar');
@@ -750,6 +760,7 @@ function ssGo(n){
   if(bar)bar.style.width='0%';
   ssProg=0;
 }
+
 function ssNext(){ssGo(ssI+1);}
 function ssPrev(){ssGo(ssI-1);}
 function ssPause(){
@@ -769,14 +780,6 @@ function updateLB(){
 }
 function lbNext(){lbI=(lbI+1)%IMGS.length;updateLB();}
 function lbPrev(){lbI=(lbI-1+IMGS.length)%IMGS.length;updateLB();}
-
-/* FORM */
-function handleForm(e){
-  e.preventDefault();
-  const btn=e.target.querySelector('button[type=submit]');
-  btn.textContent='✓ Sent!';btn.style.background='#2a7a4b';
-  setTimeout(()=>{btn.textContent='Submit Request';btn.style.background='';e.target.reset();},3500);
-}
 
 /* FORM */
 function handleForm(e){

@@ -392,7 +392,7 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
         <div class="why-feats">
           <div class="wf"><div class="wf-ico">🛡️</div><div class="wf-txt"><h4>Fully CAA Licensed</h4><p>Full CAA Operational Authorisation. Every flight is legal, documented, and safe.</p></div></div>
           <div class="wf"><div class="wf-ico">📡</div><div class="wf-txt"><h4>Professional Equipment</h4><p>DJI Enterprise platforms with 4K+ sensors, stabilised gimbals, and redundant safety systems.</p></div></div>
-          <div class="wf"><div class="wf-ico">🗓️</div><div class="wf-txt"><h4>Fast Turnaround</h4><p>Photos within 48 hours with editing which will enhancing the image. Video within 3 working days. Rush delivery available.</p></div></div>
+          <div class="wf"><div class="wf-ico">🗓️</div><div class="wf-txt"><h4>Fast Turnaround</h4><p>Photos within 48 hours. Video within 5 working days. Rush delivery available.</p></div></div>
         </div>
         <div style="margin-top:32px;display:flex;gap:11px;flex-wrap:wrap">
           <span class="btn-g" onclick="go('credentials')">Our Credentials</span>
@@ -524,7 +524,7 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
       <h2 style="font-family:'Bebas Neue',sans-serif;font-size:2.7rem;letter-spacing:.04em;margin-bottom:5px">OverSky Pilot</h2>
       <div style="font-family:'Barlow Condensed',sans-serif;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:18px">CAA GVC Certified · North West Specialist</div>
       <p class="muted">With years of commercial experience across Greater Manchester and the North West, our lead pilot brings a meticulous approach to every engagement — from pre-flight assessments and airspace coordination, to post-production delivery.</p>
-      <div class="p-stats"><div class="ps"><div class="ps-n">500+</div><div class="ps-l">Flights</div></div><div class="ps"><div class="ps-n">3+</div><div class="ps-l">Years Commercial</div></div><div class="ps"><div class="ps"><div class="ps-n">100%</div><div class="ps-l">Compliant</div></div></div>
+      <div class="p-stats"><div class="ps"><div class="ps-n">500+</div><div class="ps-l">Flights</div></div><div class="ps"><div class="ps-n">3+</div><div class="ps-l">Years Commercial</div></div><div class="ps"><div class="ps-n">100%</div><div class="ps-l">Compliant</div></div></div>
       <div class="skill-bars">
         <div><div class="sk-hd"><span>Flight Precision &amp; Control</span><span>98%</span></div><div class="sk-tr"><div class="sk-fi" style="width:98%"></div></div></div>
         <div><div class="sk-hd"><span>Regulatory Knowledge</span><span>100%</span></div><div class="sk-tr"><div class="sk-fi" style="width:100%"></div></div></div>
@@ -745,11 +745,11 @@ function ssGo(n){
   if(cur)cur.classList.add('active');
   if(curT){
     curT.classList.add('active');
-    // FIX: scroll only the thumbnail bar, not the whole page
-    const bar=document.getElementById('ss-th').parentElement;
-    if(bar){
-      const center=curT.offsetLeft-(bar.offsetWidth/2)+(curT.offsetWidth/2);
-      bar.scrollTo({left:center,behavior:'smooth'});
+    // scroll only the thumbnail strip container, not the whole page
+    const thumbStrip=document.getElementById('ss-th').parentElement;
+    if(thumbStrip){
+      const center=curT.offsetLeft-(thumbStrip.offsetWidth/2)+(curT.offsetWidth/2);
+      thumbStrip.scrollTo({left:center,behavior:'smooth'});
     }
   }
   const lbl=document.getElementById('ss-lbl');

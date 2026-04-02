@@ -391,7 +391,7 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
         <h2 class="sec-h">PRECISION.<br>COMPLIANCE.<br>RESULTS.</h2>
         <div class="why-feats">
           <div class="wf"><div class="wf-ico">🛡️</div><div class="wf-txt"><h4>Fully CAA Licensed</h4><p>Full CAA Operational Authorisation. Every flight is legal, documented, and safe.</p></div></div>
-          <div class="wf"><div class="wf-ico">📡</div><div class="wf-txt"><h4>Professional Equipment</h4><p>DJI Enterprise platforms with 4K+ sensors, stabilised gimbals, and redundant safety systems.</p></div></div>
+          <div class="wf"><div class="wf-ico">📡</div><div class="wf-txt"><h4>Professional Equipment</h4><p>DJI platforms with 4K+ sensors, stabilised gimbals, and redundant safety systems.</p></div></div>
           <div class="wf"><div class="wf-ico">🗓️</div><div class="wf-txt"><h4>Fast Turnaround</h4><p>Photos within 48 hours. Video within 5 working days. Rush delivery available.</p></div></div>
         </div>
         <div style="margin-top:32px;display:flex;gap:11px;flex-wrap:wrap">
@@ -513,7 +513,7 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
       <div class="cert"><div class="cert-badge">🎓</div><h3>A1 Certificate of Competency</h3><div class="cert-iss">CAA · Open Category A1</div><p>Permits flight over uninvolved people with Class C1 aircraft, demonstrating thorough knowledge of airspace regulation, drone safety, and operational risk in populated environments.</p><span class="cert-st">✔ Active &amp; Valid</span></div>
       <div class="cert"><div class="cert-badge">🎓</div><h3>A3 Certificate of Competency</h3><div class="cert-iss">CAA · Open Category A3</div><p>Authorises operations in sparsely populated areas and at extended distances from people — essential for rural surveys, agricultural mapping, and large-scale site capture.</p><span class="cert-st">✔ Active &amp; Valid</span></div>
       <div class="cert"><div class="cert-badge">🛡️</div><h3>Flyer ID Registration</h3><div class="cert-iss">Civil Aviation Authority · UK</div><p>CAA-registered drone operator and flyer. All aircraft are properly registered and identifiable under current UK drone regulations.</p><span class="cert-st">✔ Registered</span></div>
-      <div class="cert"><div class="cert-badge">🏆</div><h3>Multiple DJI Official Enterprise Awards</h3><div class="cert-iss">DJI · Highly Rated Enterprise </div><p>Recognised by DJI as a highly rated official enterprise operator. operated, maintained and serviced to manufacturer specification, with active DJI Care Refresh warranty on every aircraft.</p><span class="cert-st">✔ DJI Verified &amp; Highly Rated</span></div>
+      <div class="cert"><div class="cert-badge">📸</div><h3>DJI Sky Pixel Community — Featured Creator</h3><div class="cert-iss">DJI · Global Drone Community Platform</div><p>OverSky imagery has been voted on and recognised by DJI administrators and the global DJI Sky Pixel community — a platform where millions of drone users worldwide rate, share, and celebrate outstanding aerial photography. Top-rated images and videos are selected by DJI's own team and featured on DJI's front-facing screens and digital platforms, putting our work in front of millions of viewers around the world.</p><span class="cert-st">✔ Community Recognised</span></div>
       <div class="cert"><div class="cert-badge">📋</div><h3>GDPR &amp; Data Compliance</h3><div class="cert-iss">Information Commissioner's Office</div><p>Fully compliant with UK GDPR when capturing aerial imagery. Proper procedures in place for data handling, retention, and privacy impact assessments.</p><span class="cert-st">✔ Compliant</span></div>
     </div>
   </section>
@@ -546,6 +546,72 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
     </div>
   </section>
 
+  <section class="sec" style="background:var(--horizon)">
+    <div class="lbl">DJI Sky Pixel — Featured Work</div>
+    <h2 class="sec-h">RECOGNISED BY<br><span style="color:var(--gold)">MILLIONS OF VIEWERS</span></h2>
+    <p class="muted" style="max-width:620px;margin-bottom:10px">The DJI Sky Pixel community is one of the largest aerial photography platforms on the planet. DJI administrators vote on outstanding images and videos submitted by pilots worldwide — and the very best are featured on DJI's own screens and digital platforms, seen by millions of users globally. OverSky shots have earned that recognition.</p>
+    <p class="muted" style="max-width:620px;margin-bottom:36px">The grid below showcases imagery captured and post-produced by OverSky that has received community recognition. Upload your own featured shots below to keep this gallery up to date.</p>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px">
+
+      <div style="position:relative;aspect-ratio:1;background:var(--card);border:1px dashed rgba(232,160,32,.3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;cursor:pointer;transition:border-color .2s;overflow:hidden" onclick="this.querySelector('input').click()" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(232,160,32,.3)'">
+        <input type="file" accept="image/*" style="display:none" onchange="loadImgBox(this)">
+        <div style="font-size:2rem;opacity:.3">📷</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mist);opacity:.6;text-align:center;padding:0 10px">Import Image Here</div>
+        <div style="position:absolute;inset:0;display:none" class="img-preview"><img style="width:100%;height:100%;object-fit:cover;object-position:center"></div>
+      </div>
+
+      <div style="position:relative;aspect-ratio:1;background:var(--card);border:1px dashed rgba(232,160,32,.3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;cursor:pointer;transition:border-color .2s;overflow:hidden" onclick="this.querySelector('input').click()" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(232,160,32,.3)'">
+        <input type="file" accept="image/*" style="display:none" onchange="loadImgBox(this)">
+        <div style="font-size:2rem;opacity:.3">📷</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mist);opacity:.6;text-align:center;padding:0 10px">Import Image Here</div>
+        <div style="position:absolute;inset:0;display:none" class="img-preview"><img style="width:100%;height:100%;object-fit:cover;object-position:center"></div>
+      </div>
+
+      <div style="position:relative;aspect-ratio:1;background:var(--card);border:1px dashed rgba(232,160,32,.3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;cursor:pointer;transition:border-color .2s;overflow:hidden" onclick="this.querySelector('input').click()" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(232,160,32,.3)'">
+        <input type="file" accept="image/*" style="display:none" onchange="loadImgBox(this)">
+        <div style="font-size:2rem;opacity:.3">📷</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mist);opacity:.6;text-align:center;padding:0 10px">Import Image Here</div>
+        <div style="position:absolute;inset:0;display:none" class="img-preview"><img style="width:100%;height:100%;object-fit:cover;object-position:center"></div>
+      </div>
+
+      <div style="position:relative;aspect-ratio:1;background:var(--card);border:1px dashed rgba(232,160,32,.3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;cursor:pointer;transition:border-color .2s;overflow:hidden" onclick="this.querySelector('input').click()" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(232,160,32,.3)'">
+        <input type="file" accept="image/*" style="display:none" onchange="loadImgBox(this)">
+        <div style="font-size:2rem;opacity:.3">📷</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mist);opacity:.6;text-align:center;padding:0 10px">Import Image Here</div>
+        <div style="position:absolute;inset:0;display:none" class="img-preview"><img style="width:100%;height:100%;object-fit:cover;object-position:center"></div>
+      </div>
+
+      <div style="position:relative;aspect-ratio:1;background:var(--card);border:1px dashed rgba(232,160,32,.3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;cursor:pointer;transition:border-color .2s;overflow:hidden" onclick="this.querySelector('input').click()" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(232,160,32,.3)'">
+        <input type="file" accept="image/*" style="display:none" onchange="loadImgBox(this)">
+        <div style="font-size:2rem;opacity:.3">📷</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mist);opacity:.6;text-align:center;padding:0 10px">Import Image Here</div>
+        <div style="position:absolute;inset:0;display:none" class="img-preview"><img style="width:100%;height:100%;object-fit:cover;object-position:center"></div>
+      </div>
+
+      <div style="position:relative;aspect-ratio:1;background:var(--card);border:1px dashed rgba(232,160,32,.3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;cursor:pointer;transition:border-color .2s;overflow:hidden" onclick="this.querySelector('input').click()" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(232,160,32,.3)'">
+        <input type="file" accept="image/*" style="display:none" onchange="loadImgBox(this)">
+        <div style="font-size:2rem;opacity:.3">📷</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mist);opacity:.6;text-align:center;padding:0 10px">Import Image Here</div>
+        <div style="position:absolute;inset:0;display:none" class="img-preview"><img style="width:100%;height:100%;object-fit:cover;object-position:center"></div>
+      </div>
+
+      <div style="position:relative;aspect-ratio:1;background:var(--card);border:1px dashed rgba(232,160,32,.3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;cursor:pointer;transition:border-color .2s;overflow:hidden" onclick="this.querySelector('input').click()" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(232,160,32,.3)'">
+        <input type="file" accept="image/*" style="display:none" onchange="loadImgBox(this)">
+        <div style="font-size:2rem;opacity:.3">📷</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mist);opacity:.6;text-align:center;padding:0 10px">Import Image Here</div>
+        <div style="position:absolute;inset:0;display:none" class="img-preview"><img style="width:100%;height:100%;object-fit:cover;object-position:center"></div>
+      </div>
+
+      <div style="position:relative;aspect-ratio:1;background:var(--card);border:1px dashed rgba(232,160,32,.3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;cursor:pointer;transition:border-color .2s;overflow:hidden" onclick="this.querySelector('input').click()" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(232,160,32,.3)'">
+        <input type="file" accept="image/*" style="display:none" onchange="loadImgBox(this)">
+        <div style="font-size:2rem;opacity:.3">📷</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mist);opacity:.6;text-align:center;padding:0 10px">Import Image Here</div>
+        <div style="position:absolute;inset:0;display:none" class="img-preview"><img style="width:100%;height:100%;object-fit:cover;object-position:center"></div>
+      </div>
+
+    </div>
+  </section>
+
   <div class="cta-band"><div><h3>READY TO WORK TOGETHER?</h3><p>Get in touch to discuss your project</p></div><button class="cta-btn" onclick="go('home');delay(()=>jump('contact'))">Request a Quote</button></div>
   <footer><div class="fg"><div class="fb"><span class="logo" onclick="go('home')" style="font-size:1.7rem">OVER<em>SKY</em></span><p>Professional drone services across the North West.</p><div class="caa" style="margin-top:16px"><span>CAA</span><strong>Authorised</strong></div></div><div class="fc"><h4>Services</h4><ul><li><a onclick="go('services');delay(()=>jump('s1'))">Aerial Photography</a></li><li><a onclick="go('services');delay(()=>jump('s2'))">Inspection Services</a></li><li><a onclick="go('services');delay(()=>jump('s3'))">Drone Filming</a></li><li><a onclick="go('models')">3D Scanning</a></li></ul></div><div class="fc"><h4>Company</h4><ul><li><a onclick="go('home')">Home</a></li><li><a onclick="go('services')">Services</a></li><li><a onclick="go('models')">3D Models</a></li><li><a onclick="go('home');delay(()=>jump('contact'))">Contact</a></li></ul></div><div class="fc"><h4>Contact</h4><ul><li><a href="tel:07770045807">07770 045 807</a></li><li><a href="mailto:info@oversky.co.uk">info@oversky.co.uk</a></li></ul></div></div><div class="fb-bot"><p>© 2025 OverSky Drone Services</p><p>CAA Registered · Fully Licensed</p></div></footer>
 </div>
@@ -558,7 +624,7 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
     <div class="ph-bg" style="background-image:url('https://oversky.co.uk/wp-content/uploads/2025/02/dji_fly_20250129_130914_40_1738156240259_photo-scaled.jpg')"></div>
     <div class="ph-grad"></div>
     <div class="ph-txt">
-      <div class="lbl">Multiple DJI Official Enterprise Awards · Highly Rated</div>
+      <div class="lbl">Programmed Flight Paths · Photogrammetry · North West UK</div>
       <h1 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,6rem);letter-spacing:.03em;line-height:.95">3D DRONE<br><span style="color:var(--gold)">SCANNING &amp; MAPPING</span></h1>
       <p style="color:var(--steel);font-family:'Barlow Condensed',sans-serif;font-size:.9rem;letter-spacing:.18em;text-transform:uppercase;margin-top:14px">Centimetre-accurate photogrammetry · North West UK</p>
     </div>
@@ -571,7 +637,7 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
         <div class="lbl">Why OverSky 3D Scanning</div>
         <h2 class="sec-h">THE MOST ADVANCED<br>AERIAL DATA<br><span style="color:var(--gold)">IN THE NORTH WEST</span></h2>
         <p class="muted" style="font-size:1rem;line-height:1.9;margin-bottom:20px">Imagine handing a client, architect, engineer, or planning officer a fully interactive, measurable 3D model of their building, site, or asset — captured in a single day, from the air, with centimetre-level accuracy. That is exactly what OverSky delivers, flight after flight, across Greater Manchester and the wider North West.</p>
-        <p class="muted" style="font-size:1rem;line-height:1.9;margin-bottom:28px">Our drone photogrammetry service uses DJI Enterprise hardware — the same platform trusted by leading surveyors, utilities companies, and government agencies worldwide — to capture hundreds of precisely geo-tagged, overlapping aerial images. Those images are processed into rich, fully textured 3D models you can rotate, measure, annotate, and share with anyone, anywhere, on any device.</p>
+        <p class="muted" style="font-size:1rem;line-height:1.9;margin-bottom:28px">Our drone photogrammetry service uses DJI hardware — flown on programmed autonomous flight paths — to capture hundreds of precisely geo-tagged, overlapping aerial images. Those images are processed into rich, fully textured 3D models you can rotate, measure, annotate, and share with anyone, anywhere, on any device.</p>
         <p class="muted" style="font-size:1rem;line-height:1.9;margin-bottom:32px">No scaffolding. No lane closures. No risk to personnel. Just stunning, actionable spatial data delivered in days — not weeks.</p>
         <div style="display:flex;gap:11px;flex-wrap:wrap">
           <span class="btn-g" onclick="go('home');delay(()=>jump('contact'))">Get a Free Quote</span>
@@ -579,21 +645,21 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
         </div>
       </div>
       <div>
-        <!-- DJI Official badge panel -->
+        <!-- DJI Sky Pixel community panel -->
         <div style="background:var(--card);border:1px solid var(--border);padding:32px;margin-bottom:20px">
           <div style="display:flex;align-items:center;gap:16px;margin-bottom:18px">
-            <div style="width:56px;height:56px;background:var(--gold);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0">🏆</div>
+            <div style="width:56px;height:56px;background:var(--gold);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0">🌍</div>
             <div>
-              <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.06em">Multiple DJI Official Enterprise Awards</div>
-              <div style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-top:2px">Highly Rated · Verified Partner</div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.06em">DJI Sky Pixel — Community Recognition</div>
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-top:2px">Global Aerial Photography Community</div>
             </div>
           </div>
-          <p style="color:var(--mist);font-size:.88rem;line-height:1.7;margin-bottom:16px">OverSky is recognised by DJI as a highly rated official enterprise operator — a status awarded to operators who consistently demonstrate professional standards, technical excellence, and outstanding client outcomes using DJI platforms.</p>
-          <p style="color:var(--mist);font-size:.88rem;line-height:1.7;margin-bottom:16px">Our fleet is built around DJI's Enterprise range — including the Mavic 3 Enterprise with its L1 lidar payload capability and Matrice series — giving us the sensor quality and flight stability to produce models that meet engineering-grade accuracy standards.</p>
+          <p style="color:var(--mist);font-size:.88rem;line-height:1.7;margin-bottom:16px">DJI Sky Pixel is one of the largest aerial photography communities on the planet — millions of drone pilots worldwide sharing, rating, and celebrating outstanding aerial work. DJI administrators review the highest-rated submissions and select the very best to feature on DJI's own screens and digital platforms, where they are seen by millions of users globally.</p>
+          <p style="color:var(--mist);font-size:.88rem;line-height:1.7;margin-bottom:16px">OverSky imagery has been voted on by the Sky Pixel community and recognised by DJI's own team — with our shots and footage selected for that global front-page exposure. It is a level of recognition earned purely on the quality of the work, voted on by fellow pilots who know exactly what great aerial imagery looks like.</p>
           <div style="border-top:1px solid var(--border);padding-top:16px;display:flex;gap:18px;flex-wrap:wrap">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mist)">Fleet<span style="display:block;color:var(--white);font-size:.86rem;font-family:'Barlow',sans-serif;font-weight:500;margin-top:2px;text-transform:none;letter-spacing:0">DJI Enterprise Series</span></div>
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mist)">Warranty<span style="display:block;color:var(--white);font-size:.86rem;font-family:'Barlow',sans-serif;font-weight:500;margin-top:2px;text-transform:none;letter-spacing:0">DJI Care Refresh · Active</span></div>
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mist)">Rating<span style="display:block;color:var(--gold);font-size:.86rem;font-family:'Barlow',sans-serif;font-weight:500;margin-top:2px;text-transform:none;letter-spacing:0">★★★★★ Highly Rated</span></div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mist)">Platform<span style="display:block;color:var(--white);font-size:.86rem;font-family:'Barlow',sans-serif;font-weight:500;margin-top:2px;text-transform:none;letter-spacing:0">DJI Sky Pixel</span></div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mist)">Reach<span style="display:block;color:var(--white);font-size:.86rem;font-family:'Barlow',sans-serif;font-weight:500;margin-top:2px;text-transform:none;letter-spacing:0">Millions of Viewers</span></div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mist)">Voted By<span style="display:block;color:var(--gold);font-size:.86rem;font-family:'Barlow',sans-serif;font-weight:500;margin-top:2px;text-transform:none;letter-spacing:0">Global Drone Community</span></div>
           </div>
         </div>
         <!-- stats -->
@@ -612,7 +678,7 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
     <div style="padding:48px 80px 24px">
       <div class="lbl">Our Work — Shot &amp; Post-Produced by OverSky</div>
       <h2 class="sec-h">FROM THE LENS<br><span style="color:var(--gold)">TO THE MODEL</span></h2>
-      <p class="muted" style="max-width:580px">Every image below was captured by OverSky using DJI Enterprise hardware and professionally post-processed in-house — colour-graded, corrected, and prepared for both client delivery and photogrammetric processing.</p>
+      <p class="muted" style="max-width:580px">Every image below was captured by OverSky using DJI hardware and professionally post-processed in-house — colour-graded, corrected, and prepared for both client delivery and photogrammetric processing.</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:3px">
       <div style="height:200px;overflow:hidden"><img src="https://oversky.co.uk/wp-content/uploads/2025/11/Kirkstall-Abbey--scaled.jpg" alt="Kirkstall Abbey" style="width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(.85);transition:filter .3s" onmouseover="this.style.filter='brightness(1)'" onmouseout="this.style.filter='brightness(.85)'"></div>
@@ -648,7 +714,7 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
         <div style="font-size:2rem;margin-bottom:14px">⚙️</div>
         <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">Engineering &amp; Inspection</h3>
         <p style="color:var(--mist);font-size:.88rem;line-height:1.75;margin-bottom:14px">From the Stanlow petrochemical complex to railway infrastructure, OverSky delivers inspection-grade aerial data without putting any personnel at risk. Engineers receive annotated, measurable 3D models alongside the raw high-resolution imagery — giving them everything needed to identify defects, calculate clearances, and produce photographic evidence for insurance and regulatory submissions.</p>
-        <p style="color:var(--mist);font-size:.88rem;line-height:1.75">Our DJI Enterprise hardware allows close-proximity inspection passes that are impossible with conventional methods, all within full CAA operational authorisation.</p>
+        <p style="color:var(--mist);font-size:.88rem;line-height:1.75">Our DJI hardware allows close-proximity inspection passes that are impossible with conventional methods, all within full CAA operational authorisation.</p>
       </div>
       <div style="background:var(--card);border:1px solid var(--border);padding:36px 32px">
         <div style="font-size:2rem;margin-bottom:14px">📐</div>
@@ -674,7 +740,7 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
       <div class="mi">
         <div class="m-tag">Architectural Survey · Full Structure</div>
         <h3>AERIAL STRUCTURE SCAN</h3>
-        <p>Every surface captured in a single flight — a fully textured 3D mesh that engineers can measure, planners can interrogate, and clients can explore from any angle on any device. The level of detail achieved here is only possible with DJI Enterprise sensor quality and the systematic flight patterns our pilots execute on every job.</p>
+        <p>Every surface captured in a single flight — a fully textured 3D mesh that engineers can measure, planners can interrogate, and clients can explore from any angle on any device. The level of detail achieved here is only possible with DJI sensor quality and the systematic flight patterns our pilots execute on every job.</p>
         <p style="color:var(--mist);font-size:.87rem;line-height:1.7;margin-top:10px">Use cases include planning applications, pre-purchase surveys, marketing visualisations, insurance documentation, and as-built records for BIM integration.</p>
         <div class="m-meta" style="margin-top:18px">
           <div class="mm-i">Method<span>DJI Photogrammetry</span></div>
@@ -729,27 +795,47 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
     <h2 class="sec-h" style="margin-bottom:36px">THE NUMBERS<br><span style="color:var(--gold)">SPEAK FOR THEMSELVES</span></h2>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:13px">
       <div class="comp"><div style="font-size:1.8rem">📉</div><h4>Up to 80% Cost Saving</h4><p>vs traditional ground survey and scaffolding-based inspection — same data, delivered faster, at a fraction of the price.</p></div>
-      <div class="comp"><div style="font-size:1.8rem">⚡</div><h4>Same-Day Capture</h4><p>Complete structures and sites captured in hours. Interactive models delivered within 3 working days with enhance post editing.</p></div>
-      <div class="comp"><div style="font-size:1.8rem">📐</div><h4>±2cm Accuracy</h4><p>Sub-5cm ground sampling distance using DJI Enterprise hardware — precise enough for planning submissions, BIM, and legal records.</p></div>
+      <div class="comp"><div style="font-size:1.8rem">⚡</div><h4>Same-Day Capture</h4><p>Complete structures and sites captured in hours. Interactive models delivered within 5–10 working days.</p></div>
+      <div class="comp"><div style="font-size:1.8rem">📐</div><h4>±2cm Accuracy</h4><p>Sub-5cm ground sampling distance — precise enough for planning submissions, BIM, and legal records.</p></div>
       <div class="comp"><div style="font-size:1.8rem">♾️</div><h4>A Permanent Record</h4><p>Your 3D scan never degrades. Share it, measure it, compare it against future scans, and return to it years later.</p></div>
     </div>
   </section>
 
-  <!-- DJI EQUIPMENT SECTION -->
-  <section class="sec" style="background:var(--horizon)">
-    <div class="lbl">Our Equipment</div>
-    <h2 class="sec-h">POWERED USING<br><span style="color:var(--gold)">DJI ENTERPRISE</span></h2>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:68px;align-items:center;margin-top:10px">
+  <!-- PROGRAMMED FLIGHT PATHS -->
+  <section class="sec" style="background:var(--sky)">
+    <div class="lbl">Advanced Flight Technology</div>
+    <h2 class="sec-h">PROGRAMMED<br><span style="color:var(--gold)">FLIGHT PATHS</span></h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:68px;align-items:center">
       <div>
-        <p class="muted" style="font-size:.95rem;line-height:1.85;margin-bottom:20px">OverSky operates exclusively on DJI's Enterprise platform — the world's leading professional drone hardware, trusted by militaries, emergency services, utilities companies, and survey firms across more than 100 countries. As a DJI highly rated official enterprise operator, we are held to the highest standards of technical proficiency and operational safety.</p>
-        <p class="muted" style="font-size:.95rem;line-height:1.85;margin-bottom:20px">Every aircraft in our fleet operates under active DJI Care Refresh warranty, is pre-flight inspected before every mission, and is serviced to manufacturer specification. Our pilots are trained specifically on Enterprise-grade equipment — meaning every flight benefits from the sensor quality, image stability, and precision positioning that only DJI's top-tier platforms can deliver.</p>
-        <p class="muted" style="font-size:.95rem;line-height:1.85">The result is imagery and spatial data of a quality that lower-grade consumer equipment simply cannot match — and a photogrammetric output that holds up to engineering scrutiny.</p>
+        <p class="muted" style="font-size:.95rem;line-height:1.9;margin-bottom:20px">One of the most powerful tools in OverSky's arsenal is autonomous waypoint mission planning — the ability to programme a precise flight path before a single motor spins up. Rather than manually piloting every pass, we define the exact altitude, speed, overlap percentage, camera angle, and geographic boundary of each flight digitally, then execute it with machine precision.</p>
+        <p class="muted" style="font-size:.95rem;line-height:1.9;margin-bottom:20px">The result is data that no hand-flown mission can match. Every image is captured at exactly the right position and orientation, with consistent overlap between frames — eliminating the human variability that degrades photogrammetric quality. For 3D scanning, this is not a luxury. It is the difference between a model that meets engineering tolerances and one that doesn't.</p>
+        <p class="muted" style="font-size:.95rem;line-height:1.9;margin-bottom:28px">Programmed flights are also repeatable. We store every mission profile, meaning a site can be re-scanned weeks, months, or years later using an identical flight path — producing models that can be directly compared to track change over time. For construction monitoring, infrastructure inspection, and land management, this repeatability is invaluable.</p>
+        <span class="btn-g" onclick="go('home');delay(()=>jump('contact'))">Enquire About Programmed Flights</span>
       </div>
       <div style="display:flex;flex-direction:column;gap:14px">
-        <div class="wf"><div class="wf-ico">📡</div><div class="wf-txt"><h4>DJI Mavic 3 Enterprise</h4><p>Our primary photography and photogrammetry platform. 4/3 CMOS sensor, mechanical shutter, 5.1K resolution — producing images of a quality that holds up at 100% crop for engineering inspection.</p></div></div>
-        <div class="wf"><div class="wf-ico">🛰️</div><div class="wf-txt"><h4>RTK GPS Positioning</h4><p>Centimetre-accurate positioning on every image — eliminating the need for ground control points on most missions and dramatically increasing the geometric accuracy of the resulting models.</p></div></div>
-        <div class="wf"><div class="wf-ico">🎛️</div><div class="wf-txt"><h4>Professional Post-Processing</h4><p>Every dataset is processed through industry-standard photogrammetry software and manually reviewed by our team before delivery. No automated pipelines, no shortcuts.</p></div></div>
-        <div class="wf"><div class="wf-ico">🔒</div><div class="wf-txt"><h4>DJI Care Refresh · Active</h4><p>Full manufacturer warranty on every aircraft — covering hardware faults, sensor degradation, and fly-away events. Your mission is protected from the moment we arrive on site.</p></div></div>
+        <div class="wf"><div class="wf-ico">🛣️</div><div class="wf-txt"><h4>Waypoint Mission Planning</h4><p>Every flight path is designed in mission planning software before takeoff — altitude, speed, camera angle, and image overlap all defined digitally for maximum precision and repeatability.</p></div></div>
+        <div class="wf"><div class="wf-ico">📐</div><div class="wf-txt"><h4>Consistent Image Overlap</h4><p>Photogrammetry requires precise overlap between frames to reconstruct accurate 3D geometry. Programmed paths guarantee this overlap on every pass — something manual flying cannot reliably achieve.</p></div></div>
+        <div class="wf"><div class="wf-ico">🔁</div><div class="wf-txt"><h4>Fully Repeatable Missions</h4><p>We archive every flight profile. Return visits use the identical path, producing data that can be compared directly across time — essential for progress monitoring, condition surveys, and change detection.</p></div></div>
+        <div class="wf"><div class="wf-ico">📡</div><div class="wf-txt"><h4>RTK GPS Precision</h4><p>Combined with RTK satellite positioning, our autonomous missions achieve centimetre-level geolocation accuracy on every image — eliminating the need for ground control points on most sites.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DJI EQUIPMENT -->
+  <section class="sec" style="background:var(--horizon)">
+    <div class="lbl">Our Equipment</div>
+    <h2 class="sec-h">FLOWN ON<br><span style="color:var(--gold)">DJI HARDWARE</span></h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:68px;align-items:center;margin-top:10px">
+      <div>
+        <p class="muted" style="font-size:.95rem;line-height:1.85;margin-bottom:20px">OverSky flies DJI — the world's most advanced consumer and professional drone hardware, trusted by pilots in more than 100 countries. We use DJI not because everyone does, but because the sensor quality, flight stability, and positioning accuracy of their platforms genuinely produces better spatial data than the alternatives.</p>
+        <p class="muted" style="font-size:.95rem;line-height:1.85;margin-bottom:20px">Our equipment is maintained to manufacturer specification, pre-flight inspected before every mission, and operates under active DJI Care Refresh warranty — giving our clients the assurance that the hardware behind their data is in peak condition every time we fly.</p>
+        <p class="muted" style="font-size:.95rem;line-height:1.85">The imagery produced by our DJI platform has been recognised by the DJI Sky Pixel community — a global network of millions of drone photographers whose administrators vote on and feature the best aerial work in the world. OverSky shots have been selected for that recognition, putting our work in front of audiences that span every continent.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="wf"><div class="wf-ico">📡</div><div class="wf-txt"><h4>DJI Mavic 3 — Primary Platform</h4><p>4/3 CMOS sensor, mechanical shutter, 5.1K resolution. The image quality holds up at 100% crop for engineering-grade inspection and produces photogrammetric data of exceptional density and colour accuracy.</p></div></div>
+        <div class="wf"><div class="wf-ico">🛰️</div><div class="wf-txt"><h4>RTK Satellite Positioning</h4><p>Centimetre-accurate GPS on every frame. When combined with our programmed flight paths, this produces models with geometric accuracy that manual flying and consumer-grade positioning simply cannot achieve.</p></div></div>
+        <div class="wf"><div class="wf-ico">🎛️</div><div class="wf-txt"><h4>Professional Post-Processing</h4><p>Every dataset is processed through industry-standard photogrammetry software and manually reviewed before delivery. The output you receive is checked, refined, and ready to use — not a raw automated export.</p></div></div>
+        <div class="wf"><div class="wf-ico">🔒</div><div class="wf-txt"><h4>DJI Care Refresh — Active</h4><p>Full manufacturer warranty on every aircraft in our fleet. Your mission is protected from the moment we arrive on site.</p></div></div>
       </div>
     </div>
   </section>
@@ -760,14 +846,14 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
     <h2 class="sec-h">FROM BRIEFING<br>TO DELIVERY</h2>
     <div class="sc-grid" style="margin-top:34px">
       <div class="sc"><span class="sc-n">01</span><span class="sc-ico">🗺️</span><h3>Site Assessment &amp; Airspace Planning</h3><p>We assess your site remotely and on the ground, plan the optimal flight grid for maximum model quality, handle all NOTAMs and airspace authorisation, and confirm weather windows — all before we arrive.</p></div>
-      <div class="sc"><span class="sc-n">02</span><span class="sc-ico">📸</span><h3>DJI Enterprise Aerial Capture</h3><p>Hundreds of precisely timed, geo-tagged images captured using DJI Enterprise hardware at calibrated altitudes — overlapping to within millimetre tolerances. Every image is reviewed on-site before we stand down.</p></div>
+      <div class="sc"><span class="sc-n">02</span><span class="sc-ico">📸</span><h3>Programmed Aerial Capture</h3><p>Hundreds of precisely timed, geo-tagged images captured using DJI hardware at calibrated altitudes — overlapping to within millimetre tolerances. Every image is reviewed on-site before we stand down.</p></div>
       <div class="sc"><span class="sc-n">03</span><span class="sc-ico">⚙️</span><h3>Photogrammetric Processing</h3><p>Images are processed through professional photogrammetry software, manually reviewed, and refined by our team to produce a fully textured, measurable 3D model meeting your accuracy specification.</p></div>
       <div class="sc"><span class="sc-n">04</span><span class="sc-ico">📦</span><h3>Delivery in Your Format</h3><p>You receive a shareable interactive online model plus downloadable source files in GLB, OBJ, LAS, or orthomosaic format — ready for Revit, ArchiCAD, AutoCAD, planning portals, or client presentations.</p></div>
     </div>
   </section>
 
-  <div class="cta-band"><div><h3>READY TO SCAN YOUR ASSET?</h3><p>No-obligation quote within 24 hours · DJI Enterprise quality guaranteed</p></div><button class="cta-btn" onclick="go('home');delay(()=>jump('contact'))">Request a Quote</button></div>
-  <footer><div class="fg"><div class="fb"><span class="logo" onclick="go('home')" style="font-size:1.7rem">OVER<em>SKY</em></span><p>Professional drone services across the North West.</p><div class="caa" style="margin-top:16px"><span>CAA</span><strong>Authorised</strong></div></div><div class="fc"><h4>Services</h4><ul><li><a onclick="go('services');delay(()=>jump('s1'))">Aerial Photography</a></li><li><a onclick="go('services');delay(()=>jump('s2'))">Inspection Services</a></li><li><a onclick="go('services');delay(()=>jump('s3'))">Drone Filming</a></li><li><a onclick="go('models')">3D Scanning</a></li></ul></div><div class="fc"><h4>Company</h4><ul><li><a onclick="go('home')">Home</a></li><li><a onclick="go('services')">Services</a></li><li><a onclick="go('credentials')">Credentials</a></li><li><a onclick="go('home');delay(()=>jump('contact'))">Contact</a></li></ul></div><div class="fc"><h4>Contact</h4><ul><li><a href="tel:07770045807">07770 045 807</a></li><li><a href="mailto:info@oversky.co.uk">info@oversky.co.uk</a></li></ul></div></div><div class="fb-bot"><p>© 2025 OverSky Drone Services</p><p>CAA Registered · DJI Official Enterprise Awards </p></div></footer>
+  <div class="cta-band"><div><h3>READY TO SCAN YOUR ASSET?</h3><p>No-obligation quote within 24 hours</p></div><button class="cta-btn" onclick="go('home');delay(()=>jump('contact'))">Request a Quote</button></div>
+  <footer><div class="fg"><div class="fb"><span class="logo" onclick="go('home')" style="font-size:1.7rem">OVER<em>SKY</em></span><p>Professional drone services across the North West.</p><div class="caa" style="margin-top:16px"><span>CAA</span><strong>Authorised</strong></div></div><div class="fc"><h4>Services</h4><ul><li><a onclick="go('services');delay(()=>jump('s1'))">Aerial Photography</a></li><li><a onclick="go('services');delay(()=>jump('s2'))">Inspection Services</a></li><li><a onclick="go('services');delay(()=>jump('s3'))">Drone Filming</a></li><li><a onclick="go('models')">3D Scanning</a></li></ul></div><div class="fc"><h4>Company</h4><ul><li><a onclick="go('home')">Home</a></li><li><a onclick="go('services')">Services</a></li><li><a onclick="go('credentials')">Credentials</a></li><li><a onclick="go('home');delay(()=>jump('contact'))">Contact</a></li></ul></div><div class="fc"><h4>Contact</h4><ul><li><a href="tel:07770045807">07770 045 807</a></li><li><a href="mailto:info@oversky.co.uk">info@oversky.co.uk</a></li></ul></div></div><div class="fb-bot"><p>© 2025 OverSky Drone Services</p><p>CAA Registered · Fully Licensed</p></div></footer>
 </div>
 
 <!-- ══════════════ LIGHTBOX ══════════════ -->
@@ -899,6 +985,22 @@ function updateLB(){
 }
 function lbNext(){lbI=(lbI+1)%IMGS.length;updateLB();}
 function lbPrev(){lbI=(lbI-1+IMGS.length)%IMGS.length;updateLB();}
+
+/* IMAGE BOX UPLOADER */
+function loadImgBox(input) {
+  if (!input.files || !input.files[0]) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const box = input.closest('div[style]');
+    const preview = box.querySelector('.img-preview');
+    const img = preview.querySelector('img');
+    img.src = e.target.result;
+    preview.style.display = 'block';
+    // hide the placeholder icon and text
+    box.querySelectorAll(':scope > div:not(.img-preview)').forEach(el => el.style.display = 'none');
+  };
+  reader.readAsDataURL(input.files[0]);
+}
 
 /* FORM */
 function handleForm(e){

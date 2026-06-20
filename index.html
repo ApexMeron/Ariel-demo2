@@ -102,15 +102,22 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
 .sc-lnk{display:inline-block;margin-top:14px;font-family:'Barlow Condensed',sans-serif;font-size:.73rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);cursor:pointer;}
 .sc-lnk:hover{text-decoration:underline;}
 
-/* SLIDESHOW */
-.ss{position:relative;width:100%;height:68vh;overflow:hidden;background:#000;}
-.slide{position:absolute;inset:0;opacity:0;transition:opacity .9s ease;}
+/* =====================================================
+   GALLERY / SLIDESHOW — FIXED
+   - object-fit:contain so nothing is cropped
+   - black bars use sky colour for seamless look
+   - gradient overlays only at very bottom (subtle)
+   - thumbnails also use contain so they show full frame
+   ===================================================== */
+.ss{position:relative;width:100%;height:72vh;overflow:hidden;background:var(--sky);}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .9s ease;display:flex;align-items:center;justify-content:center;background:var(--sky);}
 .slide.active{opacity:1;}
-/* FIX: images fill the entire slide, centred, no letterboxing */
-.slide img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
-.ss-gb{position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,var(--sky) 0%,transparent 100%);pointer-events:none;z-index:2;}
-.ss-gt{position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(to bottom,rgba(10,22,40,.6) 0%,transparent 100%);pointer-events:none;z-index:2;}
-.ss-cap{position:absolute;bottom:30px;left:80px;z-index:4;}
+/* FIXED: contain so the full image is always visible */
+.slide img{width:100%;height:100%;object-fit:contain;object-position:center;display:block;}
+/* Subtle gradient only at very bottom so caption is readable */
+.ss-gb{position:absolute;bottom:0;left:0;right:0;height:100px;background:linear-gradient(to top,rgba(10,22,40,.85) 0%,transparent 100%);pointer-events:none;z-index:2;}
+.ss-gt{position:absolute;top:0;left:0;right:0;height:60px;background:linear-gradient(to bottom,rgba(10,22,40,.5) 0%,transparent 100%);pointer-events:none;z-index:2;}
+.ss-cap{position:absolute;bottom:20px;left:80px;z-index:4;}
 .ss-cl{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
 .ss-cn{font-family:'Bebas Neue',sans-serif;font-size:.95rem;letter-spacing:.08em;color:rgba(255,255,255,.38);}
 .ss-ab{position:absolute;top:50%;transform:translateY(-50%);z-index:5;background:rgba(10,22,40,.72);border:1px solid rgba(232,160,32,.3);color:var(--gold);width:50px;height:50px;font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;}
@@ -118,14 +125,14 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
 .ss-prog{position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(255,255,255,.1);z-index:5;}
 .ss-pb{height:100%;background:var(--gold);width:0%;}
 .ss-pp{position:absolute;bottom:26px;right:80px;z-index:5;background:rgba(10,22,40,.72);border:1px solid rgba(232,160,32,.3);color:var(--gold);padding:6px 14px;font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;}
-/* FIX: thumbnail bar scrolls itself, not the whole page */
+/* Thumbnail strip */
 .tb{padding:10px 80px 44px;overflow-x:auto;scrollbar-width:none;background:var(--sky);scroll-behavior:smooth;}
 .tb::-webkit-scrollbar{display:none;}
 .tr{display:flex;gap:5px;width:max-content;}
-.th{width:108px;height:64px;border:2px solid transparent;cursor:pointer;overflow:hidden;flex-shrink:0;opacity:.42;transition:border-color .2s,opacity .2s;}
+.th{width:108px;height:72px;border:2px solid transparent;cursor:pointer;overflow:hidden;flex-shrink:0;opacity:.42;transition:border-color .2s,opacity .2s;background:var(--sky);}
 .th.active{border-color:var(--gold);opacity:1;}
-/* FIX: thumbnails also fill their slot fully */
-.th img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
+/* FIXED: thumbnails also use contain */
+.th img{width:100%;height:100%;object-fit:contain;object-position:center;display:block;}
 
 /* WHY SECTION */
 .why-g{display:grid;grid-template-columns:1fr 1fr;gap:68px;align-items:center;}
@@ -135,7 +142,8 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
 .wf-ico{width:44px;height:44px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;color:var(--gold);}
 .wf-txt h4{font-family:'Barlow Condensed',sans-serif;font-size:.93rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px;}
 .wf-txt p{color:var(--mist);font-size:.87rem;line-height:1.6;}
-.why-img{position:relative;height:470px;overflow:hidden;border:1px solid var(--border);}
+/* FIXED: why-img uses aspect-ratio instead of fixed height so it scales on mobile */
+.why-img{position:relative;overflow:hidden;border:1px solid var(--border);}
 .why-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.72);}
 .why-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,.85) 0%,transparent 55%);}
 .why-lbl{position:absolute;bottom:22px;left:22px;}
@@ -220,8 +228,8 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
 .ms{border:1px solid var(--border);background:var(--card);display:grid;grid-template-columns:1fr 1fr;overflow:hidden;transition:border-color .3s;}
 .ms:hover{border-color:rgba(232,160,32,.4);}
 .mv{background:var(--sky);border-right:1px solid var(--border);position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;min-height:320px;cursor:pointer;}
-.mv-lbl{position:absolute;top:12px;left:12px;font-family:'Barlow Condensed',sans-serif;font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);background:rgba(10,22,40,.82);padding:3px 9px;border:1px solid var(--border);}
-.scan-ln{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:sc 2.2s linear infinite;}
+.mv-lbl{position:absolute;top:12px;left:12px;font-family:'Barlow Condensed',sans-serif;font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);background:rgba(10,22,40,.82);padding:3px 9px;border:1px solid var(--border);z-index:2;}
+.scan-ln{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:sc 2.2s linear infinite;z-index:1;pointer-events:none;}
 @keyframes sc{0%{top:0}100%{top:100%}}
 .up-txt{font-family:'Barlow Condensed',sans-serif;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mist);opacity:.62;text-align:center;line-height:1.6;}
 .up-btn{border:1px solid var(--border);padding:7px 16px;font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);background:transparent;cursor:pointer;margin-top:4px;transition:background .2s;}
@@ -247,28 +255,134 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
 .lb-b{position:absolute;background:rgba(10,22,40,.82);border:1px solid rgba(232,160,32,.3);color:var(--gold);width:50px;height:50px;font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;}
 .lb-b:hover{background:rgba(232,160,32,.2);}
 
-/* RESPONSIVE */
+/* =====================================================
+   RESPONSIVE — MOBILE FIXES
+   ===================================================== */
 @media(max-width:1024px){
+  /* Nav */
   nav{padding:0 18px;}
   .nav-links{display:none;}
   .ham{display:flex;}
-  .sec,.pilot-wrap,footer,.cta-band,.ph-txt{padding-left:22px;padding-right:22px;}
-  .hero-c{padding:0 22px;}
-  .hero-stats{right:22px;gap:20px;}
-  .sc-grid,.cert-grid{grid-template-columns:1fr 1fr;}
-  .why-g,.cg,.pilot-wrap,.sd{grid-template-columns:1fr;}
-  .p-stats,.comp-grid{grid-template-columns:repeat(2,1fr);}
-  .fg{grid-template-columns:1fr 1fr;}
-  .tb,.ss-cap{left:22px;right:22px;}
-  .ss-pp{right:22px;}
-  .svc-strip{grid-template-columns:repeat(2,1fr);height:220px;}
+
+  /* Section padding */
+  .sec{padding:52px 20px;}
+  .pilot-wrap{padding:52px 20px;}
+  footer{padding:40px 20px 20px;}
+  .cta-band{padding:36px 20px;}
+  .ph-txt{padding:0 20px 36px;}
+  .hero-c{padding:0 20px;}
+
+  /* Hero */
+  .hero-stats{
+    position:relative;
+    bottom:auto;right:auto;
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    padding:0 20px;
+    margin-top:24px;
+  }
+  .hero{
+    height:auto;
+    min-height:calc(100vh - 72px);
+    align-items:center;
+    flex-direction:column;
+    justify-content:center;
+    padding-bottom:40px;
+  }
+  .hero-c{max-width:100%;}
+  .hero-sub{max-width:100%;}
+
+  /* Ticker */
+  .ticker{
+    padding:14px 20px;
+    gap:24px;
+    overflow-x:auto;
+    scrollbar-width:none;
+  }
+  .ticker::-webkit-scrollbar{display:none;}
+
+  /* Service cards */
+  .sc-grid{grid-template-columns:1fr 1fr;}
+  .sc{padding:28px 22px;}
+
+  /* Slideshow */
+  .ss{height:56vw;min-height:260px;}
+  .ss-cap{left:20px;}
+  .ss-pp{right:20px;}
+  .tb{padding:8px 20px 32px;}
+
+  /* Why section */
+  .why-g{grid-template-columns:1fr;gap:36px;}
+  .why-img{aspect-ratio:16/9;}
+  .why-img img{width:100%;height:100%;object-fit:cover;}
+
+  /* Contact */
+  .cg{grid-template-columns:1fr;gap:32px;}
+
+  /* Services page */
+  .sd{grid-template-columns:1fr;}
+  .sd-img{min-height:280px;order:-1;}
+  .sd-info{padding:36px 20px;}
+  .svc-strip{grid-template-columns:repeat(2,1fr);height:200px;}
+
+  /* Credentials */
+  .cert-grid{grid-template-columns:1fr 1fr;}
+
+  /* Pilot */
+  .pilot-wrap{grid-template-columns:1fr;}
+  .pilot-ph{max-width:220px;margin:0 auto;}
+  .p-stats{grid-template-columns:repeat(2,1fr);}
+
+  /* Compliance */
+  .comp-grid{grid-template-columns:repeat(2,1fr);}
+
+  /* 3D Models */
   .ms{grid-template-columns:1fr;}
   .mv{min-height:240px;}
-  .ticker{padding:15px 22px;gap:20px;}
+  .mi{padding:28px 20px;}
+
+  /* Footer */
+  .fg{grid-template-columns:1fr 1fr;}
+  .fb-bot{flex-direction:column;align-items:flex-start;gap:8px;}
+
+  /* Models page grids */
+  .ms>div:first-child{order:0;}
 }
+
 @media(max-width:600px){
-  .sc-grid,.cert-grid,.comp-grid,.svc-strip,.fr,.fg{grid-template-columns:1fr;}
-  .hero h1{font-size:3.5rem;}
+  .sc-grid{grid-template-columns:1fr;}
+  .cert-grid{grid-template-columns:1fr;}
+  .comp-grid{grid-template-columns:1fr 1fr;}
+  .svc-strip{grid-template-columns:repeat(2,1fr);height:160px;}
+  .fr{grid-template-columns:1fr;}
+  .fg{grid-template-columns:1fr;}
+  .hero h1{font-size:3.4rem;}
+  .hero-stats{gap:16px;}
+  .sn{font-size:1.9rem;}
+
+  /* Gallery full-screen on tiny phones */
+  .ss{height:60vw;min-height:220px;}
+  .th{width:80px;height:54px;}
+
+  /* Ticker — animated on mobile instead of overflow */
+  .ticker{
+    animation:tickerScroll 18s linear infinite;
+    gap:28px;
+  }
+
+  /* CTA band stack */
+  .cta-band{flex-direction:column;align-items:flex-start;gap:18px;}
+
+  /* Models */
+  .ms{grid-template-columns:1fr;}
+
+  /* Why section image aspect ratio */
+  .why-img{aspect-ratio:4/3;}
+
+  /* 3D page two-col grids → 1 col */
+  .sec [style*="grid-template-columns:1fr 1fr"]{display:block!important;}
+  .sec [style*="grid-template-columns:1fr 1fr"] > *{margin-bottom:24px;}
 }
 </style>
 </head>
@@ -312,11 +426,12 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
         <span class="btn-g" onclick="go('home');delay(()=>jump('contact'))">Request a Quote</span>
         <span class="btn-w" onclick="go('credentials')">View Credentials</span>
       </div>
-    </div>
-    <div class="hero-stats">
-      <div><div class="sn">500+</div><div class="sl">Flights</div></div>
-      <div><div class="sn">5★</div><div class="sl">Rated</div></div>
-      <div><div class="sn">CAA</div><div class="sl">Licensed</div></div>
+      <!-- Stats moved inside hero-c so they flow below on mobile -->
+      <div class="hero-stats">
+        <div><div class="sn">500+</div><div class="sl">Flights</div></div>
+        <div><div class="sn">5★</div><div class="sl">Rated</div></div>
+        <div><div class="sn">CAA</div><div class="sl">Licensed</div></div>
+      </div>
     </div>
   </section>
 
@@ -343,6 +458,11 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
     </div>
   </section>
 
+  <!-- =====================================================
+       GALLERY — FIXED
+       Images ordered for visual flow: wide landscapes,
+       dramatic shots, heritage, night, then variety.
+       ===================================================== -->
   <section id="gallery" style="background:var(--sky);padding:0">
     <div style="padding:62px 80px 28px">
       <div class="lbl">Portfolio</div>
@@ -362,24 +482,24 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
 
   <div class="strip-wrap">
     <div class="strip-inner">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/12/Manchester-Night-Panorama-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/12/Above-Etihad-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/11/Kirkstall-Abbey--scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/12/Stanlow-Refinery-2-scaled.jpg" alt="">
       <img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251102_153850_0670_1762099464147_photo-1-scaled.jpg" alt="">
-      <img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251108_161240_0695_1762621285242_photo-scaled.jpg" alt="">
-      <img src="https://oversky.co.uk/wp-content/uploads/2025/02/dji_fly_20250110_091844_651_1736503038207_photo_optimized-scaled.jpg" alt="">
-      <img src="https://oversky.co.uk/wp-content/uploads/2025/02/dji_fly_20241229_083816_490_1735461512179_photo_optimized-scaled.jpg" alt="">
-      <img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251108_162408_0710_1762621244971_photo-scaled.jpg" alt="">
-      <img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251102_154336_0679_1762099490566_photo-scaled.jpg" alt="">
-      <img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251101_151526_0643_1762011097081_photo-scaled.jpg" alt="">
-      <img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251025_141234_0583_1761412603031_photo-scaled.jpg" alt="">
       <img src="https://oversky.co.uk/wp-content/uploads/2025/05/Bolton-Abbey-scaled.jpg" alt="">
-      <img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251019_173300_0526_1760892048541_photo-scaled.jpg" alt="">
-      <img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251024_170204_0567_1761325498756_photo-scaled.jpg" alt="">
-      <img src="https://oversky.co.uk/wp-content/uploads/2025/03/dji_fly_20250227_150516_480_1740668774824_photo_optimized-scaled.jpg" alt="">
-      <img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251102_153850_0670_1762099464147_photo-1-scaled.jpg" alt="">
       <img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251108_161240_0695_1762621285242_photo-scaled.jpg" alt="">
-      <img src="https://oversky.co.uk/wp-content/uploads/2025/02/dji_fly_20250110_091844_651_1736503038207_photo_optimized-scaled.jpg" alt="">
-      <img src="https://oversky.co.uk/wp-content/uploads/2025/02/dji_fly_20241229_083816_490_1735461512179_photo_optimized-scaled.jpg" alt="">
-      <img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251108_162408_0710_1762621244971_photo-scaled.jpg" alt="">
-      <img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251102_154336_0679_1762099490566_photo-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/12/dji_fly_20251128_211400_0944_1764364705992_photo-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/11/St-Josephs-Seminary-1-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/12/Manchester-Night-Panorama-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/12/Above-Etihad-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/11/Kirkstall-Abbey--scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/12/Stanlow-Refinery-2-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251102_153850_0670_1762099464147_photo-1-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/05/Bolton-Abbey-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251108_161240_0695_1762621285242_photo-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/12/dji_fly_20251128_211400_0944_1764364705992_photo-scaled.jpg" alt="">
+      <img src="https://oversky.co.uk/wp-content/uploads/2025/11/St-Josephs-Seminary-1-scaled.jpg" alt="">
     </div>
     <div class="strip-fl"></div><div class="strip-fr"></div>
   </div>
@@ -399,8 +519,8 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
           <span class="btn-w" onclick="go('home');delay(()=>jump('contact'))">Get a Quote</span>
         </div>
       </div>
-      <div class="why-img">
-        <img src="https://oversky.co.uk/wp-content/uploads/2025/12/Above-Etihad-scaled.jpg" alt="Above Etihad">
+      <div class="why-img" style="aspect-ratio:4/3;">
+        <img src="https://oversky.co.uk/wp-content/uploads/2025/12/Above-Etihad-scaled.jpg" alt="Above Etihad" style="width:100%;height:100%;object-fit:cover;">
         <div class="why-ov"></div>
         <div class="why-lbl"><div class="why-sub">North West Operations</div><div class="why-ttl">Every Angle Covered</div></div>
         <div class="why-tag">▶ CAA Authorised</div>
@@ -513,7 +633,7 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
       <div class="cert"><div class="cert-badge">🎓</div><h3>A1 Certificate of Competency</h3><div class="cert-iss">CAA · Open Category A1</div><p>Permits flight over uninvolved people with Class C1 aircraft, demonstrating thorough knowledge of airspace regulation, drone safety, and operational risk in populated environments.</p><span class="cert-st">✔ Active &amp; Valid</span></div>
       <div class="cert"><div class="cert-badge">🎓</div><h3>A3 Certificate of Competency</h3><div class="cert-iss">CAA · Open Category A3</div><p>Authorises operations in sparsely populated areas and at extended distances from people — essential for rural surveys, agricultural mapping, and large-scale site capture.</p><span class="cert-st">✔ Active &amp; Valid</span></div>
       <div class="cert"><div class="cert-badge">🛡️</div><h3>Flyer ID Registration</h3><div class="cert-iss">Civil Aviation Authority · UK</div><p>CAA-registered drone operator and flyer. All aircraft are properly registered and identifiable under current UK drone regulations.</p><span class="cert-st">✔ Registered</span></div>
-      <div class="cert"><div class="cert-badge">📸</div><h3>DJI Sky Pixel Community — Featured Creator</h3><div class="cert-iss">DJI · Global Drone Community Platform</div><p>OverSky imagery has been voted on and recognised by DJI administrators and the global DJI Sky Pixel community — a platform where millions of drone users worldwide rate, share, and celebrate outstanding aerial photography. Top-rated images and videos are selected by DJI's own team and featured on DJI's front-facing screens and digital platforms, putting our work in front of millions of viewers around the world.</p><span class="cert-st">✔ Community Recognised</span></div>
+      <div class="cert"><div class="cert-badge">📸</div><h3>DJI Sky Pixel Community — Featured Creator</h3><div class="cert-iss">DJI · Global Drone Community Platform</div><p>OverSky imagery has been voted on and recognised by DJI administrators and the global DJI Sky Pixel community — a platform where millions of drone users worldwide rate, share, and celebrate outstanding aerial photography.</p><span class="cert-st">✔ Community Recognised</span></div>
       <div class="cert"><div class="cert-badge">📋</div><h3>GDPR &amp; Data Compliance</h3><div class="cert-iss">Information Commissioner's Office</div><p>Fully compliant with UK GDPR when capturing aerial imagery. Proper procedures in place for data handling, retention, and privacy impact assessments.</p><span class="cert-st">✔ Compliant</span></div>
     </div>
   </section>
@@ -549,7 +669,7 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
   <section class="sec" style="background:var(--horizon)">
     <div class="lbl">DJI Sky Pixel — Featured Work</div>
     <h2 class="sec-h">RECOGNISED BY<br><span style="color:var(--gold)">MILLIONS OF VIEWERS</span></h2>
-    <p class="muted" style="max-width:620px;margin-bottom:10px">The DJI Sky Pixel community is one of the largest aerial photography platforms on the planet. DJI administrators vote on outstanding images and videos submitted by pilots worldwide — and the very best are featured on DJI's own screens and digital platforms, seen by millions of users globally. OverSky shots have earned that recognition.</p>
+    <p class="muted" style="max-width:620px;margin-bottom:10px">The DJI Sky Pixel community is one of the largest aerial photography platforms on the planet. DJI administrators vote on outstanding images and videos submitted by pilots worldwide — and the very best are featured on DJI's own screens and digital platforms, seen by millions of users globally.</p>
     <p class="muted" style="max-width:620px;margin-bottom:36px">The grid below showcases imagery captured and post-produced by OverSky that has received community recognition. Upload your own featured shots below to keep this gallery up to date.</p>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px">
 
@@ -619,7 +739,6 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
 <!-- ══════════════ 3D MODELS ══════════════ -->
 <div class="page" id="page-models">
 
-  <!-- HERO -->
   <div class="ph" style="height:60vh">
     <div class="ph-bg" style="background-image:url('https://oversky.co.uk/wp-content/uploads/2025/02/dji_fly_20250129_130914_40_1738156240259_photo-scaled.jpg')"></div>
     <div class="ph-grad"></div>
@@ -630,14 +749,13 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
     </div>
   </div>
 
-  <!-- INTRO + DJI BADGE -->
   <section class="sec" style="background:var(--sky)">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:68px;align-items:start">
       <div>
         <div class="lbl">Why OverSky 3D Scanning</div>
         <h2 class="sec-h">THE MOST ADVANCED<br>AERIAL DATA<br><span style="color:var(--gold)">IN THE NORTH WEST</span></h2>
         <p class="muted" style="font-size:1rem;line-height:1.9;margin-bottom:20px">Imagine handing a client, architect, engineer, or planning officer a fully interactive, measurable 3D model of their building, site, or asset — captured in a single day, from the air, with centimetre-level accuracy. That is exactly what OverSky delivers, flight after flight, across Greater Manchester and the wider North West.</p>
-        <p class="muted" style="font-size:1rem;line-height:1.9;margin-bottom:28px">Our drone photogrammetry service uses DJI hardware — flown on programmed autonomous flight paths — to capture hundreds of precisely geo-tagged, overlapping aerial images. Those images are processed into rich, fully textured 3D models you can rotate, measure, annotate, and share with anyone, anywhere, on any device.</p>
+        <p class="muted" style="font-size:1rem;line-height:1.9;margin-bottom:20px">Our drone photogrammetry service uses DJI hardware — flown on programmed autonomous flight paths — to capture hundreds of precisely geo-tagged, overlapping aerial images. Those images are processed into rich, fully textured 3D models you can rotate, measure, annotate, and share with anyone, anywhere, on any device.</p>
         <p class="muted" style="font-size:1rem;line-height:1.9;margin-bottom:32px">No scaffolding. No lane closures. No risk to personnel. Just stunning, actionable spatial data delivered in days — not weeks.</p>
         <div style="display:flex;gap:11px;flex-wrap:wrap">
           <span class="btn-g" onclick="go('home');delay(()=>jump('contact'))">Get a Free Quote</span>
@@ -645,7 +763,6 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
         </div>
       </div>
       <div>
-        <!-- DJI Sky Pixel community panel -->
         <div style="background:var(--card);border:1px solid var(--border);padding:32px;margin-bottom:20px">
           <div style="display:flex;align-items:center;gap:16px;margin-bottom:18px">
             <div style="width:56px;height:56px;background:var(--gold);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0">🌍</div>
@@ -654,15 +771,13 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
               <div style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-top:2px">Global Aerial Photography Community</div>
             </div>
           </div>
-          <p style="color:var(--mist);font-size:.88rem;line-height:1.7;margin-bottom:16px">DJI Sky Pixel is one of the largest aerial photography communities on the planet — millions of drone pilots worldwide sharing, rating, and celebrating outstanding aerial work. DJI administrators review the highest-rated submissions and select the very best to feature on DJI's own screens and digital platforms, where they are seen by millions of users globally.</p>
-          <p style="color:var(--mist);font-size:.88rem;line-height:1.7;margin-bottom:16px">OverSky imagery has been voted on by the Sky Pixel community and recognised by DJI's own team — with our shots and footage selected for that global front-page exposure. It is a level of recognition earned purely on the quality of the work, voted on by fellow pilots who know exactly what great aerial imagery looks like.</p>
+          <p style="color:var(--mist);font-size:.88rem;line-height:1.7;margin-bottom:16px">DJI Sky Pixel is one of the largest aerial photography communities on the planet — millions of drone pilots worldwide sharing, rating, and celebrating outstanding aerial work. DJI administrators review the highest-rated submissions and select the very best to feature on DJI's own screens and digital platforms.</p>
           <div style="border-top:1px solid var(--border);padding-top:16px;display:flex;gap:18px;flex-wrap:wrap">
             <div style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mist)">Platform<span style="display:block;color:var(--white);font-size:.86rem;font-family:'Barlow',sans-serif;font-weight:500;margin-top:2px;text-transform:none;letter-spacing:0">DJI Sky Pixel</span></div>
             <div style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mist)">Reach<span style="display:block;color:var(--white);font-size:.86rem;font-family:'Barlow',sans-serif;font-weight:500;margin-top:2px;text-transform:none;letter-spacing:0">Millions of Viewers</span></div>
             <div style="font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mist)">Voted By<span style="display:block;color:var(--gold);font-size:.86rem;font-family:'Barlow',sans-serif;font-weight:500;margin-top:2px;text-transform:none;letter-spacing:0">Global Drone Community</span></div>
           </div>
         </div>
-        <!-- stats -->
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px">
           <div class="comp"><div style="font-size:1.6rem">📸</div><h4>20,000+</h4><p>Aerial images processed into 3D models across North West missions</p></div>
           <div class="comp"><div style="font-size:1.6rem">📐</div><h4>±2cm</h4><p>Ground sampling distance achieved on architectural and heritage scans</p></div>
@@ -673,7 +788,6 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
     </div>
   </section>
 
-  <!-- SHOT GALLERY STRIP — real OverSky images -->
   <div style="background:var(--horizon);padding:0">
     <div style="padding:48px 80px 24px">
       <div class="lbl">Our Work — Shot &amp; Post-Produced by OverSky</div>
@@ -693,43 +807,21 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
     </div>
   </div>
 
-  <!-- USE CASES -->
   <section class="sec" style="background:var(--sky)">
     <div class="lbl">Who We Work With</div>
     <h2 class="sec-h">BUILT FOR<br><span style="color:var(--gold)">EVERY SECTOR</span></h2>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:36px">
-      <div style="background:var(--card);border:1px solid var(--border);padding:36px 32px">
-        <div style="font-size:2rem;margin-bottom:14px">🏗️</div>
-        <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">Property &amp; Construction</h3>
-        <p style="color:var(--mist);font-size:.88rem;line-height:1.75;margin-bottom:14px">Give buyers an immersive, measurable walkthrough of a development before a single brick is laid. Our photogrammetric scans are used by developers across the North West to market off-plan schemes with unprecedented impact — interactive 3D models that prospects can explore on any device, share with planning officers, and return to months later.</p>
-        <p style="color:var(--mist);font-size:.88rem;line-height:1.75">For construction teams, we provide progress scans at agreed intervals — giving project managers a permanent photographic and spatial record of every phase, from groundworks to handover.</p>
-      </div>
-      <div style="background:var(--card);border:1px solid var(--border);padding:36px 32px">
-        <div style="font-size:2rem;margin-bottom:14px">🏛️</div>
-        <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">Heritage &amp; Conservation</h3>
-        <p style="color:var(--mist);font-size:.88rem;line-height:1.75;margin-bottom:14px">We have scanned medieval abbeys, industrial landmarks, listed chapels, and Victorian civic buildings across the North West — including Kirkstall Abbey and St Joseph's Seminary. Each scan creates a permanent digital twin: a record of extraordinary detail that conservation officers, heritage trusts, and English Heritage can access, measure, and annotate indefinitely.</p>
-        <p style="color:var(--mist);font-size:.88rem;line-height:1.75">These are not photographs. They are spatially accurate, fully dimensional records that could one day be the only surviving documentation of a structure.</p>
-      </div>
-      <div style="background:var(--card);border:1px solid var(--border);padding:36px 32px">
-        <div style="font-size:2rem;margin-bottom:14px">⚙️</div>
-        <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">Engineering &amp; Inspection</h3>
-        <p style="color:var(--mist);font-size:.88rem;line-height:1.75;margin-bottom:14px">From the Stanlow petrochemical complex to railway infrastructure, OverSky delivers inspection-grade aerial data without putting any personnel at risk. Engineers receive annotated, measurable 3D models alongside the raw high-resolution imagery — giving them everything needed to identify defects, calculate clearances, and produce photographic evidence for insurance and regulatory submissions.</p>
-        <p style="color:var(--mist);font-size:.88rem;line-height:1.75">Our DJI hardware allows close-proximity inspection passes that are impossible with conventional methods, all within full CAA operational authorisation.</p>
-      </div>
-      <div style="background:var(--card);border:1px solid var(--border);padding:36px 32px">
-        <div style="font-size:2rem;margin-bottom:14px">📐</div>
-        <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">Architecture, Planning &amp; BIM</h3>
-        <p style="color:var(--mist);font-size:.88rem;line-height:1.75;margin-bottom:14px">Architects and planning consultants use our scans to fast-track planning applications, feed existing conditions data directly into BIM pipelines, and produce context models for design presentations. Our deliverable files — available in GLB, OBJ, LAS, and orthomosaic formats — plug directly into Revit, ArchiCAD, AutoCAD, and every major BIM platform.</p>
-        <p style="color:var(--mist);font-size:.88rem;line-height:1.75">What previously required weeks of measured survey work is now delivered in days, at a fraction of the cost, with greater accuracy than traditional ground-based methods.</p>
-      </div>
+      <div style="background:var(--card);border:1px solid var(--border);padding:36px 32px"><div style="font-size:2rem;margin-bottom:14px">🏗️</div><h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">Property &amp; Construction</h3><p style="color:var(--mist);font-size:.88rem;line-height:1.75;margin-bottom:14px">Give buyers an immersive, measurable walkthrough of a development before a single brick is laid. Our photogrammetric scans are used by developers across the North West to market off-plan schemes with unprecedented impact.</p><p style="color:var(--mist);font-size:.88rem;line-height:1.75">For construction teams, we provide progress scans at agreed intervals — giving project managers a permanent photographic and spatial record of every phase, from groundworks to handover.</p></div>
+      <div style="background:var(--card);border:1px solid var(--border);padding:36px 32px"><div style="font-size:2rem;margin-bottom:14px">🏛️</div><h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">Heritage &amp; Conservation</h3><p style="color:var(--mist);font-size:.88rem;line-height:1.75;margin-bottom:14px">We have scanned medieval abbeys, industrial landmarks, listed chapels, and Victorian civic buildings across the North West — including Kirkstall Abbey and St Joseph's Seminary. Each scan creates a permanent digital twin.</p><p style="color:var(--mist);font-size:.88rem;line-height:1.75">These are not photographs. They are spatially accurate, fully dimensional records that could one day be the only surviving documentation of a structure.</p></div>
+      <div style="background:var(--card);border:1px solid var(--border);padding:36px 32px"><div style="font-size:2rem;margin-bottom:14px">⚙️</div><h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">Engineering &amp; Inspection</h3><p style="color:var(--mist);font-size:.88rem;line-height:1.75;margin-bottom:14px">From the Stanlow petrochemical complex to railway infrastructure, OverSky delivers inspection-grade aerial data without putting any personnel at risk. Engineers receive annotated, measurable 3D models alongside the raw high-resolution imagery.</p><p style="color:var(--mist);font-size:.88rem;line-height:1.75">Our DJI hardware allows close-proximity inspection passes impossible with conventional methods, all within full CAA operational authorisation.</p></div>
+      <div style="background:var(--card);border:1px solid var(--border);padding:36px 32px"><div style="font-size:2rem;margin-bottom:14px">📐</div><h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">Architecture, Planning &amp; BIM</h3><p style="color:var(--mist);font-size:.88rem;line-height:1.75;margin-bottom:14px">Architects and planning consultants use our scans to fast-track planning applications, feed existing conditions data directly into BIM pipelines, and produce context models for design presentations. Our deliverable files plug directly into Revit, ArchiCAD, and AutoCAD.</p><p style="color:var(--mist);font-size:.88rem;line-height:1.75">What previously required weeks of measured survey work is now delivered in days, at a fraction of the cost.</p></div>
     </div>
   </section>
 
-  <!-- INTERACTIVE 3D SCANS -->
   <section class="sec" style="background:var(--horizon);padding-bottom:20px">
     <div class="lbl">Live Interactive Examples</div>
     <h2 class="sec-h">ROTATE. EXPLORE.<br><span style="color:var(--gold)">EXPERIENCE IT.</span></h2>
-    <p class="muted" style="max-width:620px;margin-bottom:44px">These are real scans from OverSky missions — fully interactive 3D models built from our own aerial photography. Click and drag to rotate, scroll to zoom. This is exactly what your clients receive.</p>
+    <p class="muted" style="max-width:620px;margin-bottom:44px">These are real scans from OverSky missions — fully interactive 3D models built from our own aerial photography. Click and drag to rotate, scroll to zoom.</p>
 
     <div class="ms" style="margin-bottom:18px">
       <div style="position:relative;min-height:420px;background:var(--sky);overflow:hidden">
@@ -740,7 +832,7 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
       <div class="mi">
         <div class="m-tag">Architectural Survey · Full Structure</div>
         <h3>AERIAL STRUCTURE SCAN</h3>
-        <p>Every surface captured in a single flight — a fully textured 3D mesh that engineers can measure, planners can interrogate, and clients can explore from any angle on any device. The level of detail achieved here is only possible with DJI sensor quality and the systematic flight patterns our pilots execute on every job.</p>
+        <p>Every surface captured in a single flight — a fully textured 3D mesh that engineers can measure, planners can interrogate, and clients can explore from any angle on any device.</p>
         <p style="color:var(--mist);font-size:.87rem;line-height:1.7;margin-top:10px">Use cases include planning applications, pre-purchase surveys, marketing visualisations, insurance documentation, and as-built records for BIM integration.</p>
         <div class="m-meta" style="margin-top:18px">
           <div class="mm-i">Method<span>DJI Photogrammetry</span></div>
@@ -754,8 +846,7 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
       <div class="mi" style="border-right:1px solid var(--border)">
         <div class="m-tag">Land &amp; Site Survey · Topographic</div>
         <h3>SITE &amp; TERRAIN SCAN</h3>
-        <p>From a single construction plot to hundreds of hectares, our drone surveys produce digital elevation models with sub-5cm accuracy. Developers use these to calculate earthwork volumes, model drainage, validate gradients, and track ground conditions across multiple site visits — with every scan precisely comparable to the last.</p>
-        <p style="color:var(--mist);font-size:.87rem;line-height:1.7;margin-top:10px">One morning's flight replaces weeks of ground survey work, saving contractors thousands and giving project managers data they can trust for the full duration of a scheme.</p>
+        <p>From a single construction plot to hundreds of hectares, our drone surveys produce digital elevation models with sub-5cm accuracy. Developers use these to calculate earthwork volumes, model drainage, validate gradients, and track ground conditions across multiple site visits.</p>
         <div class="m-meta" style="margin-top:18px">
           <div class="mm-i">Accuracy<span>±2–5cm GSD</span></div>
           <div class="mm-i">Output<span>DEM + Orthomosaic</span></div>
@@ -778,8 +869,7 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
       <div class="mi">
         <div class="m-tag">Heritage · Industrial · Infrastructure</div>
         <h3>HERITAGE &amp; COMPLEX ASSETS</h3>
-        <p>Listed buildings, bridges, industrial facilities, memorials — assets too valuable, too hazardous, or too complex to survey conventionally are exactly where OverSky delivers the greatest return. We have documented everything from medieval church towers to active petrochemical refineries, each scan becoming a permanent, shareable digital record.</p>
-        <p style="color:var(--mist);font-size:.87rem;line-height:1.7;margin-top:10px">Conservation officers, contractors, insurers, and local authorities can access these models indefinitely — measuring, annotating, and comparing against future scans to track change over time.</p>
+        <p>Listed buildings, bridges, industrial facilities, memorials — assets too valuable, too hazardous, or too complex to survey conventionally are exactly where OverSky delivers the greatest return.</p>
         <div class="m-meta" style="margin-top:18px">
           <div class="mm-i">Use Cases<span>BIM · Heritage · Inspection</span></div>
           <div class="mm-i">Delivery<span>5–10 Working Days</span></div>
@@ -789,66 +879,60 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
     </div>
   </section>
 
-  <!-- NUMBERS -->
   <section style="background:var(--sky);padding:60px 80px">
     <div class="lbl">The Business Case</div>
     <h2 class="sec-h" style="margin-bottom:36px">THE NUMBERS<br><span style="color:var(--gold)">SPEAK FOR THEMSELVES</span></h2>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:13px">
-      <div class="comp"><div style="font-size:1.8rem">📉</div><h4>Up to 80% Cost Saving</h4><p>vs traditional ground survey and scaffolding-based inspection — same data, delivered faster, at a fraction of the price.</p></div>
+      <div class="comp"><div style="font-size:1.8rem">📉</div><h4>Up to 80% Cost Saving</h4><p>vs traditional ground survey and scaffolding-based inspection — same data, delivered faster.</p></div>
       <div class="comp"><div style="font-size:1.8rem">⚡</div><h4>Same-Day Capture</h4><p>Complete structures and sites captured in hours. Interactive models delivered within 5–10 working days.</p></div>
       <div class="comp"><div style="font-size:1.8rem">📐</div><h4>±2cm Accuracy</h4><p>Sub-5cm ground sampling distance — precise enough for planning submissions, BIM, and legal records.</p></div>
-      <div class="comp"><div style="font-size:1.8rem">♾️</div><h4>A Permanent Record</h4><p>Your 3D scan never degrades. Share it, measure it, compare it against future scans, and return to it years later.</p></div>
+      <div class="comp"><div style="font-size:1.8rem">♾️</div><h4>A Permanent Record</h4><p>Your 3D scan never degrades. Share it, measure it, and return to it years later.</p></div>
     </div>
   </section>
 
-  <!-- PROGRAMMED FLIGHT PATHS -->
   <section class="sec" style="background:var(--sky)">
     <div class="lbl">Advanced Flight Technology</div>
     <h2 class="sec-h">PROGRAMMED<br><span style="color:var(--gold)">FLIGHT PATHS</span></h2>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:68px;align-items:center">
       <div>
         <p class="muted" style="font-size:.95rem;line-height:1.9;margin-bottom:20px">One of the most powerful tools in OverSky's arsenal is autonomous waypoint mission planning — the ability to programme a precise flight path before a single motor spins up. Rather than manually piloting every pass, we define the exact altitude, speed, overlap percentage, camera angle, and geographic boundary of each flight digitally, then execute it with machine precision.</p>
-        <p class="muted" style="font-size:.95rem;line-height:1.9;margin-bottom:20px">The result is data that no hand-flown mission can match. Every image is captured at exactly the right position and orientation, with consistent overlap between frames — eliminating the human variability that degrades photogrammetric quality. For 3D scanning, this is not a luxury. It is the difference between a model that meets engineering tolerances and one that doesn't.</p>
-        <p class="muted" style="font-size:.95rem;line-height:1.9;margin-bottom:28px">Programmed flights are also repeatable. We store every mission profile, meaning a site can be re-scanned weeks, months, or years later using an identical flight path — producing models that can be directly compared to track change over time. For construction monitoring, infrastructure inspection, and land management, this repeatability is invaluable.</p>
+        <p class="muted" style="font-size:.95rem;line-height:1.9;margin-bottom:20px">Programmed flights are also repeatable. We store every mission profile, meaning a site can be re-scanned weeks, months, or years later using an identical flight path — producing models that can be directly compared to track change over time.</p>
         <span class="btn-g" onclick="go('home');delay(()=>jump('contact'))">Enquire About Programmed Flights</span>
       </div>
       <div style="display:flex;flex-direction:column;gap:14px">
-        <div class="wf"><div class="wf-ico">🛣️</div><div class="wf-txt"><h4>Waypoint Mission Planning</h4><p>Every flight path is designed in mission planning software before takeoff — altitude, speed, camera angle, and image overlap all defined digitally for maximum precision and repeatability.</p></div></div>
-        <div class="wf"><div class="wf-ico">📐</div><div class="wf-txt"><h4>Consistent Image Overlap</h4><p>Photogrammetry requires precise overlap between frames to reconstruct accurate 3D geometry. Programmed paths guarantee this overlap on every pass — something manual flying cannot reliably achieve.</p></div></div>
-        <div class="wf"><div class="wf-ico">🔁</div><div class="wf-txt"><h4>Fully Repeatable Missions</h4><p>We archive every flight profile. Return visits use the identical path, producing data that can be compared directly across time — essential for progress monitoring, condition surveys, and change detection.</p></div></div>
-        <div class="wf"><div class="wf-ico">📡</div><div class="wf-txt"><h4>RTK GPS Precision</h4><p>Combined with RTK satellite positioning, our autonomous missions achieve centimetre-level geolocation accuracy on every image — eliminating the need for ground control points on most sites.</p></div></div>
+        <div class="wf"><div class="wf-ico">🛣️</div><div class="wf-txt"><h4>Waypoint Mission Planning</h4><p>Every flight path is designed in mission planning software before takeoff — altitude, speed, camera angle, and image overlap all defined digitally.</p></div></div>
+        <div class="wf"><div class="wf-ico">📐</div><div class="wf-txt"><h4>Consistent Image Overlap</h4><p>Photogrammetry requires precise overlap between frames to reconstruct accurate 3D geometry. Programmed paths guarantee this on every pass.</p></div></div>
+        <div class="wf"><div class="wf-ico">🔁</div><div class="wf-txt"><h4>Fully Repeatable Missions</h4><p>We archive every flight profile. Return visits use the identical path, producing data that can be compared directly across time.</p></div></div>
+        <div class="wf"><div class="wf-ico">📡</div><div class="wf-txt"><h4>RTK GPS Precision</h4><p>Combined with RTK satellite positioning, our autonomous missions achieve centimetre-level geolocation accuracy on every image.</p></div></div>
       </div>
     </div>
   </section>
 
-  <!-- DJI EQUIPMENT -->
   <section class="sec" style="background:var(--horizon)">
     <div class="lbl">Our Equipment</div>
     <h2 class="sec-h">FLOWN ON<br><span style="color:var(--gold)">DJI HARDWARE</span></h2>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:68px;align-items:center;margin-top:10px">
       <div>
         <p class="muted" style="font-size:.95rem;line-height:1.85;margin-bottom:20px">OverSky flies DJI — the world's most advanced consumer and professional drone hardware, trusted by pilots in more than 100 countries. We use DJI not because everyone does, but because the sensor quality, flight stability, and positioning accuracy of their platforms genuinely produces better spatial data than the alternatives.</p>
-        <p class="muted" style="font-size:.95rem;line-height:1.85;margin-bottom:20px">Our equipment is maintained to manufacturer specification, pre-flight inspected before every mission, and operates under active DJI Care Refresh warranty — giving our clients the assurance that the hardware behind their data is in peak condition every time we fly.</p>
-        <p class="muted" style="font-size:.95rem;line-height:1.85">The imagery produced by our DJI platform has been recognised by the DJI Sky Pixel community — a global network of millions of drone photographers whose administrators vote on and feature the best aerial work in the world. OverSky shots have been selected for that recognition, putting our work in front of audiences that span every continent.</p>
+        <p class="muted" style="font-size:.95rem;line-height:1.85;margin-bottom:20px">Our equipment is maintained to manufacturer specification, pre-flight inspected before every mission, and operates under active DJI Care Refresh warranty.</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:14px">
-        <div class="wf"><div class="wf-ico">📡</div><div class="wf-txt"><h4>DJI Mavic 3 — Primary Platform</h4><p>4/3 CMOS sensor, mechanical shutter, 5.1K resolution. The image quality holds up at 100% crop for engineering-grade inspection and produces photogrammetric data of exceptional density and colour accuracy.</p></div></div>
-        <div class="wf"><div class="wf-ico">🛰️</div><div class="wf-txt"><h4>RTK Satellite Positioning</h4><p>Centimetre-accurate GPS on every frame. When combined with our programmed flight paths, this produces models with geometric accuracy that manual flying and consumer-grade positioning simply cannot achieve.</p></div></div>
-        <div class="wf"><div class="wf-ico">🎛️</div><div class="wf-txt"><h4>Professional Post-Processing</h4><p>Every dataset is processed through industry-standard photogrammetry software and manually reviewed before delivery. The output you receive is checked, refined, and ready to use — not a raw automated export.</p></div></div>
+        <div class="wf"><div class="wf-ico">📡</div><div class="wf-txt"><h4>DJI Mavic 3 — Primary Platform</h4><p>4/3 CMOS sensor, mechanical shutter, 5.1K resolution. Engineering-grade inspection and photogrammetric data of exceptional quality.</p></div></div>
+        <div class="wf"><div class="wf-ico">🛰️</div><div class="wf-txt"><h4>RTK Satellite Positioning</h4><p>Centimetre-accurate GPS on every frame — eliminating the need for ground control points on most sites.</p></div></div>
+        <div class="wf"><div class="wf-ico">🎛️</div><div class="wf-txt"><h4>Professional Post-Processing</h4><p>Every dataset is processed through industry-standard photogrammetry software and manually reviewed before delivery.</p></div></div>
         <div class="wf"><div class="wf-ico">🔒</div><div class="wf-txt"><h4>DJI Care Refresh — Active</h4><p>Full manufacturer warranty on every aircraft in our fleet. Your mission is protected from the moment we arrive on site.</p></div></div>
       </div>
     </div>
   </section>
 
-  <!-- PROCESS -->
   <section class="sec" style="background:var(--sky)">
     <div class="lbl">The Process</div>
     <h2 class="sec-h">FROM BRIEFING<br>TO DELIVERY</h2>
     <div class="sc-grid" style="margin-top:34px">
-      <div class="sc"><span class="sc-n">01</span><span class="sc-ico">🗺️</span><h3>Site Assessment &amp; Airspace Planning</h3><p>We assess your site remotely and on the ground, plan the optimal flight grid for maximum model quality, handle all NOTAMs and airspace authorisation, and confirm weather windows — all before we arrive.</p></div>
-      <div class="sc"><span class="sc-n">02</span><span class="sc-ico">📸</span><h3>Programmed Aerial Capture</h3><p>Hundreds of precisely timed, geo-tagged images captured using DJI hardware at calibrated altitudes — overlapping to within millimetre tolerances. Every image is reviewed on-site before we stand down.</p></div>
-      <div class="sc"><span class="sc-n">03</span><span class="sc-ico">⚙️</span><h3>Photogrammetric Processing</h3><p>Images are processed through professional photogrammetry software, manually reviewed, and refined by our team to produce a fully textured, measurable 3D model meeting your accuracy specification.</p></div>
-      <div class="sc"><span class="sc-n">04</span><span class="sc-ico">📦</span><h3>Delivery in Your Format</h3><p>You receive a shareable interactive online model plus downloadable source files in GLB, OBJ, LAS, or orthomosaic format — ready for Revit, ArchiCAD, AutoCAD, planning portals, or client presentations.</p></div>
+      <div class="sc"><span class="sc-n">01</span><span class="sc-ico">🗺️</span><h3>Site Assessment &amp; Airspace Planning</h3><p>We assess your site remotely and on the ground, plan the optimal flight grid, handle all NOTAMs and airspace authorisation, and confirm weather windows — all before we arrive.</p></div>
+      <div class="sc"><span class="sc-n">02</span><span class="sc-ico">📸</span><h3>Programmed Aerial Capture</h3><p>Hundreds of precisely timed, geo-tagged images captured using DJI hardware at calibrated altitudes — overlapping to within millimetre tolerances. Every image is reviewed on-site.</p></div>
+      <div class="sc"><span class="sc-n">03</span><span class="sc-ico">⚙️</span><h3>Photogrammetric Processing</h3><p>Images are processed through professional photogrammetry software, manually reviewed, and refined to produce a fully textured, measurable 3D model meeting your accuracy specification.</p></div>
+      <div class="sc"><span class="sc-n">04</span><span class="sc-ico">📦</span><h3>Delivery in Your Format</h3><p>You receive a shareable interactive online model plus downloadable source files in GLB, OBJ, LAS, or orthomosaic format — ready for Revit, ArchiCAD, AutoCAD, or client presentations.</p></div>
     </div>
   </section>
 
@@ -868,24 +952,26 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
 
 <!-- ══════════════ JS ══════════════ -->
 <script>
+// Gallery images reordered for visual appeal:
+// Open with iconic wide landscape → dramatic heritage → industrial → night shots → variety
 const IMGS=[
-  {url:"https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251102_153850_0670_1762099464147_photo-1-scaled.jpg",label:"Aerial Shot"},
-  {url:"https://oversky.co.uk/wp-content/uploads/2025/12/dji_fly_20251128_211400_0944_1764364705992_photo-scaled.jpg",label:"Night Aerial"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/12/Manchester-Night-Panorama-scaled.jpg",label:"Manchester Night Panorama"},
   {url:"https://oversky.co.uk/wp-content/uploads/2025/12/Above-Etihad-scaled.jpg",label:"Above Etihad Stadium"},
-  {url:"https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251108_161240_0695_1762621285242_photo-scaled.jpg",label:"Aerial Survey"},
-  {url:"https://oversky.co.uk/wp-content/uploads/2025/02/dji_fly_20250110_091844_651_1736503038207_photo_optimized-scaled.jpg",label:"Winter Aerial"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/11/Kirkstall-Abbey--scaled.jpg",label:"Kirkstall Abbey"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/05/Bolton-Abbey-scaled.jpg",label:"Bolton Abbey"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/12/dji_fly_20251128_211400_0944_1764364705992_photo-scaled.jpg",label:"Night Aerial"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/12/Stanlow-Refinery-2-scaled.jpg",label:"Stanlow Refinery"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/11/St-Josephs-Seminary-1-scaled.jpg",label:"St Joseph's Seminary"},
   {url:"https://oversky.co.uk/wp-content/uploads/2025/12/Manchester-night-scaled.jpg",label:"Manchester Night"},
-  {url:"https://oversky.co.uk/wp-content/uploads/2025/02/dji_fly_20241229_083816_490_1735461512179_photo_optimized-scaled.jpg",label:"Countryside Aerial"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251102_153850_0670_1762099464147_photo-1-scaled.jpg",label:"Aerial Shot"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251108_161240_0695_1762621285242_photo-scaled.jpg",label:"Aerial Survey"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251101_151526_0643_1762011097081_photo-scaled.jpg",label:"North West Aerial"},
   {url:"https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251108_162408_0710_1762621244971_photo-scaled.jpg",label:"Urban Survey"},
   {url:"https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251102_154336_0679_1762099490566_photo-scaled.jpg",label:"Landscape Aerial"},
-  {url:"https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251101_151526_0643_1762011097081_photo-scaled.jpg",label:"North West Aerial"},
-  {url:"https://oversky.co.uk/wp-content/uploads/2025/11/Kirkstall-Abbey--scaled.jpg",label:"Kirkstall Abbey"},
-  {url:"https://oversky.co.uk/wp-content/uploads/2025/11/St-Josephs-Seminary-1-scaled.jpg",label:"St Joseph's Seminary"},
-  {url:"https://oversky.co.uk/wp-content/uploads/2025/12/Stanlow-Refinery-2-scaled.jpg",label:"Stanlow Refinery"},
   {url:"https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251025_141234_0583_1761412603031_photo-scaled.jpg",label:"Aerial Photography"},
-  {url:"https://oversky.co.uk/wp-content/uploads/2025/05/Bolton-Abbey-scaled.jpg",label:"Bolton Abbey"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/02/dji_fly_20250110_091844_651_1736503038207_photo_optimized-scaled.jpg",label:"Winter Aerial"},
+  {url:"https://oversky.co.uk/wp-content/uploads/2025/02/dji_fly_20241229_083816_490_1735461512179_photo_optimized-scaled.jpg",label:"Countryside Aerial"},
   {url:"https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251019_173300_0526_1760892048541_photo-scaled.jpg",label:"Countryside"},
-  {url:"https://oversky.co.uk/wp-content/uploads/2025/12/Manchester-Night-Panorama-scaled.jpg",label:"Manchester Night Panorama"},
   {url:"https://oversky.co.uk/wp-content/uploads/2025/11/dji_fly_20251024_170204_0567_1761325498756_photo-scaled.jpg",label:"Aerial View"},
   {url:"https://oversky.co.uk/wp-content/uploads/2025/03/dji_fly_20250227_150516_480_1740668774824_photo_optimized-scaled.jpg",label:"Spring Aerial"},
   {url:"https://oversky.co.uk/wp-content/uploads/2025/11/Screenshot_20251104_161813_Gallery-scaled.jpg",label:"Gallery Shot"},
@@ -912,7 +998,7 @@ function closeMob(){document.getElementById('mob').classList.remove('open');}
 
 /* SLIDESHOW */
 let ssI=0,ssPaused=false,ssProg=0;
-const SS_DUR=4000,SS_TICK=60;
+const SS_DUR=4500,SS_TICK=60;
 
 function buildSS(){
   const sl=document.getElementById('ss-slides');
@@ -950,7 +1036,6 @@ function ssGo(n){
   if(cur)cur.classList.add('active');
   if(curT){
     curT.classList.add('active');
-    // scroll only the thumbnail strip container, not the whole page
     const thumbStrip=document.getElementById('ss-th').parentElement;
     if(thumbStrip){
       const center=curT.offsetLeft-(thumbStrip.offsetWidth/2)+(curT.offsetWidth/2);
@@ -996,7 +1081,6 @@ function loadImgBox(input) {
     const img = preview.querySelector('img');
     img.src = e.target.result;
     preview.style.display = 'block';
-    // hide the placeholder icon and text
     box.querySelectorAll(':scope > div:not(.img-preview)').forEach(el => el.style.display = 'none');
   };
   reader.readAsDataURL(input.files[0]);

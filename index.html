@@ -198,7 +198,7 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
 .comp p{font-size:.8rem;color:var(--mist);}
 
 /* DJI COMMUNITY GALLERY — real photos displayed as actual images, not upload placeholders */
-.dji-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;}
+.dji-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:3px;}
 .dji-cell{position:relative;aspect-ratio:1;overflow:hidden;cursor:pointer;}
 .dji-cell img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .4s,filter .3s;filter:brightness(.9);}
 .dji-cell:hover img{transform:scale(1.06);filter:brightness(1.1);}
@@ -263,7 +263,7 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
   .mi{padding:28px 20px;}
   .fg{grid-template-columns:1fr 1fr;}
   .fb-bot{flex-direction:column;align-items:flex-start;gap:8px;}
-  .dji-grid{grid-template-columns:repeat(2,1fr);}
+  .dji-grid{grid-template-columns:repeat(3,1fr);}
 }
 @media(max-width:600px){
   .sc-grid{grid-template-columns:1fr;}
@@ -278,7 +278,7 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
   .ss{height:60vw;min-height:220px;}
   .th{width:80px;height:54px;}
   .cta-band{flex-direction:column;align-items:flex-start;gap:18px;}
-  .dji-grid{grid-template-columns:repeat(2,1fr);}
+  .dji-grid{grid-template-columns:repeat(3,1fr);}
 }
 </style>
 </head>
@@ -553,44 +553,131 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
     <p class="muted" style="max-width:620px;margin-bottom:36px">Every shot below is from OverSky's own portfolio — the quality of work that earned us recognition on DJI's global community platform.</p>
 
     <div class="dji-grid">
-      <!-- Row 1: Most dramatic/iconic shots — most likely to have earned community recognition -->
-      <div class="dji-cell" onclick="openLB(6)">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczNFg7GuCJTKtqtwylTdwQD6ZBo9-GMYz3E-KYvG-K2jtwicMSkzcJKJKZFgGE8Mwjz4VA8xFdHWBTFrcYRNadzoVPnd5P0u7I2uwPV4vamotT1CWnE=w800" alt="OverSky Aerial">
-        <div class="dji-badge">Featured · DJI Sky Pixel</div>
-        <div class="dji-star">⭐ DJI Featured</div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczNL2Y7xEKnf383_riNZYHTCORwBAKs3sRa-erWQPpeDJq1TE396ap9duFN7Ur0skLflbR5GANv6EEVRi4TGCtz6rTNKNep2WSEqjHW47vrRJVx_Wxk=w800" alt="Aerial Landscape" loading="lazy">
+        <div class="dji-badge">Featured by DJI</div><div class="dji-star">⭐ Featured by DJI</div>
       </div>
-      <div class="dji-cell" onclick="openLB(3)">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczNAolNM6qKiePUyO30RgnXLx3AXsAy2rF0-PAZYliYl75M6Qy_6iSrZj4K7Lk1xaZnoY2TvTRDI528XIceih28DHXl2vugUg8MZEU6Jmq3q7DU_Mvk=w800" alt="OverSky Aerial">
-        <div class="dji-badge">Community Pick</div>
-        <div class="dji-star">⭐ DJI Featured</div>
-      </div>
-      <div class="dji-cell" onclick="openLB(14)">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczNwIQYv8XWwKBxOyA3PVmmKyFMyy7Vlf9lIz0h_s23N9CGpx-Uk0K2RlwdB-Tvl-lyQ6-LTEJZMk9sZHw3n6hqpJ_v3T-iHZHgjxMsY7W7qPbRpnc8=w800" alt="OverSky Aerial">
-        <div class="dji-badge">Sky Pixel Pick</div>
-        <div class="dji-star">⭐ DJI Featured</div>
-      </div>
-      <div class="dji-cell" onclick="openLB(2)">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczM_eKJsMC0e_wGBVulA0IBpl9KOdp6-hF2uKOLdHQvxuBRT94yfbMhEuzOTWJsqYGUd_Mln-5hPHecxT71qtutHdB7pgtTVOBkWW3x-U1prnhvMZ7Q=w800" alt="OverSky Aerial">
-        <div class="dji-badge">Community Voted</div>
-        <div class="dji-star">⭐ DJI Featured</div>
-      </div>
-      <!-- Row 2: Further award-worthy/standout shots -->
-      <div class="dji-cell" onclick="openLB(0)">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczNL2Y7xEKnf383_riNZYHTCORwBAKs3sRa-erWQPpeDJq1TE396ap9duFN7Ur0skLflbR5GANv6EEVRi4TGCtz6rTNKNep2WSEqjHW47vrRJVx_Wxk=w800" alt="OverSky Aerial">
-        <div class="dji-badge">Featured · DJI Sky Pixel</div>
-      </div>
-      <div class="dji-cell" onclick="openLB(9)">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczOSk2BFEhC5WD5qNI1vaEi-nUFmnQqlRVsu4j9aS_W5DvrE1jrryRFcbbFXbWEEAcMg-elnYzlmGHc2Hih1n4Rrtoqmorbeedc-o8pVi_T9D7g1eqc=w800" alt="OverSky Aerial">
-        <div class="dji-badge">Community Recognised</div>
-      </div>
-      <div class="dji-cell" onclick="openLB(16)">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczPyN4mO5_AZaEyryrycMydxUMuO4YyChKdjKKRNxkCYTp8ffPys9QsaXnw541otMTYnuG4xNR0I1Oi-PUiXQGDxCSV7tvlRFP7z-SzmxE8LjDVnREI=w800" alt="OverSky Aerial">
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMLeWF8gJZkxB__s1CBtIh9plxI3zI79gojb-mm1i0T1s20gpm_Z6ZAq9-fxjFrjV8qvXcvdnQPkDBYUsVFJT9t0jnBvoGBS4lcJlyqGadYzhAW-Xc=w800" alt="North West Aerial" loading="lazy">
         <div class="dji-badge">Sky Pixel Portfolio</div>
       </div>
-      <div class="dji-cell" onclick="openLB(8)">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczMGThqKSE5ewCYrZeOYEpZW8Ro0HVPHU7ilO7Ccojib5pYIQohxBeOQEbU8HwAC6MU3s3PTgeTuff4fbs6i3jdSCh6fA1-8ffmrUtk5cUorLxk5Y8o=w800" alt="OverSky Aerial">
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczM_eKJsMC0e_wGBVulA0IBpl9KOdp6-hF2uKOLdHQvxuBRT94yfbMhEuzOTWJsqYGUd_Mln-5hPHecxT71qtutHdB7pgtTVOBkWW3x-U1prnhvMZ7Q=w800" alt="Aerial View" loading="lazy">
+        <div class="dji-badge">DJI Sky Pixel Pick</div><div class="dji-star">⭐ Featured by DJI</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczNAolNM6qKiePUyO30RgnXLx3AXsAy2rF0-PAZYliYl75M6Qy_6iSrZj4K7Lk1xaZnoY2TvTRDI528XIceih28DHXl2vugUg8MZEU6Jmq3q7DU_Mvk=w800" alt="Drone Photography" loading="lazy">
+        <div class="dji-badge">Community Recognised</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczOw05IozNVh7tlFNccN3RiY5vfpK5MYsbdvPL5ITmM2UpHy1Cxm-NOcT-DDEJJ7HJFVTxX1GObn2v80G_PD6vLtAclfkiUQ5porhGkAKC4N9IL9niU=w800" alt="Greater Manchester" loading="lazy">
         <div class="dji-badge">DJI Community</div>
       </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczNFEssL0N4L2gWSHZo-HTavQm9d9278d6BXFqPqgPTzReDQniyKeFoSOKac7yBsy9cOoktikOFhenX0OYoCF81r9tWmCS0akiJX23a6wAtyzde-iDw=w800" alt="Aerial Survey" loading="lazy">
+        <div class="dji-badge">Sky Pixel Featured</div><div class="dji-star">⭐ Featured by DJI</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczNFg7GuCJTKtqtwylTdwQD6ZBo9-GMYz3E-KYvG-K2jtwicMSkzcJKJKZFgGE8Mwjz4VA8xFdHWBTFrcYRNadzoVPnd5P0u7I2uwPV4vamotT1CWnE=w800" alt="Landscape Aerial" loading="lazy">
+        <div class="dji-badge">OverSky Gallery</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMGThqKSE5ewCYrZeOYEpZW8Ro0HVPHU7ilO7Ccojib5pYIQohxBeOQEbU8HwAC6MU3s3PTgeTuff4fbs6i3jdSCh6fA1-8ffmrUtk5cUorLxk5Y8o=w800" alt="Professional Drone Shot" loading="lazy">
+        <div class="dji-badge">Featured by DJI</div><div class="dji-star">⭐ Featured by DJI</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczPutQcLw4HmoylroIfhM2047fMJKAck_cNP-779k2o9ivqB2N8cyW7gyylNAhoYoPGHhTKZALgjJF7RiGC2RFSFv7bRRT2sHiuOBCFC670A3tGdBNs=w800" alt="Aerial Photography" loading="lazy">
+        <div class="dji-badge">Sky Pixel</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczOSk2BFEhC5WD5qNI1vaEi-nUFmnQqlRVsu4j9aS_W5DvrE1jrryRFcbbFXbWEEAcMg-elnYzlmGHc2Hih1n4Rrtoqmorbeedc-o8pVi_T9D7g1eqc=w800" alt="Drone Survey" loading="lazy">
+        <div class="dji-badge">DJI Front Page</div><div class="dji-star">⭐ Featured by DJI</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMeo97lHytV_EpQRxpl6J9H9aVnlJlDvyaXZlaulrZBSVtOPiIAXMhY1WWUJ4y_qyEhzlbF_dC18A_Pk3ZHGVbhSVYuu8xaNlZbnLg7PA4OT4SjmyY=w800" alt="Aerial Shot" loading="lazy">
+        <div class="dji-badge">Community Vote</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczOExbtumwm3IKBDKmwiFq-90bZZrmhCvVKT5Qx1oFR7QvaC7jIZk8CSXZqSmqVC1iOFUaOK_bAWaFCotPLKL0VlBC9ne8hHGmakBEyoOq_jCI9ltg0=w800" alt="OverSky Photography" loading="lazy">
+        <div class="dji-badge">Featured by DJI</div><div class="dji-star">⭐ Featured by DJI</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczNlo15BZ-6tXHVaqU4dgSs5Bf6d2YnOhKUBI1JDboka6DOJXX2EhxFg3J6DBFOzHmQaHV4d3r5dmVlqkq6Ik13WBE5b6DBrp7pu-GUqlAJKvgxoi4s=w800" alt="Heritage Aerial" loading="lazy">
+        <div class="dji-badge">Aerial Pick</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczNwIQYv8XWwKBxOyA3PVmmKyFMyy7Vlf9lIz0h_s23N9CGpx-Uk0K2RlwdB-Tvl-lyQ6-LTEJZMk9sZHw3n6hqpJ_v3T-iHZHgjxMsY7W7qPbRpnc8=w800" alt="North West Drone" loading="lazy">
+        <div class="dji-badge">Sky Pixel Star</div><div class="dji-star">⭐ Featured by DJI</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczNlrEUdlfgLuAwUTeDSmZQIVPp05667IS6MGEoa6WgG8ofAO53vJyBzGLRVQwuG0CACDWVnzGgPX4dheoSexaaJD_lwmFBvYd2Osf-NJYXNg_moIqk=w800" alt="Aerial Photography" loading="lazy">
+        <div class="dji-badge">Sky Pixel Portfolio</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMLrK5CDnLfwqGZgYBw0SKFJi58gTLUPfap3RxlFR6woBB9_kke023ozSPBQfOi4kieRd127tfAFUifHayD2-egf1LZalVREU9Kcy0moqR6Q79rSj0=w800" alt="DJI Aerial" loading="lazy">
+        <div class="dji-badge">Featured by DJI</div><div class="dji-star">⭐ Featured by DJI</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczPyN4mO5_AZaEyryrycMydxUMuO4YyChKdjKKRNxkCYTp8ffPys9QsaXnw541otMTYnuG4xNR0I1Oi-PUiXQGDxCSV7tvlRFP7z-SzmxE8LjDVnREI=w800" alt="Inspection Aerial" loading="lazy">
+        <div class="dji-badge">Community Recognised</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczOW0409766G-DlkL4TBPc6fiLr3vZLv1r7vc47PVyX19xrkdhUQv1rmBPFFVGU_hNoPEE54ZzddQPvDRGYcjoyUQKZx1uLAUEQAjF-vWZhz08n6n6c=w800" alt="OverSky Portfolio" loading="lazy">
+        <div class="dji-badge">DJI Sky Pixel Pick</div><div class="dji-star">⭐ Featured by DJI</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMqENrQeIhkVp9y6neOp6epUCdl6TI7n9StqSkieWiJGgysGzQHYN87zkF2P9H_TNnIFJ2ZtonCfr4gR8lTsOsEAynrKocoi1ioOVT3EYFiaM8WTdA=w800" alt="Aerial Capture" loading="lazy">
+        <div class="dji-badge">DJI Community</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczNmkTOs_LxOnzxGYiEeN2NAWSMOUT-mJZ4sbwL9AZHlqz5ycFyFv7Sz7w1kAth9K_a7BqUfQ7y7COAY8NJSRi0JXkYsNZmTMdQJ0XQshWRkVIH1fZM=w800" alt="Drone Flight" loading="lazy">
+        <div class="dji-badge">Sky Pixel Featured</div><div class="dji-star">⭐ Featured by DJI</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczOJxSEf7LWxIsQbVOlHLKP8VejVUtDuv-hJB-_DqOsbYhXDd9TzqwExQmaTijSSxV1ZxVq8286S3m3l9PPNm6MlSM6rw-VRRTuEFWZz3oMYXp3CNSg=w800" alt="Sky View" loading="lazy">
+        <div class="dji-badge">OverSky Gallery</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczOln3mvEU6-sdOmrHgVlwn6MGd_uin0OZMFH-_6rF72-NdnXa_yFjpZqk6w9MWB5T1DiHtxAxq7btv62nQWEkvX11FiuxVCZcvy3orBMyQQ36MjdDs=w800" alt="Aerial Scene" loading="lazy">
+        <div class="dji-badge">Featured by DJI</div><div class="dji-star">⭐ Featured by DJI</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMzDlHvZ0UWw6wcOZyWQhmTDahTjgP_I9a6xlaQVnsmMpQpuWzV6TweumD1P35yBD2h6tXUhHbC3nKxQuzLG4pddIXed5rOLdct7IS089D1hgjxnfE=w800" alt="Drone View" loading="lazy">
+        <div class="dji-badge">Sky Pixel</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMb1a3G7Dk1uB7up9jGdDTOmbI2lu8qSbWqVMrq6tfBUes51mlI1BXwhGuFCPZSdceR7gU0d7WV0otN3M9VV3gXiV8RMgvpBsP2diETLY4ikmi1ArM=w800" alt="Aerial Shot" loading="lazy">
+        <div class="dji-badge">Community Vote</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczPkrzZIgMOzYXllCuWhrv-kaOTm0oHoU5y-7au10iWZjHhPdzxuErBTYUHbgVzG7XrKHqLLEQ0jHUMNfFhs_Y4u1FKO5ZHldazUObor6Uv4OjHs2oU=w800" alt="DJI Capture" loading="lazy">
+        <div class="dji-badge">DJI Front Page</div><div class="dji-star">⭐ Featured by DJI</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczNHtY2nNUtryb71Mh_M9jSJqZnbgs9_wV4kqJET2mJMbT3u_Pbpc2_7YpBSmoYNQcmgCCa3p31QVeRMgfjN63igMpszCJS2CmFoPJ0DHgjfa8kqsgE=w800" alt="Aerial Photography" loading="lazy">
+        <div class="dji-badge">Aerial Pick</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczN4LaQpC5JxzrJG_klYnqZfGUegWgu9wZ7_jy3A2N88ygcOHN5TWNGOU4ADtjz1eszbrWZjDOcYc4GSkgc74cikbq9m1qAjFf4V7uUt7ttST_WRhlA=w800" alt="Sky Pixel" loading="lazy">
+        <div class="dji-badge">Featured by DJI</div><div class="dji-star">⭐ Featured by DJI</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMH2fXQDiHZhqpyoIOH9aka_-xhLi4DyDx0CSvPQ5-CZQSmkD_p0_Xz1BU5FMmqugvJYanRRvnbB4pnSIBXgr-t0i27wW83EFWyy3Hz8CxuzZiH_sY=w800" alt="Drone Photography" loading="lazy">
+        <div class="dji-badge">Sky Pixel Portfolio</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMtlGAQhPo2uDni29No_ZbvbSboM0wD0lFyf_GT2JJ4_doD2LdKKAi2vPeAhtzFErPZAWR6K5O45j8i8xmI-TZ8WBlCwk8buyQ1Csw7IIyz3ejBPys=w800" alt="Aerial View" loading="lazy">
+        <div class="dji-badge">Sky Pixel Star</div><div class="dji-star">⭐ Featured by DJI</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczORfWl7hM51RRr04Zvyja0H8yePZyGySGiHtvLFR-Yv9XlwpYKDsQoOjFhW_zmwAPvwhHJkgs5jjOnqWf_u3MlGJS_TUw7h6Mu_StwLAU6yObqFS4Q=w800" alt="North West Sky" loading="lazy">
+        <div class="dji-badge">Community Recognised</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczO4ACxQ9EayWCIz4UBFUUqaZhRaX-77bA3XVziI9HWknmJfKtQwQPj3_zk5V0Mjt8S51d5dlukeVBNeygva2MrQmgOCW9gV7HAwAo5lF4UlfCHGrOg=w800" alt="Aerial Panorama" loading="lazy">
+        <div class="dji-badge">Featured by DJI</div><div class="dji-star">⭐ Featured by DJI</div>
+      </div>
+    </div>
     </div>
   </section>
 

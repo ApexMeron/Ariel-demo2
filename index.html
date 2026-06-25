@@ -63,7 +63,7 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
 .caa span{font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mist);}
 .caa strong{color:var(--gold);}
 
-.hero{position:relative;height:calc(100vh - 72px);display:flex;align-items:center;overflow:hidden;}
+.hero{position:relative;min-height:calc(100vh - 72px);display:flex;align-items:center;overflow:hidden;padding:60px 0;}
 .hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,22,40,.88) 0%,rgba(16,42,76,.7) 100%),url('https://lh3.googleusercontent.com/pw/AP1GczNFg7GuCJTKtqtwylTdwQD6ZBo9-GMYz3E-KYvG-K2jtwicMSkzcJKJKZFgGE8Mwjz4VA8xFdHWBTFrcYRNadzoVPnd5P0u7I2uwPV4vamotT1CWnE=w1920') center/cover no-repeat;}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(232,160,32,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(232,160,32,.05) 1px,transparent 1px);background-size:60px 60px;animation:gd 20s linear infinite;}
 @keyframes gd{to{background-position:60px 60px}}
@@ -74,9 +74,11 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
 .hero h1 em{color:var(--gold);font-style:normal;}
 .hero-sub{font-size:1.03rem;line-height:1.75;color:var(--mist);margin-bottom:38px;max-width:450px;}
 .hero-acts{display:flex;gap:13px;flex-wrap:wrap;}
-.hero-stats{position:absolute;bottom:42px;right:80px;display:flex;gap:42px;z-index:2;}
-.sn{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--gold);line-height:1;}
-.sl{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mist);}
+.hero-stats{display:flex;gap:0;margin-top:48px;border-top:1px solid rgba(232,160,32,.25);padding-top:28px;}
+.hero-stat{padding-right:36px;margin-right:36px;border-right:1px solid rgba(232,160,32,.2);}
+.hero-stat:last-child{border-right:none;padding-right:0;margin-right:0;}
+.sn{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--gold);line-height:1;}
+.sl{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mist);margin-top:4px;}
 
 .ticker{background:var(--gold);padding:17px 80px;display:flex;gap:42px;align-items:center;overflow:hidden;flex-wrap:nowrap;}
 .ti{font-family:'Barlow Condensed',sans-serif;font-size:.79rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sky);white-space:nowrap;display:flex;align-items:center;gap:10px;}
@@ -99,8 +101,8 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
 .slide{position:absolute;inset:0;opacity:0;transition:opacity .9s ease;}
 .slide.active{opacity:1;}
 .slide img{width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;}
-.ss-gb{position:absolute;bottom:0;left:0;right:0;height:90px;background:linear-gradient(to top,rgba(10,22,40,.9) 0%,transparent 100%);pointer-events:none;z-index:2;}
-.ss-gt{position:absolute;top:0;left:0;right:0;height:60px;background:linear-gradient(to bottom,rgba(10,22,40,.5) 0%,transparent 100%);pointer-events:none;z-index:2;}
+.ss-gb{position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(to top,rgba(10,22,40,.7) 0%,transparent 100%);pointer-events:none;z-index:2;}
+.ss-gt{position:absolute;top:0;left:0;right:0;height:30px;background:linear-gradient(to bottom,rgba(10,22,40,.3) 0%,transparent 100%);pointer-events:none;z-index:2;}
 .ss-cap{position:absolute;bottom:20px;left:80px;z-index:4;}
 .ss-cl{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
 .ss-cn{font-family:'Bebas Neue',sans-serif;font-size:.95rem;letter-spacing:.08em;color:rgba(255,255,255,.38);}
@@ -319,9 +321,9 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
         <span class="btn-w" onclick="go('credentials')">View Credentials</span>
       </div>
       <div class="hero-stats">
-        <div><div class="sn">500+</div><div class="sl">Flights</div></div>
-        <div><div class="sn">5★</div><div class="sl">Rated</div></div>
-        <div><div class="sn">CAA</div><div class="sl">Licensed</div></div>
+        <div class="hero-stat"><div class="sn">500+</div><div class="sl">Flights</div></div>
+        <div class="hero-stat"><div class="sn">5★</div><div class="sl">Rated</div></div>
+        <div class="hero-stat"><div class="sn">CAA</div><div class="sl">Licensed</div></div>
       </div>
     </div>
   </section>
@@ -357,7 +359,7 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
     <div class="ss" id="ss">
       <div id="ss-slides"></div>
       <div class="ss-gb"></div><div class="ss-gt"></div>
-      <div class="ss-cap"><div class="ss-cl" id="ss-lbl">Aerial Shot</div><div class="ss-cn" id="ss-num">01 / 18</div></div>
+      <div class="ss-cap"><div class="ss-cl" id="ss-lbl">Aerial Shot</div><div class="ss-cn" id="ss-num">01 / 32</div></div>
       <button class="ss-ab" style="left:18px" onclick="ssPrev()">&#8592;</button>
       <button class="ss-ab" style="right:18px" onclick="ssNext()">&#8594;</button>
       <div class="ss-prog"><div class="ss-pb" id="ss-bar"></div></div>
@@ -554,130 +556,135 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
 
     <div class="dji-grid">
       <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczNL2Y7xEKnf383_riNZYHTCORwBAKs3sRa-erWQPpeDJq1TE396ap9duFN7Ur0skLflbR5GANv6EEVRi4TGCtz6rTNKNep2WSEqjHW47vrRJVx_Wxk=w800" alt="Aerial Landscape" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczPzASThGfexUNiq8LQ96y5v-RMqHfAgqC5Hl641QhYCeZHnC6O_rokcuMmRU5NmaQTsRjORSRzua8LxSPGNgUrfOAaumzaJha4Ge-awByvvbNFy2WM=w800" alt="Winter Countryside" loading="lazy">
         <div class="dji-badge">Featured by DJI</div><div class="dji-star">⭐ Featured by DJI</div>
       </div>
       <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczMLeWF8gJZkxB__s1CBtIh9plxI3zI79gojb-mm1i0T1s20gpm_Z6ZAq9-fxjFrjV8qvXcvdnQPkDBYUsVFJT9t0jnBvoGBS4lcJlyqGadYzhAW-Xc=w800" alt="North West Aerial" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczOkzp42L8UAKRAYEUfIL3QVhMxEEVNPGXFk1vG35KqY4IclMebK_Vb6gXK9_zmY51jATFXZLAP3tvNrmHKBRhbo1noqMX4XP6R7PuwpJRwMY6wc-JI=w800" alt="Manchester Nightscape" loading="lazy">
         <div class="dji-badge">Sky Pixel Portfolio</div>
       </div>
       <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczM_eKJsMC0e_wGBVulA0IBpl9KOdp6-hF2uKOLdHQvxuBRT94yfbMhEuzOTWJsqYGUd_Mln-5hPHecxT71qtutHdB7pgtTVOBkWW3x-U1prnhvMZ7Q=w800" alt="Aerial View" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMx_45X8LujcpCZi-4HiC_CSB4K8q4HOBr6Y-arDdLbHJo7GhV8r2WhMgEHETkfSt_wFSXFSyP3aKkHlcv_ZgjUIcB-zPEOi-MsWDEdcVxWtdhvOmY=w800" alt="Aerial Panorama" loading="lazy">
         <div class="dji-badge">DJI Sky Pixel Pick</div><div class="dji-star">⭐ Featured by DJI</div>
       </div>
       <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczNAolNM6qKiePUyO30RgnXLx3AXsAy2rF0-PAZYliYl75M6Qy_6iSrZj4K7Lk1xaZnoY2TvTRDI528XIceih28DHXl2vugUg8MZEU6Jmq3q7DU_Mvk=w800" alt="Drone Photography" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczPhpugFaeSfBNXjHnK-2tR3ZBYZyj2X7wGqeIFp9mvEoUAkcV3VkRVpm1ODVKosfWndUCpLEkYbgqkSENWBjDd4CtNxlLEfZ-c12J1j3WmXXspaOWk=w800" alt="Bolton Abbey" loading="lazy">
         <div class="dji-badge">Community Recognised</div>
       </div>
       <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczOw05IozNVh7tlFNccN3RiY5vfpK5MYsbdvPL5ITmM2UpHy1Cxm-NOcT-DDEJJ7HJFVTxX1GObn2v80G_PD6vLtAclfkiUQ5porhGkAKC4N9IL9niU=w800" alt="Greater Manchester" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczM1D8lghWJU3ejVquIx7O0V4RfMfcs6dY-m0tt6qfaFQfnk3BXjaZROY96MqQ9Pxnz3jU69pFvhAg_ZfK_IoUpgXp4VNdNHxv3LdRVVeTWbr8m16Vg=w800" alt="Whalley Viaduct" loading="lazy">
         <div class="dji-badge">DJI Community</div>
       </div>
       <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczNFEssL0N4L2gWSHZo-HTavQm9d9278d6BXFqPqgPTzReDQniyKeFoSOKac7yBsy9cOoktikOFhenX0OYoCF81r9tWmCS0akiJX23a6wAtyzde-iDw=w800" alt="Aerial Survey" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczOAy81eOlApE3ggCwKt9IYfyV_BmJwLr1r2PEoH0-iOITKd4RCLp9oJv9BayPFGrBLErPmsNpZH-6BzHs0qo2750YWtEBnmljG22dSJISOMpww2fp8=w800" alt="Pendle Hill" loading="lazy">
         <div class="dji-badge">Sky Pixel Featured</div><div class="dji-star">⭐ Featured by DJI</div>
       </div>
       <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczNFg7GuCJTKtqtwylTdwQD6ZBo9-GMYz3E-KYvG-K2jtwicMSkzcJKJKZFgGE8Mwjz4VA8xFdHWBTFrcYRNadzoVPnd5P0u7I2uwPV4vamotT1CWnE=w800" alt="Landscape Aerial" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczOp81wpNig8MiesdK2zvt2a-mKF9txbn1U5Hdi5Ez_OyTCsdS3gQGcl70a2ZZiMgaIW2AjAn2jphOGBzcMp3pn0SpniqXeFF829E2gPqIMuz76VCrk=w800" alt="Autumn Countryside" loading="lazy">
         <div class="dji-badge">OverSky Gallery</div>
       </div>
       <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczMGThqKSE5ewCYrZeOYEpZW8Ro0HVPHU7ilO7Ccojib5pYIQohxBeOQEbU8HwAC6MU3s3PTgeTuff4fbs6i3jdSCh6fA1-8ffmrUtk5cUorLxk5Y8o=w800" alt="Professional Drone Shot" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMwhogZEe-CwglZhCEpV3z8i96tOn-wxDzwDetg0QBOhWz2PmK4gv2tACmGCy8H-lTkEsU6iw1BbYqT-6OiVced1nmw5zSNpaLXXOP7MymMsqrIz7I=w800" alt="Golden Hour Aerial" loading="lazy">
         <div class="dji-badge">Featured by DJI</div><div class="dji-star">⭐ Featured by DJI</div>
       </div>
       <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczPutQcLw4HmoylroIfhM2047fMJKAck_cNP-779k2o9ivqB2N8cyW7gyylNAhoYoPGHhTKZALgjJF7RiGC2RFSFv7bRRT2sHiuOBCFC670A3tGdBNs=w800" alt="Aerial Photography" loading="lazy">
-        <div class="dji-badge">Sky Pixel</div>
-      </div>
-      <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczOSk2BFEhC5WD5qNI1vaEi-nUFmnQqlRVsu4j9aS_W5DvrE1jrryRFcbbFXbWEEAcMg-elnYzlmGHc2Hih1n4Rrtoqmorbeedc-o8pVi_T9D7g1eqc=w800" alt="Drone Survey" loading="lazy">
-        <div class="dji-badge">DJI Front Page</div><div class="dji-star">⭐ Featured by DJI</div>
-      </div>
-      <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczMeo97lHytV_EpQRxpl6J9H9aVnlJlDvyaXZlaulrZBSVtOPiIAXMhY1WWUJ4y_qyEhzlbF_dC18A_Pk3ZHGVbhSVYuu8xaNlZbnLg7PA4OT4SjmyY=w800" alt="Aerial Shot" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczPxI-AFs4QVoU8xRVQQZVd0GvQBFiSe2feoh7RyMbG-SbX8eE_Jj5WQqqZP7os6_kS8ONTkYQdP3IjK78uiupgG0gO4VHB7oz7zOv5Brqw795L_jZ0=w800" alt="Spring Survey" loading="lazy">
         <div class="dji-badge">Community Vote</div>
       </div>
       <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczOExbtumwm3IKBDKmwiFq-90bZZrmhCvVKT5Qx1oFR7QvaC7jIZk8CSXZqSmqVC1iOFUaOK_bAWaFCotPLKL0VlBC9ne8hHGmakBEyoOq_jCI9ltg0=w800" alt="OverSky Photography" loading="lazy">
-        <div class="dji-badge">Featured by DJI</div><div class="dji-star">⭐ Featured by DJI</div>
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMP2uGINqFC0wA1noQL6T6LHTgTKZQs_CEGxs272kyadQfbCFiyCYOGcrFu4fBRQUbxMbe9S0V8NHzlVPBP57ei_3QME48wv4X0Dl5JBk7jQtOKWds=w800" alt="North West Aerial" loading="lazy">
+        <div class="dji-badge">DJI Front Page</div><div class="dji-star">⭐ Featured by DJI</div>
       </div>
       <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczNlo15BZ-6tXHVaqU4dgSs5Bf6d2YnOhKUBI1JDboka6DOJXX2EhxFg3J6DBFOzHmQaHV4d3r5dmVlqkq6Ik13WBE5b6DBrp7pu-GUqlAJKvgxoi4s=w800" alt="Heritage Aerial" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczPOfUMrRuQdaLXSLT0bjkoj5d_Z2-Ggq9Agtj1LKuuPClTipqeUSYrPG6qLZbahrT5A3zJVFBqB_K6JpmJ5T9Df4XRW_2wLiTFOSQZmmXulyMYwfhM=w800" alt="Ribble Valley" loading="lazy">
         <div class="dji-badge">Aerial Pick</div>
       </div>
       <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczNwIQYv8XWwKBxOyA3PVmmKyFMyy7Vlf9lIz0h_s23N9CGpx-Uk0K2RlwdB-Tvl-lyQ6-LTEJZMk9sZHw3n6hqpJ_v3T-iHZHgjxMsY7W7qPbRpnc8=w800" alt="North West Drone" loading="lazy">
-        <div class="dji-badge">Sky Pixel Star</div><div class="dji-star">⭐ Featured by DJI</div>
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMneI_Q_nFbo7ORW8vET17v9pDIZ6dgnSVu0UjHoL12ZsB63no0djAplHvlnsXfCxWYoszQiU9ECxZP5EPoQnenQ-IKuxo8l5mKbT5lcdvuW_R4ASI=w800" alt="Night Flight" loading="lazy">
+        <div class="dji-badge">Sky Pixel</div>
       </div>
       <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczNlrEUdlfgLuAwUTeDSmZQIVPp05667IS6MGEoa6WgG8ofAO53vJyBzGLRVQwuG0CACDWVnzGgPX4dheoSexaaJD_lwmFBvYd2Osf-NJYXNg_moIqk=w800" alt="Aerial Photography" loading="lazy">
-        <div class="dji-badge">Sky Pixel Portfolio</div>
-      </div>
-      <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczMLrK5CDnLfwqGZgYBw0SKFJi58gTLUPfap3RxlFR6woBB9_kke023ozSPBQfOi4kieRd127tfAFUifHayD2-egf1LZalVREU9Kcy0moqR6Q79rSj0=w800" alt="DJI Aerial" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczNz8oeJMdg0tDTDyJp9fPRUs0P0utcaFO1ODnGoiaWU3o4o6TRad6-a52DiLevRFJ7uSdb3hK7q6_6XC1l-HojVkNWiPolWKhe4XV0qoNRsFvMCjWc=w800" alt="Lancashire Plains" loading="lazy">
         <div class="dji-badge">Featured by DJI</div><div class="dji-star">⭐ Featured by DJI</div>
       </div>
       <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczPyN4mO5_AZaEyryrycMydxUMuO4YyChKdjKKRNxkCYTp8ffPys9QsaXnw541otMTYnuG4xNR0I1Oi-PUiXQGDxCSV7tvlRFP7z-SzmxE8LjDVnREI=w800" alt="Inspection Aerial" loading="lazy">
-        <div class="dji-badge">Community Recognised</div>
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczNQ9oTzdLSoVMIpnXZwmpQKn-LvnXLtdrNqQLJTSXB6NUqWb044sU4JDdelB7Zl-6LET6-8Rs0EBDi1b9GJbxlB9WqmgT5BUss_ebfqTS82LnAjFq0=w800" alt="City at Dusk" loading="lazy">
+        <div class="dji-badge">North West Skies</div>
       </div>
       <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczOW0409766G-DlkL4TBPc6fiLr3vZLv1r7vc47PVyX19xrkdhUQv1rmBPFFVGU_hNoPEE54ZzddQPvDRGYcjoyUQKZx1uLAUEQAjF-vWZhz08n6n6c=w800" alt="OverSky Portfolio" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMzWoG7D7Nk5-HO9Nnwx_rQmczD4NM_um72NL_UIJCZcFPtvvyqos8oDPC2XXbwAOQNA5Buewgqd9qrhf3Asfs8uY5n_SKWStvi2YHLSJXbYHftQzY=w800" alt="Winter Aerial" loading="lazy">
+        <div class="dji-badge">Sky Pixel Star</div><div class="dji-star">⭐ Featured by DJI</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczNFF0jsJXuIcFMNCS6_5M2Veif011E76nUAHgKKLKmXHG-kU6Td-AN7-rKjmdv3JdWHHzSxiMUb3mQ6VC3Z-bayD7_BwpJKK02Aq9PxyyiMCs--hm4=w800" alt="Solstice Flight" loading="lazy">
+        <div class="dji-badge">Heritage Shot</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczPlhrbQ-MbBRv1nD24PaAw3t9umNua1Bs28HEHRlpiYqBqfZ2apon48OMAmZAflFsMGhXPNKfF8MI1WpsBqSTZGeL3GbQ3t7Xoe3WRzBD3Ty07Xy30=w800" alt="Winter Landscape" loading="lazy">
+        <div class="dji-badge">Survey Pick</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMJtkezFzBE0m_KWXdML15Lsm4khHhXjYxz_NHE_jJVsj5K0vPxDp__VGxw0p4HDWua5rSAdIpCLMKw-EDQeAOnk4YWi1QgB3eIp_JnpNmU7wQHu64=w800" alt="Spring Panorama" loading="lazy">
+        <div class="dji-badge">Featured by DJI</div><div class="dji-star">⭐ Featured by DJI</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczPPsSbZWF0CtQS0BbHVQH-TSi-lP3Uvz9gL3E6RRX90kNP2iA7h2zlWsCNcmx2pLAJNntWs5nPBB1IxjbWgQGtXg06kwDrFWwWbik7L4-GbqiR5lZc=w800" alt="Moorland Vista" loading="lazy">
+        <div class="dji-badge">Night Collection</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczOX4-ME-d3_zqYCmcPMf5Lrh4UifbG4TvwYQhiCDlxTjpHx5ANsLWMmKfCMhJRETlUSQcEJ2XvRCo3BqlL-T9P7I-cHpX6zvJ9UeiLzmiBW6GTbVXY=w800" alt="Aerial Survey 2026" loading="lazy">
+        <div class="dji-badge">DJI Community Pick</div><div class="dji-star">⭐ Featured by DJI</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczO2yFygD9Y8Pa0Ln-oQqghl02wtfkexdaKsRr4Y8ISuIibBlZwVuVKxjqOFTgmbFuulS78Jj5eQkBjyodb-1Cpq24hXB9ZkmnM6hl_rc67DKkV2vR8=w800" alt="Countryside Estate" loading="lazy">
+        <div class="dji-badge">Landscape Series</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczO0p7DzQHyz2LOjB1CtkFk4Rh-7BjYx4bNq62aF3uuChoD5LtElocdcTKnidtoOitqJx_-ZiCk_H5nIRFEF4IGJmxQqQbN5IE8CuzkrdM-6kcAPp6s=w800" alt="Rolling Hills" loading="lazy">
+        <div class="dji-badge">Winter Collection</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczNo9-t5OTB1r8GbAMFIOBZKF9maEeUdy-HE9lJT9kffDMuHNW6UniQXRScXGhv77WLaHMrZEoK8FGutMVS_oOLqVPU-Ov9w1I64BGFCdNWipFV1uSg=w800" alt="Spring Morning" loading="lazy">
+        <div class="dji-badge">Featured by DJI</div><div class="dji-star">⭐ Featured by DJI</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczNHKnhyOt2q6pJ4aHHZEurvdxfgeiI0-5GxYJ60_iQ0eryRrEsEDVB83xiUp6Iw9vwGOWVWsJQGlrf6drDPsIQS2kroeC7Xl2Wn3wvlc_jTLIVInwU=w800" alt="Village from Above" loading="lazy">
+        <div class="dji-badge">Spring Series</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczNtmExeamQcQGTTzFbUznSa0jRCXdETMv0lkYBVPju9osn_YEue2p-pzqL87g6sV5A-698hDVtZJdzSvjYQqw4aKluT1PO_5BLVbtXp4W2kGyzN4vE=w800" alt="Kirkstall Abbey" loading="lazy">
+        <div class="dji-badge">Sky Pixel Pick</div><div class="dji-star">⭐ Featured by DJI</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczN_5CjhakYr8PsbtSr8ZOGBTVcNWBdUt--L0kiUVn92GMeICWCzUSpJ8DHAZ70V_axudmYN_ta9JUhm1PzQM3wLJV32o128Q5JbuG-LQzYjEgePrKw=w800" alt="Heritage Structure" loading="lazy">
+        <div class="dji-badge">Community Favourite</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczOwpai_PUmxtMGTZMVevSYJelz0avS7Nni4bN8fXOVUagkDJn-tL0gWxmRy_bZhdOdfBTTihER0Ov1XSWCWfS5M_ThBifQPnd13RS8t9D8JYAVljqc=w800" alt="Yorkshire Landscape" loading="lazy">
+        <div class="dji-badge">DJI Portfolio</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczNA6wrtDkebOFjZYcrxJSmtb2u6K4UxuPvGVp6gQKtYxLjADs-W76PYQ2hQP8oJxyNmCP30I23YpqPFoeQtldrfqewMVdlBmW2sZHJxTFSC11TYrJ8=w800" alt="Industrial Complex" loading="lazy">
+        <div class="dji-badge">Featured by DJI</div><div class="dji-star">⭐ Featured by DJI</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczM4jG8e1EAIRTqWl1Vut7JOwCsQDeVjFfBb9CEkurQ8H1k2IuyEMdiQWzaFUTMqOzv7MnGeOHCflfjqm9VUncok9TIHPlBzvG13LY97r2keMnYjI9w=w800" alt="Winter Solstice" loading="lazy">
+        <div class="dji-badge">Evening Skies</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczPGmVdChVoguYZ4Q1nefrlsYtjJGkFAFG_TGdcwurSxNI5aJyrffVzXDESQB3ln_WW_4LYBeC-G2SEc0W8YY1dxGX4ayEzudL70N2Y5tw8dbXmNy70=w800" alt="Pennine Way" loading="lazy">
+        <div class="dji-badge">Featured by DJI</div><div class="dji-star">⭐ Featured by DJI</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczNB8p1fua8T8utlyc9A8GF9OGZcWeBHwDtB2K-anQIfNqVytdJTrYqw5K2dc0bPPic1JYBWG4NHlImnYTeYbOsgfg5UNpgqS8s4S9n0-fSeMj0QQXY=w800" alt="Northern Plains" loading="lazy">
+        <div class="dji-badge">Rural Aerial</div>
+      </div>
+      <div class="dji-cell">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczPvhk6sf3eBsHKcXQMAhekqgRQnxJP2xEkGlJ0o0v2RjOPjepAMPxyI6y-y0B-o7mAku2DNUKcgZYOnr2eFkkZj3hUe-QcXiqY_rkl1zi71dkPNpfQ=w800" alt="Early Spring" loading="lazy">
         <div class="dji-badge">DJI Sky Pixel Pick</div><div class="dji-star">⭐ Featured by DJI</div>
-      </div>
-      <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczMqENrQeIhkVp9y6neOp6epUCdl6TI7n9StqSkieWiJGgysGzQHYN87zkF2P9H_TNnIFJ2ZtonCfr4gR8lTsOsEAynrKocoi1ioOVT3EYFiaM8WTdA=w800" alt="Aerial Capture" loading="lazy">
-        <div class="dji-badge">DJI Community</div>
-      </div>
-      <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczNmkTOs_LxOnzxGYiEeN2NAWSMOUT-mJZ4sbwL9AZHlqz5ycFyFv7Sz7w1kAth9K_a7BqUfQ7y7COAY8NJSRi0JXkYsNZmTMdQJ0XQshWRkVIH1fZM=w800" alt="Drone Flight" loading="lazy">
-        <div class="dji-badge">Sky Pixel Featured</div><div class="dji-star">⭐ Featured by DJI</div>
-      </div>
-      <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczOJxSEf7LWxIsQbVOlHLKP8VejVUtDuv-hJB-_DqOsbYhXDd9TzqwExQmaTijSSxV1ZxVq8286S3m3l9PPNm6MlSM6rw-VRRTuEFWZz3oMYXp3CNSg=w800" alt="Sky View" loading="lazy">
-        <div class="dji-badge">OverSky Gallery</div>
-      </div>
-      <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczOln3mvEU6-sdOmrHgVlwn6MGd_uin0OZMFH-_6rF72-NdnXa_yFjpZqk6w9MWB5T1DiHtxAxq7btv62nQWEkvX11FiuxVCZcvy3orBMyQQ36MjdDs=w800" alt="Aerial Scene" loading="lazy">
-        <div class="dji-badge">Featured by DJI</div><div class="dji-star">⭐ Featured by DJI</div>
-      </div>
-      <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczMzDlHvZ0UWw6wcOZyWQhmTDahTjgP_I9a6xlaQVnsmMpQpuWzV6TweumD1P35yBD2h6tXUhHbC3nKxQuzLG4pddIXed5rOLdct7IS089D1hgjxnfE=w800" alt="Drone View" loading="lazy">
-        <div class="dji-badge">Sky Pixel</div>
-      </div>
-      <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczMb1a3G7Dk1uB7up9jGdDTOmbI2lu8qSbWqVMrq6tfBUes51mlI1BXwhGuFCPZSdceR7gU0d7WV0otN3M9VV3gXiV8RMgvpBsP2diETLY4ikmi1ArM=w800" alt="Aerial Shot" loading="lazy">
-        <div class="dji-badge">Community Vote</div>
-      </div>
-      <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczPkrzZIgMOzYXllCuWhrv-kaOTm0oHoU5y-7au10iWZjHhPdzxuErBTYUHbgVzG7XrKHqLLEQ0jHUMNfFhs_Y4u1FKO5ZHldazUObor6Uv4OjHs2oU=w800" alt="DJI Capture" loading="lazy">
-        <div class="dji-badge">DJI Front Page</div><div class="dji-star">⭐ Featured by DJI</div>
-      </div>
-      <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczNHtY2nNUtryb71Mh_M9jSJqZnbgs9_wV4kqJET2mJMbT3u_Pbpc2_7YpBSmoYNQcmgCCa3p31QVeRMgfjN63igMpszCJS2CmFoPJ0DHgjfa8kqsgE=w800" alt="Aerial Photography" loading="lazy">
-        <div class="dji-badge">Aerial Pick</div>
-      </div>
-      <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczN4LaQpC5JxzrJG_klYnqZfGUegWgu9wZ7_jy3A2N88ygcOHN5TWNGOU4ADtjz1eszbrWZjDOcYc4GSkgc74cikbq9m1qAjFf4V7uUt7ttST_WRhlA=w800" alt="Sky Pixel" loading="lazy">
-        <div class="dji-badge">Featured by DJI</div><div class="dji-star">⭐ Featured by DJI</div>
-      </div>
-      <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczMH2fXQDiHZhqpyoIOH9aka_-xhLi4DyDx0CSvPQ5-CZQSmkD_p0_Xz1BU5FMmqugvJYanRRvnbB4pnSIBXgr-t0i27wW83EFWyy3Hz8CxuzZiH_sY=w800" alt="Drone Photography" loading="lazy">
-        <div class="dji-badge">Sky Pixel Portfolio</div>
-      </div>
-      <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczMtlGAQhPo2uDni29No_ZbvbSboM0wD0lFyf_GT2JJ4_doD2LdKKAi2vPeAhtzFErPZAWR6K5O45j8i8xmI-TZ8WBlCwk8buyQ1Csw7IIyz3ejBPys=w800" alt="Aerial View" loading="lazy">
-        <div class="dji-badge">Sky Pixel Star</div><div class="dji-star">⭐ Featured by DJI</div>
-      </div>
-      <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczORfWl7hM51RRr04Zvyja0H8yePZyGySGiHtvLFR-Yv9XlwpYKDsQoOjFhW_zmwAPvwhHJkgs5jjOnqWf_u3MlGJS_TUw7h6Mu_StwLAU6yObqFS4Q=w800" alt="North West Sky" loading="lazy">
-        <div class="dji-badge">Community Recognised</div>
-      </div>
-      <div class="dji-cell">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczO4ACxQ9EayWCIz4UBFUUqaZhRaX-77bA3XVziI9HWknmJfKtQwQPj3_zk5V0Mjt8S51d5dlukeVBNeygva2MrQmgOCW9gV7HAwAo5lF4UlfCHGrOg=w800" alt="Aerial Panorama" loading="lazy">
-        <div class="dji-badge">Featured by DJI</div><div class="dji-star">⭐ Featured by DJI</div>
       </div>
     </div>
+
     </div>
   </section>
 
@@ -751,24 +758,38 @@ footer{background:var(--sky);border-top:1px solid var(--border);padding:56px 80p
 // All 18 Google Photos images — chosen for variety and professional quality
 // Ordered: dramatic/wide → heritage → urban → industrial → countryside
 const IMGS=[
-  {url:"https://lh3.googleusercontent.com/pw/AP1GczNL2Y7xEKnf383_riNZYHTCORwBAKs3sRa-erWQPpeDJq1TE396ap9duFN7Ur0skLflbR5GANv6EEVRi4TGCtz6rTNKNep2WSEqjHW47vrRJVx_Wxk=w1920",label:"Aerial Landscape"},
-  {url:"https://lh3.googleusercontent.com/pw/AP1GczMLeWF8gJZkxB__s1CBtIh9plxI3zI79gojb-mm1i0T1s20gpm_Z6ZAq9-fxjFrjV8qvXcvdnQPkDBYUsVFJT9t0jnBvoGBS4lcJlyqGadYzhAW-Xc=w1920",label:"Aerial Photography"},
-  {url:"https://lh3.googleusercontent.com/pw/AP1GczM_eKJsMC0e_wGBVulA0IBpl9KOdp6-hF2uKOLdHQvxuBRT94yfbMhEuzOTWJsqYGUd_Mln-5hPHecxT71qtutHdB7pgtTVOBkWW3x-U1prnhvMZ7Q=w1920",label:"Aerial View"},
-  {url:"https://lh3.googleusercontent.com/pw/AP1GczNAolNM6qKiePUyO30RgnXLx3AXsAy2rF0-PAZYliYl75M6Qy_6iSrZj4K7Lk1xaZnoY2TvTRDI528XIceih28DHXl2vugUg8MZEU6Jmq3q7DU_Mvk=w1920",label:"Drone Photography"},
-  {url:"https://lh3.googleusercontent.com/pw/AP1GczOw05IozNVh7tlFNccN3RiY5vfpK5MYsbdvPL5ITmM2UpHy1Cxm-NOcT-DDEJJ7HJFVTxX1GObn2v80G_PD6vLtAclfkiUQ5porhGkAKC4N9IL9niU=w1920",label:"North West Aerial"},
-  {url:"https://lh3.googleusercontent.com/pw/AP1GczNFEssL0N4L2gWSHZo-HTavQm9d9278d6BXFqPqgPTzReDQniyKeFoSOKac7yBsy9cOoktikOFhenX0OYoCF81r9tWmCS0akiJX23a6wAtyzde-iDw=w1920",label:"Aerial Survey"},
-  {url:"https://lh3.googleusercontent.com/pw/AP1GczNFg7GuCJTKtqtwylTdwQD6ZBo9-GMYz3E-KYvG-K2jtwicMSkzcJKJKZFgGE8Mwjz4VA8xFdHWBTFrcYRNadzoVPnd5P0u7I2uwPV4vamotT1CWnE=w1920",label:"Landscape Aerial"},
-  {url:"https://lh3.googleusercontent.com/pw/AP1GczMGThqKSE5ewCYrZeOYEpZW8Ro0HVPHU7ilO7Ccojib5pYIQohxBeOQEbU8HwAC6MU3s3PTgeTuff4fbs6i3jdSCh6fA1-8ffmrUtk5cUorLxk5Y8o=w1920",label:"Professional Drone Shot"},
-  {url:"https://lh3.googleusercontent.com/pw/AP1GczPutQcLw4HmoylroIfhM2047fMJKAck_cNP-779k2o9ivqB2N8cyW7gyylNAhoYoPGHhTKZALgjJF7RiGC2RFSFv7bRRT2sHiuOBCFC670A3tGdBNs=w1920",label:"Aerial Photography"},
-  {url:"https://lh3.googleusercontent.com/pw/AP1GczOSk2BFEhC5WD5qNI1vaEi-nUFmnQqlRVsu4j9aS_W5DvrE1jrryRFcbbFXbWEEAcMg-elnYzlmGHc2Hih1n4Rrtoqmorbeedc-o8pVi_T9D7g1eqc=w1920",label:"Drone Survey"},
-  {url:"https://lh3.googleusercontent.com/pw/AP1GczMeo97lHytV_EpQRxpl6J9H9aVnlJlDvyaXZlaulrZBSVtOPiIAXMhY1WWUJ4y_qyEhzlbF_dC18A_Pk3ZHGVbhSVYuu8xaNlZbnLg7PA4OT4SjmyY=w1920",label:"Aerial Shot"},
-  {url:"https://lh3.googleusercontent.com/pw/AP1GczOExbtumwm3IKBDKmwiFq-90bZZrmhCvVKT5Qx1oFR7QvaC7jIZk8CSXZqSmqVC1iOFUaOK_bAWaFCotPLKL0VlBC9ne8hHGmakBEyoOq_jCI9ltg0=w1920",label:"OverSky Photography"},
-  {url:"https://lh3.googleusercontent.com/pw/AP1GczNlo15BZ-6tXHVaqU4dgSs5Bf6d2YnOhKUBI1JDboka6DOJXX2EhxFg3J6DBFOzHmQaHV4d3r5dmVlqkq6Ik13WBE5b6DBrp7pu-GUqlAJKvgxoi4s=w1920",label:"Aerial View"},
-  {url:"https://lh3.googleusercontent.com/pw/AP1GczNwIQYv8XWwKBxOyA3PVmmKyFMyy7Vlf9lIz0h_s23N9CGpx-Uk0K2RlwdB-Tvl-lyQ6-LTEJZMk9sZHw3n6hqpJ_v3T-iHZHgjxMsY7W7qPbRpnc8=w1920",label:"North West Drone"},
-  {url:"https://lh3.googleusercontent.com/pw/AP1GczNlrEUdlfgLuAwUTeDSmZQIVPp05667IS6MGEoa6WgG8ofAO53vJyBzGLRVQwuG0CACDWVnzGgPX4dheoSexaaJD_lwmFBvYd2Osf-NJYXNg_moIqk=w1920",label:"Aerial Photography"},
-  {url:"https://lh3.googleusercontent.com/pw/AP1GczMLrK5CDnLfwqGZgYBw0SKFJi58gTLUPfap3RxlFR6woBB9_kke023ozSPBQfOi4kieRd127tfAFUifHayD2-egf1LZalVREU9Kcy0moqR6Q79rSj0=w1920",label:"DJI Aerial Shot"},
-  {url:"https://lh3.googleusercontent.com/pw/AP1GczPyN4mO5_AZaEyryrycMydxUMuO4YyChKdjKKRNxkCYTp8ffPys9QsaXnw541otMTYnuG4xNR0I1Oi-PUiXQGDxCSV7tvlRFP7z-SzmxE8LjDVnREI=w1920",label:"Inspection Aerial"},
-  {url:"https://lh3.googleusercontent.com/pw/AP1GczOW0409766G-DlkL4TBPc6fiLr3vZLv1r7vc47PVyX19xrkdhUQv1rmBPFFVGU_hNoPEE54ZzddQPvDRGYcjoyUQKZx1uLAUEQAjF-vWZhz08n6n6c=w1920",label:"OverSky Portfolio"}
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczPzASThGfexUNiq8LQ96y5v-RMqHfAgqC5Hl641QhYCeZHnC6O_rokcuMmRU5NmaQTsRjORSRzua8LxSPGNgUrfOAaumzaJha4Ge-awByvvbNFy2WM=w1920",label:"Winter Countryside"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczOkzp42L8UAKRAYEUfIL3QVhMxEEVNPGXFk1vG35KqY4IclMebK_Vb6gXK9_zmY51jATFXZLAP3tvNrmHKBRhbo1noqMX4XP6R7PuwpJRwMY6wc-JI=w1920",label:"Manchester Nightscape"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczMx_45X8LujcpCZi-4HiC_CSB4K8q4HOBr6Y-arDdLbHJo7GhV8r2WhMgEHETkfSt_wFSXFSyP3aKkHlcv_ZgjUIcB-zPEOi-MsWDEdcVxWtdhvOmY=w1920",label:"Aerial Panorama"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczPhpugFaeSfBNXjHnK-2tR3ZBYZyj2X7wGqeIFp9mvEoUAkcV3VkRVpm1ODVKosfWndUCpLEkYbgqkSENWBjDd4CtNxlLEfZ-c12J1j3WmXXspaOWk=w1920",label:"Bolton Abbey"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczM1D8lghWJU3ejVquIx7O0V4RfMfcs6dY-m0tt6qfaFQfnk3BXjaZROY96MqQ9Pxnz3jU69pFvhAg_ZfK_IoUpgXp4VNdNHxv3LdRVVeTWbr8m16Vg=w1920",label:"Whalley Viaduct"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczOAy81eOlApE3ggCwKt9IYfyV_BmJwLr1r2PEoH0-iOITKd4RCLp9oJv9BayPFGrBLErPmsNpZH-6BzHs0qo2750YWtEBnmljG22dSJISOMpww2fp8=w1920",label:"Pendle Hill"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczOp81wpNig8MiesdK2zvt2a-mKF9txbn1U5Hdi5Ez_OyTCsdS3gQGcl70a2ZZiMgaIW2AjAn2jphOGBzcMp3pn0SpniqXeFF829E2gPqIMuz76VCrk=w1920",label:"Autumn Countryside"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczMwhogZEe-CwglZhCEpV3z8i96tOn-wxDzwDetg0QBOhWz2PmK4gv2tACmGCy8H-lTkEsU6iw1BbYqT-6OiVced1nmw5zSNpaLXXOP7MymMsqrIz7I=w1920",label:"Golden Hour Aerial"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczPxI-AFs4QVoU8xRVQQZVd0GvQBFiSe2feoh7RyMbG-SbX8eE_Jj5WQqqZP7os6_kS8ONTkYQdP3IjK78uiupgG0gO4VHB7oz7zOv5Brqw795L_jZ0=w1920",label:"Spring Survey"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczMP2uGINqFC0wA1noQL6T6LHTgTKZQs_CEGxs272kyadQfbCFiyCYOGcrFu4fBRQUbxMbe9S0V8NHzlVPBP57ei_3QME48wv4X0Dl5JBk7jQtOKWds=w1920",label:"North West Aerial"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczPOfUMrRuQdaLXSLT0bjkoj5d_Z2-Ggq9Agtj1LKuuPClTipqeUSYrPG6qLZbahrT5A3zJVFBqB_K6JpmJ5T9Df4XRW_2wLiTFOSQZmmXulyMYwfhM=w1920",label:"Ribble Valley"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczMneI_Q_nFbo7ORW8vET17v9pDIZ6dgnSVu0UjHoL12ZsB63no0djAplHvlnsXfCxWYoszQiU9ECxZP5EPoQnenQ-IKuxo8l5mKbT5lcdvuW_R4ASI=w1920",label:"Night Flight"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczNz8oeJMdg0tDTDyJp9fPRUs0P0utcaFO1ODnGoiaWU3o4o6TRad6-a52DiLevRFJ7uSdb3hK7q6_6XC1l-HojVkNWiPolWKhe4XV0qoNRsFvMCjWc=w1920",label:"Lancashire Plains"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczNQ9oTzdLSoVMIpnXZwmpQKn-LvnXLtdrNqQLJTSXB6NUqWb044sU4JDdelB7Zl-6LET6-8Rs0EBDi1b9GJbxlB9WqmgT5BUss_ebfqTS82LnAjFq0=w1920",label:"City at Dusk"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczMzWoG7D7Nk5-HO9Nnwx_rQmczD4NM_um72NL_UIJCZcFPtvvyqos8oDPC2XXbwAOQNA5Buewgqd9qrhf3Asfs8uY5n_SKWStvi2YHLSJXbYHftQzY=w1920",label:"Winter Aerial"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczNFF0jsJXuIcFMNCS6_5M2Veif011E76nUAHgKKLKmXHG-kU6Td-AN7-rKjmdv3JdWHHzSxiMUb3mQ6VC3Z-bayD7_BwpJKK02Aq9PxyyiMCs--hm4=w1920",label:"Solstice Flight"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczPlhrbQ-MbBRv1nD24PaAw3t9umNua1Bs28HEHRlpiYqBqfZ2apon48OMAmZAflFsMGhXPNKfF8MI1WpsBqSTZGeL3GbQ3t7Xoe3WRzBD3Ty07Xy30=w1920",label:"Winter Landscape"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczMJtkezFzBE0m_KWXdML15Lsm4khHhXjYxz_NHE_jJVsj5K0vPxDp__VGxw0p4HDWua5rSAdIpCLMKw-EDQeAOnk4YWi1QgB3eIp_JnpNmU7wQHu64=w1920",label:"Spring Panorama"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczPPsSbZWF0CtQS0BbHVQH-TSi-lP3Uvz9gL3E6RRX90kNP2iA7h2zlWsCNcmx2pLAJNntWs5nPBB1IxjbWgQGtXg06kwDrFWwWbik7L4-GbqiR5lZc=w1920",label:"Moorland Vista"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczOX4-ME-d3_zqYCmcPMf5Lrh4UifbG4TvwYQhiCDlxTjpHx5ANsLWMmKfCMhJRETlUSQcEJ2XvRCo3BqlL-T9P7I-cHpX6zvJ9UeiLzmiBW6GTbVXY=w1920",label:"Aerial Survey 2026"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczO2yFygD9Y8Pa0Ln-oQqghl02wtfkexdaKsRr4Y8ISuIibBlZwVuVKxjqOFTgmbFuulS78Jj5eQkBjyodb-1Cpq24hXB9ZkmnM6hl_rc67DKkV2vR8=w1920",label:"Countryside Estate"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczO0p7DzQHyz2LOjB1CtkFk4Rh-7BjYx4bNq62aF3uuChoD5LtElocdcTKnidtoOitqJx_-ZiCk_H5nIRFEF4IGJmxQqQbN5IE8CuzkrdM-6kcAPp6s=w1920",label:"Rolling Hills"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczNo9-t5OTB1r8GbAMFIOBZKF9maEeUdy-HE9lJT9kffDMuHNW6UniQXRScXGhv77WLaHMrZEoK8FGutMVS_oOLqVPU-Ov9w1I64BGFCdNWipFV1uSg=w1920",label:"Spring Morning"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczNHKnhyOt2q6pJ4aHHZEurvdxfgeiI0-5GxYJ60_iQ0eryRrEsEDVB83xiUp6Iw9vwGOWVWsJQGlrf6drDPsIQS2kroeC7Xl2Wn3wvlc_jTLIVInwU=w1920",label:"Village from Above"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczNtmExeamQcQGTTzFbUznSa0jRCXdETMv0lkYBVPju9osn_YEue2p-pzqL87g6sV5A-698hDVtZJdzSvjYQqw4aKluT1PO_5BLVbtXp4W2kGyzN4vE=w1920",label:"Kirkstall Abbey"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczN_5CjhakYr8PsbtSr8ZOGBTVcNWBdUt--L0kiUVn92GMeICWCzUSpJ8DHAZ70V_axudmYN_ta9JUhm1PzQM3wLJV32o128Q5JbuG-LQzYjEgePrKw=w1920",label:"Heritage Structure"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczOwpai_PUmxtMGTZMVevSYJelz0avS7Nni4bN8fXOVUagkDJn-tL0gWxmRy_bZhdOdfBTTihER0Ov1XSWCWfS5M_ThBifQPnd13RS8t9D8JYAVljqc=w1920",label:"Yorkshire Landscape"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczNA6wrtDkebOFjZYcrxJSmtb2u6K4UxuPvGVp6gQKtYxLjADs-W76PYQ2hQP8oJxyNmCP30I23YpqPFoeQtldrfqewMVdlBmW2sZHJxTFSC11TYrJ8=w1920",label:"Industrial Complex"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczM4jG8e1EAIRTqWl1Vut7JOwCsQDeVjFfBb9CEkurQ8H1k2IuyEMdiQWzaFUTMqOzv7MnGeOHCflfjqm9VUncok9TIHPlBzvG13LY97r2keMnYjI9w=w1920",label:"Winter Solstice"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczPGmVdChVoguYZ4Q1nefrlsYtjJGkFAFG_TGdcwurSxNI5aJyrffVzXDESQB3ln_WW_4LYBeC-G2SEc0W8YY1dxGX4ayEzudL70N2Y5tw8dbXmNy70=w1920",label:"Pennine Way"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczNB8p1fua8T8utlyc9A8GF9OGZcWeBHwDtB2K-anQIfNqVytdJTrYqw5K2dc0bPPic1JYBWG4NHlImnYTeYbOsgfg5UNpgqS8s4S9n0-fSeMj0QQXY=w1920",label:"Northern Plains"},
+  {url:"https://lh3.googleusercontent.com/pw/AP1GczPvhk6sf3eBsHKcXQMAhekqgRQnxJP2xEkGlJ0o0v2RjOPjepAMPxyI6y-y0B-o7mAku2DNUKcgZYOnr2eFkkZj3hUe-QcXiqY_rkl1zi71dkPNpfQ=w1920",label:"Early Spring"},
 ];
 
 const NM={home:'n-home',services:'n-services',credentials:'n-creds',models:'n-models'};
